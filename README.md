@@ -1,11 +1,11 @@
 ## Contribution Guidelines
-- DO NOT PUSH TO `master` DIRECTLY
+- DO NOT PUSH TO `main` DIRECTLY
 - For any changes to this repo, first create a new branch locally using `git checkout -b <branch-name>`
 - Then make all of your changes within that branch
 - For each change, add a descriptive commit message that follows [Semantic Commit style](https://www.conventionalcommits.org/en/v1.0.0/#summary)
   - Ex: `feat: created landing page` or `fix: stop memory leak`
 - Once changes are ready to be pushed up, execute the following commands:
-  - `git pull origin master`, resolve any merge conflicts and commit those as well
+  - `git pull origin main`, resolve any merge conflicts and commit those as well
   - `git push origin <branch-name>`
 - Once your branch has been pushed up, navigate to this repo in GitHub and create a Pull Request and notify the team so we can review it
 
