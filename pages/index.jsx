@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
   return (
     <>
       <Head>
@@ -16,6 +17,8 @@ export default function Home() {
       </Head>
 
       <h1>Gambling Platform</h1>
+
+      <p>test</p>
 
     </>
   )
