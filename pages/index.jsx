@@ -18,7 +18,7 @@ export default function Home() {
 
       <h1>Gambling Platform</h1>
 
-      <p>test</p>
+      <p>Making our first change to the site</p>
 
     </>
   )
