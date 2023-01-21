@@ -1,10 +1,28 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
+import styled from "styled-components";
+import { useState } from 'react';
 
-const inter = Inter({ subsets: ['latin'] })
+
+const LoginModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: 4px solid red;
+  z-index: 69;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
+
+const LoginForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`
 
 export default function Home() {
+
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <>
@@ -17,7 +35,19 @@ export default function Home() {
 
       <h1>Gambling Platform</h1>
 
-      <p>Making our first change to the site</p>
+      <button onClick={() => {setShowModal(true)}}>Log In</button>
+
+      {showModal ? <LoginModal>
+        <h3>Login</h3>
+        <LoginForm>
+          <label for='username'>Username</label>
+          <input type='text' name='username' />
+          <label for='password'>Password</label>
+          <input type='password' name='password' />
+          <button type='submit'>Log In</button>
+        </LoginForm>
+        <button onClick={() => {setShowModal(false)}}>Close</button>
+      </LoginModal> : null}
 
     </>
   )
