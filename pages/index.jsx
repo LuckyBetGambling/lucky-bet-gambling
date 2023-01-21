@@ -1,9 +1,24 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
+import styled from "styled-components";
 import styles from '../styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
+
+const LoginModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: 4px solid red;
+  z-index: 69;
+  position: absolute;
+`
+
+const LoginForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`
 
 export default function Home() {
   return (
@@ -16,6 +31,19 @@ export default function Home() {
       </Head>
 
       <h1>Gambling Platform</h1>
+
+      <LoginModal>
+        <h3>Login</h3>
+        <LoginForm>
+          <label for='username'>Username</label>
+          <input type='text' name='username' />
+          <label for='password'>Password</label>
+          <input type='text' name='password' />
+        </LoginForm>
+        <button>
+          Log IN
+        </button>
+      </LoginModal>
 
     </>
   )
