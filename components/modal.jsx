@@ -27,9 +27,8 @@ const StyledModalOverlay = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 1100px;
-  height: 700px;
+  width: 100%;
+  height: 100%;
   border-radius: 20px;
   overflow: hidden;
   display: flex;
