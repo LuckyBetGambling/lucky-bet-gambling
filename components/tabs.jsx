@@ -30,9 +30,10 @@ export const Tab = styled.div`
 `
 
 /**
- * Component to 
- * @param {router} router - 
+ * Component that contans mutiple tabs for profile page
+ * @param {router} router - nextJS router to add tabs to history but not navigate new page
  * @param {object[]} tabs - array of tab objects
+ * @param {string} path - path for routes to start from
  * @returns 
  */
 const Tabs = ({ router, tabs, path }) => {
