@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from "styled-components"
-import SideScroller from './components/sidescroller'
+import SideScroller from '../components/sidescroller'
 
 const Page = styled.div`
   padding: 30px;
