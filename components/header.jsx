@@ -9,6 +9,7 @@ const Wrapper = styled.nav`
   background-color: red;
   padding: 15px;
   position: fixed;
+  z-index: 68;
 `
 
 const Wallet = styled.div`

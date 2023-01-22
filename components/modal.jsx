@@ -31,6 +31,7 @@ const StyledModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.35);
+  z-index: 69;
 `;
 
 export function openModal(callback) {
