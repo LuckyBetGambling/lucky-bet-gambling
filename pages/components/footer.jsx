@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.footer`
   height: 30px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

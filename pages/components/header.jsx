@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import LinkButton from "./linkButton";
+import Link from 'next/link'
 
 const Wrapper = styled.nav`
   display: flex;
@@ -42,7 +43,9 @@ const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback }) =
 
     return (
         <Wrapper>
-            <Title>{title}</Title>
+            <Title>
+                <Link href='/'>{title}</Link>
+            </Title>
             <Wallet>${wallet}</Wallet>
             <NavActions>
             <button onClick={() => signUpCallback()}>Sign Up</button>

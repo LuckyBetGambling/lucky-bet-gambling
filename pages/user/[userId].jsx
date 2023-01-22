@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { Fragment } from 'react'
 import styled from "styled-components"
 
 const Page = styled.div`

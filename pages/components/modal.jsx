@@ -19,6 +19,7 @@ const StyledModal = styled.div`
   padding: 15px;
   display: flex;
   flex-direction: column;
+  transform: translateY(-250%);
 `;
 const StyledModalOverlay = styled.div`
   position: absolute;
