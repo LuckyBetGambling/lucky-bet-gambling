@@ -11,9 +11,8 @@ const Wrapper = styled.footer`
   color: white;
 `
 
-/** Side Scrolling container for games
-* @param {array} items - array of game objects
-* @param {string} title - title of this section of games
+/** Generic footer that lives on every page
+* @param {component} children - child components to go inside of the footer
 * @returns 
 */
 const Footer = ({ children }) => {

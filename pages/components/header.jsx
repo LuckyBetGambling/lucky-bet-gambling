@@ -34,9 +34,12 @@ const NavActions = styled.div`
 `
 
 /**
- * Side Scrolling container for games
- * @param {array} items - array of game objects
- * @param {string} title - title of this section of games
+ * Generic header component that will live on every page
+ * @param {array} wallet - ammount of money the player has
+ * @param {string} title - title for header
+ * @param {object} currentUser - object containing current logged in user's data
+ * @param {function} signUpCallback - callback to open sign up modal
+ * @param {function} loginCallback - callback function to open log in modal
  * @returns 
  */
 const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback }) => {
@@ -46,7 +49,7 @@ const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback }) =
             <Title>
                 <Link href='/'>{title}</Link>
             </Title>
-            <Wallet>${wallet}</Wallet>
+            {currentUser &&<Wallet>${wallet}</Wallet>}
             <NavActions>
             <button onClick={() => signUpCallback()}>Sign Up</button>
             <button onClick={() => loginCallback()}>Log In</button>

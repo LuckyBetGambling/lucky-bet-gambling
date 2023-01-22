@@ -12,9 +12,9 @@ const Button = styled.div`
 `
 
 /**
- * Side Scrolling container for games
- * @param {array} items - array of game objects
- * @param {string} title - title of this section of games
+ * Styled button that links to a provided page
+ * @param {string} path - path of page we wish to jump to
+ * @param {string} title - title of the page we're jumping to
  * @returns 
  */
 const LinkButton = ({ title, path }) => {
