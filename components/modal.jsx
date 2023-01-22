@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const StyledModalBody = styled.div`
   padding-top: 10px;
+  padding-bottom: 10px;
 `;
 
 const StyledModalHeader = styled.div`
@@ -13,25 +14,30 @@ const StyledModalHeader = styled.div`
 `;
 
 const StyledModal = styled.div`
-  background: white;
+  background: #0F212E;
+  color: #B1BAD3;
   width: 500px;
   border-radius: 15px;
   padding: 15px;
-  display: flex;
-  flex-direction: column;
-  transform: translateY(-250%);
+
+
 `;
 const StyledModalOverlay = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1100px;
+  height: 700px;
+  border-radius: 20px;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.35);
 `;
+
 
 export function openModal(callback) {
   const body = document.body

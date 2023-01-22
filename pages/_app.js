@@ -30,10 +30,13 @@ export default function App({ Component, pageProps }) {
 
       <Modal show={showSignUpModal} onClose={() => { setShowSignUpModal(false) }} title='Sign Up'>
         <LoginForm>
+          <label htmlFor="email">Email</label>
+          <input type="text" name="email" />
           <label htmlFor='username'>Username</label>
           <input type='text' name='username' />
           <label htmlFor='password'>Password</label>
           <input type='password' name='password' />
+          
           <button type='submit'>Sign Up</button>
         </LoginForm>
       </Modal>
