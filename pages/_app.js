@@ -58,6 +58,7 @@ export default function App({ Component, pageProps }) {
       const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
       console.log(user);
       alert("User created")
+      openModal(() => setShowSignUpModal(false))
     }
     catch(err){
       console.log(err.message);
@@ -72,6 +73,7 @@ export default function App({ Component, pageProps }) {
       const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       console.log(user);
       alert("User logged in")
+      openModal(() => setShowLoginModal(false))
     }
     catch(err){
       console.log(err.message);
@@ -84,7 +86,7 @@ export default function App({ Component, pageProps }) {
     e.preventDefault();
     await signOut(auth);
     alert("User logged out")
-    
+    openModal(() => setShowLogoutModal(false))
   }
 
   return (
