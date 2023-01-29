@@ -4,6 +4,8 @@ import SideScroller from '../components/sidescroller'
 
 const Page = styled.div`
   padding: 30px;
+  margin: 0;
+  padding: 0;
 `
 
 const Hero = styled.section`
