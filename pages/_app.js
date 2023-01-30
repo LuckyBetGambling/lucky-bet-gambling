@@ -6,6 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, s
 import {auth, signInWithGoogle, signInWithFacebook} from '../config/firebase';
 import styled from "styled-components"
 import Modal, {openModal} from '../components/modal';
+import { loginUser, logoutUser, registerUser } from '../services/auth-manager';
 
 const LoginForm = styled.form`
   display: flex;
@@ -54,39 +55,24 @@ export default function App({ Component, pageProps }) {
   // function for handling register
   const handleRegister = async (e) => {
     e.preventDefault();
-    try{
-      const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
-      console.log(user);
-      alert("User created")
-      openModal(() => setShowSignUpModal(false))
-    }
-    catch(err){
-      console.log(err.message);
-    }
-    
+    registerUser(auth, registerEmail, registerPassword);
+    setShowSignUpModal(false)
   }
 
   // function for handling login
   const handleLogin = async (e) => {
     e.preventDefault();
-    try{
-      const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-      console.log(user);
-      alert("User logged in")
-      openModal(() => setShowLoginModal(false))
-    }
-    catch(err){
-      console.log(err.message);
-    }
+    loginUser(auth, loginEmail, loginPassword);
+    setShowLoginModal(false)
     
   }
 
   // function for handling log out
   const handleLogout = async (e) => {
     e.preventDefault();
-    await signOut(auth);
-    alert("User logged out")
-    openModal(() => setShowLogoutModal(false))
+
+    logoutUser(auth);
+    setShowLogoutModal(false);
   }
 
   return (
