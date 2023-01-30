@@ -43,18 +43,22 @@ const NavActions = styled.div`
  * @param {function} loginCallback - callback function to open log in modal
  * @returns 
  */
-const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback }) => {
+const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback, logoutCallback }) => {
 
     return (
         <Wrapper>
             <Title>
                 <Link href='/'>{title}</Link>
             </Title>
-            {currentUser &&<Wallet>${wallet}</Wallet>}
+            {currentUser && <Wallet>${wallet}</Wallet>}
             <NavActions>
-            <button onClick={() => signUpCallback()}>Sign Up</button>
-            <button onClick={() => loginCallback()}>Log In</button>
-            {currentUser && <LinkButton path={`/user/${currentUser.userId}`} title='Profile' />}
+              {!currentUser && <button onClick={() => signUpCallback()}>Sign Up</button>}
+              {!currentUser && <button onClick={() => loginCallback()}>Log In</button>}
+              
+              
+              {currentUser && <LinkButton path={`/admin`} title='Admin' />}
+              {currentUser && <LinkButton path={`/user/${currentUser.uid}`} title='Profile' />}
+              {currentUser && <button onClick={() => logoutCallback()}>Log Out</button>}
             </NavActions>
         </Wrapper>
     );

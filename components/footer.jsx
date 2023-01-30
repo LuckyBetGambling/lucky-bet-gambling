@@ -2,13 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.footer`
-  height: 30px;
+  height: 40px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: blue;
   color: white;
+  position: sticky;
 `
 
 /** Generic footer that lives on every page

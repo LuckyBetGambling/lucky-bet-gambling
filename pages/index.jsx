@@ -4,6 +4,8 @@ import SideScroller from '../components/sidescroller'
 
 const Page = styled.div`
   padding: 30px;
+  margin: 0;
+  padding: 0;
 `
 
 const Hero = styled.section`
@@ -24,8 +26,6 @@ const Body = styled.section`
   justify-content: space-evenly;
   align-items: center;
 `
-
-
 
 export default function Home() {
 
