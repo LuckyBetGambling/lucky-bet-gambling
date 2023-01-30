@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 import Link from 'next/link'
 
 const Button = styled.div`
@@ -19,12 +19,12 @@ const Button = styled.div`
  */
 const LinkButton = ({ title, path }) => {
 
-    return (
-        <Link href={path} passHref>
-            <Button >{title}</Button>
-        </Link>
-    );
+	return (
+		<Link href={path} passHref>
+			<Button >{title}</Button>
+		</Link>
+	)
 
-};
+}
 
-export default LinkButton;
+export default LinkButton

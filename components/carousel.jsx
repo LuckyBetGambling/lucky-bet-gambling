@@ -1,7 +1,7 @@
-import React from 'react';
-import Carousel from 'react-gallery-carousel';
-import 'react-gallery-carousel/dist/index.css';
-import styled from 'styled-components';
+import React from 'react'
+import Carousel from 'react-gallery-carousel'
+import 'react-gallery-carousel/dist/index.css'
+import styled from 'styled-components'
 
 // TODO: Create better looking left/rghtIcons
 const Left = styled.div`
@@ -26,34 +26,34 @@ const Right = styled.div`
 
 const Carouse1 = ({carouselItems, title, styles}) => {
 
-  return (
-    <section>
-      <header>
-        {title}
-      </header>
-        <Carousel
-          isLoop={true}
-          hasIndexBoard={false}
-          hasMediaButton={false}
-          hasMediaButtonAtMax='bottomLeft'
-          hasSizeButton={false}
-          hasDotButtons='bottom'
-          hasThumbnails={false}
-          shouldSwipeOnMouse={false} // for selecting text
-          shouldMinimizeOnSwipeDown={false} 
-          style={{ userSelect: 'text', ...styles }}
-          leftIcon={<Left>back</Left>}
-          rightIcon={<Right>next</Right>}
-        >
-          {carouselItems.map(
-            (item) => {
-                return item
-            }
-          )}
-        </Carousel>
+	return (
+		<section>
+			<header>
+				{title}
+			</header>
+			<Carousel
+				isLoop={true}
+				hasIndexBoard={false}
+				hasMediaButton={false}
+				hasMediaButtonAtMax='bottomLeft'
+				hasSizeButton={false}
+				hasDotButtons='bottom'
+				hasThumbnails={false}
+				shouldSwipeOnMouse={false} // for selecting text
+				shouldMinimizeOnSwipeDown={false} 
+				style={{ userSelect: 'text', ...styles }}
+				leftIcon={<Left>back</Left>}
+				rightIcon={<Right>next</Right>}
+			>
+				{carouselItems.map(
+					(item) => {
+						return item
+					}
+				)}
+			</Carousel>
 
-    </section>
-  );
-};
+		</section>
+	)
+}
 
-export default Carouse1;
+export default Carouse1
