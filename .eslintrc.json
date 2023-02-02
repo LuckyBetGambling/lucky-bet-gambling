@@ -1,3 +1,21 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+      "browser": true,
+      "commonjs": true
+  },
+  "extends": "next/core-web-vitals",
+  "rules": {
+      "indent": [
+          "error",
+          "tab"
+      ],
+      "quotes": [
+          "error",
+          "single"
+      ],
+      "semi": [
+          "error",
+          "never"
+      ]
+  }
 }

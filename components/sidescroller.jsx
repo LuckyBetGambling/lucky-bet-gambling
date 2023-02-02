@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const Title = styled.h3`
     font-weight: 800;
-`;
+`
 
 const Card = styled.div`
     flex: 0 0 auto;
@@ -23,7 +23,7 @@ const SideScrollingContainer = styled.div`
     -webkit-overflow-scrolling: touch;
     background-color: green;
     margin: 20px;
-`;
+`
 
 const Wrapper = styled.div`
     padding: 20px;
@@ -38,19 +38,19 @@ const Wrapper = styled.div`
  */
 const SideScroller = ({ items, title }) => {
 
-    return (
-        <Wrapper>
-            <Title>{title}</Title>
-            <SideScrollingContainer>
-                {items.map(
-                    (item) => {
-                        return <Card key={item.id}>{item.content}</Card>
-                    } 
-                )}
-            </SideScrollingContainer>
-        </Wrapper>
-    );
+	return (
+		<Wrapper>
+			<Title>{title}</Title>
+			<SideScrollingContainer>
+				{items.map(
+					(item) => {
+						return <Card key={item.id}>{item.content}</Card>
+					} 
+				)}
+			</SideScrollingContainer>
+		</Wrapper>
+	)
 
-};
+}
 
-export default SideScroller;
+export default SideScroller
