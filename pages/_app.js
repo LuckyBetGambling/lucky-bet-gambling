@@ -26,12 +26,6 @@ const LogoutForm = styled.form`
 
 export default function App({ Component, pageProps }) {
 
-	const currentUser = {
-		username: 'pitoloco',
-		userId: '123',
-		name: 'Erik'
-	}
-  
 	const [showLoginModal, setShowLoginModal] = useState(false)
 	const [showSignUpModal, setShowSignUpModal] = useState(false)
 	const [showLogoutModal, setShowLogoutModal] = useState(false)
