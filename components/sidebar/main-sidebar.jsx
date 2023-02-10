@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { SidebarData } from "./sidebar-data";
+import styled from 'styled-components'
+import { SidebarData } from './sidebar-data'
 
 const SidebarContainer = styled.div`
     background-color: #2F4050;
@@ -47,19 +47,19 @@ const SidebarTitle = styled.div`
 export default function Sidebar() {
 
 
-    return (
-        <SidebarContainer>
-            <SidebarList>
-                {SidebarData.map((val, key) => {
-                    return (
-                        <SidebarRow key={key} onClick={() => { window.location.pathname = val.link }}>
-                            <SidebarIcon>{val.icon}</SidebarIcon>
-                            <SidebarTitle>{val.title}</SidebarTitle>
-                        </SidebarRow>
-                    )
-                })}
-            </SidebarList>
+	return (
+		<SidebarContainer>
+			<SidebarList>
+				{SidebarData.map((val, key) => {
+					return (
+						<SidebarRow key={key} onClick={() => { window.location.pathname = val.link }}>
+							<SidebarIcon>{val.icon}</SidebarIcon>
+							<SidebarTitle>{val.title}</SidebarTitle>
+						</SidebarRow>
+					)
+				})}
+			</SidebarList>
 
-        </SidebarContainer>
-    )
+		</SidebarContainer>
+	)
 }

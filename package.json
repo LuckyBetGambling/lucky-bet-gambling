@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pre-commit": "lint-staged",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -15,13 +17,19 @@
     "@mui/material": "^5.11.6",
     "@mui/styled-engine-sc": "^5.11.0",
     "@next/font": "13.1.1",
-    "eslint": "8.31.0",
+    "axios": "^1.2.6",
     "eslint-config-next": "13.1.1",
     "firebase": "^9.16.0",
+    "firebase-admin": "^11.0.1",
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-gallery-carousel": "^0.3.0",
     "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0"
   }
 }

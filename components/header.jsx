@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import LinkButton from "./linkButton";
+import React from 'react'
+import styled from 'styled-components'
+import LinkButton from './linkButton'
 import Link from 'next/link'
 
 const Wrapper = styled.nav`
@@ -24,6 +24,7 @@ const Wallet = styled.div`
 const Title = styled.h1`
   flex: 1;
   background-color: maroon;
+  text-align: center;
 `
 
 const NavActions = styled.div`
@@ -45,24 +46,24 @@ const NavActions = styled.div`
  */
 const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback, logoutCallback }) => {
 
-    return (
-        <Wrapper>
-            <Title>
-                <Link href='/'>{title}</Link>
-            </Title>
-            {currentUser && <Wallet>${wallet}</Wallet>}
-            <NavActions>
-              {!currentUser && <button onClick={() => signUpCallback()}>Sign Up</button>}
-              {!currentUser && <button onClick={() => loginCallback()}>Log In</button>}
+	return (
+		<Wrapper>
+			<Title>
+				<Link href='/'>{title}</Link>
+			</Title>
+			{currentUser && <Wallet>${wallet}</Wallet>}
+			<NavActions>
+				{!currentUser && <button onClick={() => signUpCallback()}>Sign Up</button>}
+				{!currentUser && <button onClick={() => loginCallback()}>Log In</button>}
               
               
-              {currentUser && <LinkButton path={`/admin`} title='Admin' />}
-              {currentUser && <LinkButton path={`/user/${currentUser.uid}`} title='Profile' />}
-              {currentUser && <button onClick={() => logoutCallback()}>Log Out</button>}
-            </NavActions>
-        </Wrapper>
-    );
+				{currentUser && <LinkButton path={'/admin'} title='Admin' />}
+				{currentUser && <LinkButton path={`/user/${currentUser.uid}`} title='Profile' />}
+				{currentUser && <button onClick={() => logoutCallback()}>Log Out</button>}
+			</NavActions>
+		</Wrapper>
+	)
 
-};
+}
 
-export default Header;
+export default Header

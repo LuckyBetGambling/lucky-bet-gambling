@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react'
+import ReactDOM from 'react-dom'
+import styled from 'styled-components'
 
 const StyledModalBody = styled.div`
   padding-top: 10px;
-`;
+`
 
 const StyledModalHeader = styled.div`
   display: flex;
   justify-content: flex-end;
   font-size: 25px;
-`;
+`
 
 const StyledModal = styled.div`
   background: white;
@@ -20,7 +20,7 @@ const StyledModal = styled.div`
   display: flex;
   flex-direction: column;
   transform: translateY(-250%);
-`;
+`
 const StyledModalOverlay = styled.div`
   position: absolute;
   top: 0;
@@ -32,13 +32,13 @@ const StyledModalOverlay = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.35);
   z-index: 69;
-`;
+`
 
 export function openModal(callback) {
-  const body = document.body
-  body.style.position = 'fixed'
-  body.style.width = '100%'
-  callback()
+	const body = document.body
+	body.style.position = 'fixed'
+	body.style.width = '100%'
+	callback()
 }
 
 /**
@@ -50,40 +50,40 @@ export function openModal(callback) {
  * @returns 
  */
 const Modal = ({ show, onClose, children, title }) => {
-  const [isBrowser, setIsBrowser] = useState(false);
+	const [isBrowser, setIsBrowser] = useState(false)
 
-  useEffect(() => {
-    setIsBrowser(true);
-  }, []);
+	useEffect(() => {
+		setIsBrowser(true)
+	}, [])
 
-  const handleCloseClick = (e) => {
-    e.preventDefault();
-    document.body.style.position = 'initial'
-    onClose();
-  };
+	const handleCloseClick = (e) => {
+		e.preventDefault()
+		document.body.style.position = 'initial'
+		onClose()
+	}
 
-  const modalContent = show ? (
-    <StyledModalOverlay onClick={handleCloseClick}>
-      <StyledModal onClick={(e) => {e.stopPropagation()}}>
-        <StyledModalHeader>
-          <a href="#" onClick={handleCloseClick}>
+	const modalContent = show ? (
+		<StyledModalOverlay onClick={handleCloseClick}>
+			<StyledModal onClick={(e) => {e.stopPropagation()}}>
+				<StyledModalHeader>
+					<a href="#" onClick={handleCloseClick}>
             x
-          </a>
-        </StyledModalHeader>
-        {title}
-        <StyledModalBody>{children}</StyledModalBody>
-      </StyledModal>
-    </StyledModalOverlay>
-  ) : null;
+					</a>
+				</StyledModalHeader>
+				{title}
+				<StyledModalBody>{children}</StyledModalBody>
+			</StyledModal>
+		</StyledModalOverlay>
+	) : null
 
-  if (isBrowser) {
-    return ReactDOM.createPortal(
-      modalContent,
-      document.getElementById("portal")
-    );
-  } else {
-    return null;
-  }
-};
+	if (isBrowser) {
+		return ReactDOM.createPortal(
+			modalContent,
+			document.getElementById('portal')
+		)
+	} else {
+		return null
+	}
+}
 
-export default Modal;
+export default Modal

@@ -1,7 +1,7 @@
-import React, { useState } from "react"
-import Link from "next/link"
-import { withRouter } from "next/router"
-import styled from "styled-components"
+import React, { useState } from 'react'
+import Link from 'next/link'
+import { withRouter } from 'next/router'
+import styled from 'styled-components'
 
 
 export const TabHead = styled.div`
@@ -22,7 +22,7 @@ export const TabBody = styled.div`
 export const Tab = styled.div`
   padding: 1em;
   text-align: center;
-  background: ${({ selected }) => (selected ? "grey" : "black")};
+  background: ${({ selected }) => (selected ? 'grey' : 'black')};
   * {
     color: white;
   }
@@ -38,42 +38,42 @@ export const Tab = styled.div`
  */
 const Tabs = ({ router, tabs, path }) => {
 
-    const [currentTab, setCurrentTab] = useState(tabs[0].name)
+	const [currentTab, setCurrentTab] = useState(tabs[0].name)
 
-    const {
-        query: { userId }
-    } = router
+	const {
+		query: { userId }
+	} = router
 
-    const isSelected = (tabName) => {
-        return currentTab == tabName
-    }
+	const isSelected = (tabName) => {
+		return currentTab == tabName
+	}
 
-    return (
-        <TabContainer>
-            <TabHead>
-                {tabs.map(
-                    (tab) => {
-                        return <Tab key={tab.name} selected={isSelected(tab.name)}>
-                            <Link href={{ pathname: `${path}`, query: {userId: userId, tab: tab.name}}} passHref>
-                                <div onClick={() => {setCurrentTab(tab.name)}}>{tab.name}</div>
-                            </Link>
-                        </Tab>
-                    }
-                )}
-            </TabHead>
-            <TabBody>
-                {tabs.map(
-                    (tab) => {
-                        return  (
-                            <React.Fragment key={tab.name} >
-                                {isSelected(tab.name) && tab.content}
-                            </React.Fragment>
-                        )
-                    }
-                )}
-            </TabBody>
-        </TabContainer>
-    )
+	return (
+		<TabContainer>
+			<TabHead>
+				{tabs.map(
+					(tab) => {
+						return <Tab key={tab.name} selected={isSelected(tab.name)}>
+							<Link href={{ pathname: `${path}`, query: {userId: userId, tab: tab.name}}} passHref>
+								<div onClick={() => {setCurrentTab(tab.name)}}>{tab.name}</div>
+							</Link>
+						</Tab>
+					}
+				)}
+			</TabHead>
+			<TabBody>
+				{tabs.map(
+					(tab) => {
+						return  (
+							<React.Fragment key={tab.name} >
+								{isSelected(tab.name) && tab.content}
+							</React.Fragment>
+						)
+					}
+				)}
+			</TabBody>
+		</TabContainer>
+	)
 }
 
 export default withRouter(Tabs)
