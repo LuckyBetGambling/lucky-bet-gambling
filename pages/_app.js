@@ -1,11 +1,11 @@
 import '../styles/globals.css'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import { Fragment, useState, useCallback, useEffect } from 'react'
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from 'firebase/auth'
+import { Fragment, useState, useEffect } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
 import {auth, signInWithGoogle, signInWithFacebook} from '../config/firebase'
 import styled from 'styled-components'
-import Modal, {openModal} from '../components/modal'
+import Modal from '../components/modal'
 import { loginUser, logoutUser, registerUser } from '../services/auth-manager'
 
 
@@ -75,9 +75,9 @@ export default function App({ Component, pageProps }) {
 		<Fragment>
 			<Header 
 				title='Lucky Bet' wallet='1000' currentUser={user} 
-				signUpCallback={() => openModal(() => setShowSignUpModal(true))} 
-				loginCallback={() => openModal(() => setShowLoginModal(true))}
-				logoutCallback={() => openModal(() => setShowLogoutModal(true))}
+				signUpCallback={() => setShowSignUpModal(true)} 
+				loginCallback={() => setShowLoginModal(true)}
+				logoutCallback={() => setShowLogoutModal(true)}
 			/>
 			<Component
 				
