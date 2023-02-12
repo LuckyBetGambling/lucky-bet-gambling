@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styled from 'styled-components'
 import SideScroller from '../components/sidescroller'
+import { sampleGames } from '../utils/sampleData'
 
 const Page = styled.div`
 	margin: 0;
@@ -27,21 +28,6 @@ const Body = styled.section`
 `
 
 export default function Home() {
-
-	const sampleGames = [
-		{id: 1, content: <p>Hello</p>}, 
-		{id: 2, content: <p>World</p>}, 
-		{id: 3, content: <p>!</p>},
-		{id: 4, content: <p>Hello</p>}, 
-		{id: 24, content: <p>World</p>}, 
-		{id: 33, content: <p>!</p>},
-		{id: 15, content: <p>Hello</p>}, 
-		{id: 25, content: <p>World</p>}, 
-		{id: 332, content: <p>!</p>},
-		{id: 12, content: <p>Hello</p>}, 
-		{id: 27, content: <p>World</p>}, 
-		{id: 38, content: <p>!</p>},
-	]
 
 	return (
 		<Page>

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Fragment } from 'react'
 import Carouse1 from '../../components/carousel'
 import SideScroller from '../../components/sidescroller'
+import { sampleGames } from '../../utils/sampleData'
 
 const Page = styled.div`
   min-height: calc(100vh - 30px);
@@ -43,21 +44,6 @@ const GameDescription = styled.div`
   padding: 20px;
   margin: 20px;
 `
-
-const sampleGames = [
-	{id: 1, content: <p>Hello</p>}, 
-	{id: 2, content: <p>World</p>}, 
-	{id: 3, content: <p>!</p>},
-	{id: 4, content: <p>Hello</p>}, 
-	{id: 24, content: <p>World</p>}, 
-	{id: 33, content: <p>!</p>},
-	{id: 15, content: <p>Hello</p>}, 
-	{id: 25, content: <p>World</p>}, 
-	{id: 332, content: <p>!</p>},
-	{id: 12, content: <p>Hello</p>}, 
-	{id: 27, content: <p>World</p>}, 
-	{id: 38, content: <p>!</p>},
-]
 
 const Showcase = styled(Carouse1)``
 
