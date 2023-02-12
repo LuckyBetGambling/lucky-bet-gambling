@@ -8,6 +8,8 @@ import styled from 'styled-components'
 import Modal, {openModal} from '../components/modal'
 import { loginUser, logoutUser, registerUser } from '../services/auth-manager'
 
+
+
 const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -71,12 +73,15 @@ export default function App({ Component, pageProps }) {
 
 	return (
 		<Fragment>
-			<Header title='Gambling Platform' wallet='1000' currentUser={user} 
+			<Header 
+				title='Lucky Bet' wallet='1000' currentUser={user} 
 				signUpCallback={() => openModal(() => setShowSignUpModal(true))} 
 				loginCallback={() => openModal(() => setShowLoginModal(true))}
 				logoutCallback={() => openModal(() => setShowLogoutModal(true))}
 			/>
-			<Component {...pageProps} />
+			<Component
+				
+				 {...pageProps} />
 			<Footer>GamblingCompanyLLC - est. 2023</Footer>
 
 			<Modal show={showSignUpModal} onClose={() => { setShowSignUpModal(false) }} title='Sign Up'>

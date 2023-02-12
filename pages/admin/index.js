@@ -5,7 +5,7 @@ import Sidebar from '../../components/sidebar/main-sidebar'
 import Tabs from '../../components/tabs'
 
 const Page = styled.div`
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 
@@ -22,50 +22,7 @@ const AdminHeader = styled.section`
 `
 
 
-const TabContainer = styled.div`
-  transform: translateY(-5%);
-`
-
-const Admin = styled.div`
-  background-color: Lime;
-  height: 100%;
-`
-
-const Settings = styled.div`
-  background-color: orange;
-  height: 100%;
-`
-
-const ContentManagement = styled.div`
-  background-color: magenta;
-  height: 100%;
-`
-
-const Contact = styled.div`
-  background-color: yellow;
-  height: 100%;
-`
-
 export default function AdminPage() {
-
-	//   const tabs = [
-	//     {
-	//       name: 'Manage Team',
-	//       content: <Admin />
-	//     },
-	//     {
-	//       name: 'Website Setting',
-	//       content: <Settings />
-	//     },
-	//     {
-	//       name: 'Content Management',
-	//       content: <ContentManagement />
-	//     },
-	//     {
-	//       name: 'Contact Admin',
-	//       content: <Contact />
-	//     }
-	//  ]
 
 	const router = useRouter()
   
@@ -83,11 +40,6 @@ export default function AdminPage() {
 			</AdminHeader>
 
 			<Sidebar/>
-
-
-			{/* <TabContainer>
-        <Tabs tabs={tabs} path={router.pathname} />
-      </TabContainer> */}
 
       
 		</Page>

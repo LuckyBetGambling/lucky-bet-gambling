@@ -24,6 +24,7 @@ const Wallet = styled.div`
 const Title = styled.h1`
   flex: 1;
   background-color: maroon;
+  text-align: center;
 `
 
 const NavActions = styled.div`

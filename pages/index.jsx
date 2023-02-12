@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import SideScroller from '../components/sidescroller'
 
 const Page = styled.div`
-  padding: 30px;
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 `
 
 const Hero = styled.section`
@@ -54,7 +53,7 @@ export default function Home() {
 			</Head>
 
 			<Hero>
-        Hero Banner
+        		Hero Banner
 			</Hero>
 
 			<Body>
