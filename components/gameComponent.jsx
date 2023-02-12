@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import SideScroller from './sidescroller'
 // import icons
 import FullscreenIcon from '@mui/icons-material/Fullscreen'
 import FitScreenIcon from '@mui/icons-material/FitScreen'
@@ -15,7 +14,7 @@ const GameContainer = styled.div`
   align-items: center;
   margin-top: 2rem;
   background-color: #1a2c38;
-  min-height: calc(100vh - 30px);
+  min-height: cal(100vh - 30px);
 `
 
 const GameCard = styled.div`
@@ -62,56 +61,7 @@ const ToggleContainer = styled.div`
     align-items: center;
 `
 
-
-const OptionContainer = styled.div`
-    margin: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-`
-
-const GameTitleBet = styled.div`
-    display: flex;
-    margin: 1rem 1rem 2rem 1rem;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 1000px;
-    height: 4rem;
-    background-color: #0f212e;
-    color: #FFF;
-    border-radius: 10px;
-`
-
-
-// const styles = theme => ({
-//     root: {
-//       color: theme.palette.,
-//       fontSize: 32,
-//     },
-//   });
-  
-  
-
-
-const sampleGames = [
-	{id: 1, content: <p>Hello</p>}, 
-	{id: 2, content: <p>World</p>}, 
-	{id: 3, content: <p>!</p>},
-	{id: 4, content: <p>Hello</p>}, 
-	{id: 24, content: <p>World</p>}, 
-	{id: 33, content: <p>!</p>},
-	{id: 15, content: <p>Hello</p>}, 
-	{id: 25, content: <p>World</p>}, 
-	{id: 332, content: <p>!</p>},
-	{id: 12, content: <p>Hello</p>}, 
-	{id: 27, content: <p>World</p>}, 
-	{id: 38, content: <p>!</p>},
-]
-
-
-
-export default function GameComponent({GameTitle, GameProvider, gameSrc}){
+export default function GameComponent({gameTitle, gameSrc}){
 
 	const [iconIsOpen, setIconIsOpen] = useState(false)
 
@@ -131,66 +81,47 @@ export default function GameComponent({GameTitle, GameProvider, gameSrc}){
 	}
     
 	return (
-		<GameContainer>
-			<GameCard>
-				<GameVideo 
-					src={gameSrc} 
-					alt={GameTitle}
-					id='game'
-					frameBorder='0'
-					allowFullScreen
-				/>
-				<GameControls>
-					<IconContainer>
-						<FullscreenIcon
-							className='game-card-fullScreen'
-							onClick={toggleIcons}
-						/>
-						<FitScreenIcon
-							className='game-card-wideScreen'
-							onClick={toggleIcons}
-						/>
-						<AutoGraphIcon
-							className='game-card-betStats'
-							onClick={toggleIcons}
-						/>
-						<StarIcon
-							className='game-card-favorite'
-							onClick={toggleIcons}
-						/>
-					</IconContainer>
-
-					<LogoContainer>
-						<h3>LuckyBet</h3>
-					</LogoContainer>
-                    
-					<ToggleContainer>
-						<span>Fun Play</span>
-						<ToggleOnIcon
-							onClick={toggleIcons}
-							style={{fontSize: '2.5rem'}}
-						/>
-						<span>Real Play</span>
-					</ToggleContainer>
-                    
-				</GameControls>
-			</GameCard>
-
-			<OptionContainer>
-				<GameTitleBet>
-					<h2 style={{padding: '0 0.3rem 0 1rem'}} >{GameTitle}</h2>
-					<span style={{color: '#b1bad3'}}>{GameProvider}</span>
-                   
-				</GameTitleBet>
-
-				<SideScroller 
-					items={sampleGames} 
-					title='Recommended Games' 
-				/>
-                
-			</OptionContainer>
-		</GameContainer>
-      
+		
+		<GameCard>
+			<GameVideo 
+				src={gameSrc} 
+				alt={gameTitle}
+				id='game'
+				frameBorder='0'
+				allowFullScreen
+			/>
+			<GameControls>
+				<IconContainer>
+					<FullscreenIcon
+						className='game-card-fullScreen'
+						onClick={toggleIcons}
+					/>
+					<FitScreenIcon
+						className='game-card-wideScreen'
+						onClick={toggleIcons}
+					/>
+					<AutoGraphIcon
+						className='game-card-betStats'
+						onClick={toggleIcons}
+					/>
+					<StarIcon
+						className='game-card-favorite'
+						onClick={toggleIcons}
+					/>
+				</IconContainer>
+				<LogoContainer>
+					<h3>LuckyBet</h3>
+				</LogoContainer> 
+				<ToggleContainer>
+					<span>Fun Play</span>
+					<ToggleOnIcon
+						onClick={toggleIcons}
+						style={{fontSize: '2.5rem'}}
+					/>
+					<span>Real Play</span>
+				</ToggleContainer>   
+			</GameControls>
+		</GameCard>
 	)
 };
   
