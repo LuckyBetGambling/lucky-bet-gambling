@@ -19,11 +19,7 @@ const StyledModal = styled.div`
   padding: 15px;
   display: flex;
   flex-direction: column;
-<<<<<<< Updated upstream
-  transform: translateY(-250%);
-=======
   position: relative;
->>>>>>> Stashed changes
 `
 const StyledModalOverlay = styled.div`
   position: fixed;
@@ -37,11 +33,6 @@ const StyledModalOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.35);
   z-index: 69;
 `
-
-export function openModal(callback) {
-	const body = document.body
-	callback()
-}
 
 /**
  * Generic modal with close button and dismiss click functionality
@@ -60,7 +51,6 @@ const Modal = ({ show, onClose, children, title }) => {
 
 	const handleCloseClick = (e) => {
 		e.preventDefault()
-		document.body.style.position = 'initial'
 		onClose()
 	}
 
