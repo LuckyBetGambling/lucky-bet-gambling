@@ -19,7 +19,10 @@ const StyledModal = styled.div`
   padding: 15px;
   display: flex;
   flex-direction: column;
-  transform: translateY(-250%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `
 const StyledModalOverlay = styled.div`
   position: absolute;
