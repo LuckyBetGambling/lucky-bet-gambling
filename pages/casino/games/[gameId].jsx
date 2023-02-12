@@ -5,9 +5,14 @@ import GameComponent from '../../../components/gameComponent'
 
 
 const Page = styled.div`
-  height: 96vh;
-  background-color: #1a2c38;
-  padding-top: 5rem;
+	background-color: #1a2c38;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-top: 5rem;
+	padding-bottom: 3rem;
 `
 
 export default function GamePage() {

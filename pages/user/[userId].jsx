@@ -6,7 +6,6 @@ import Tabs from '../../components/tabs'
 import ProfileSection from '../../components/profileSection'
 
 const Page = styled.div`
-	height: 100vh;
 	margin-bottom: 40px;
 	height: 100%;
 	display: flex;

@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import SideScroller from '../components/sidescroller'
 
 const Page = styled.div`
-	height: 100vh;
-	padding: 30px;
 	margin: 0;
 	padding: 0;
 `
@@ -26,7 +24,6 @@ const Body = styled.section`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 2rem;
 `
 
 export default function Home() {

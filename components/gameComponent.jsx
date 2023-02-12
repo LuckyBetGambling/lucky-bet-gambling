@@ -15,7 +15,7 @@ const GameContainer = styled.div`
   align-items: center;
   margin-top: 2rem;
   background-color: #1a2c38;
-  min-height: 100vh;
+  min-height: cal(100vh - 30px);
 `
 
 const GameCard = styled.div`
