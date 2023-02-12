@@ -5,7 +5,7 @@ import Carouse1 from '../../components/carousel'
 import SideScroller from '../../components/sidescroller'
 
 const Page = styled.div`
-  min-height: cal(100vh - 30px);
+  min-height: calc(100vh - 30px);
   background-color: navy;
   width: 100%;
   padding: 60px;
