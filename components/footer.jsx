@@ -7,20 +7,11 @@ const Wrapper = styled.footer`
   height: 40px;
   width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: blue;
   color: white;
-  position: absolute;
-  bottom: 0;
-  box-sizing: border-box;
-  margin-top: 2rem;
 `
-
-
-
-
 
 
 /** Generic footer that lives on every page

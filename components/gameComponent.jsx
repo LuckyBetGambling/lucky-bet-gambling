@@ -14,8 +14,8 @@ const GameContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
-  height: 1200px;
   background-color: #1a2c38;
+  min-height: 100vh;
 `
 
 const GameCard = styled.div`

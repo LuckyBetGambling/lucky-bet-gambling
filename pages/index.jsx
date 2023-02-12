@@ -56,7 +56,7 @@ export default function Home() {
 			</Head>
 
 			<Hero>
-        Hero Banner
+        		Hero Banner
 			</Hero>
 
 			<Body>
