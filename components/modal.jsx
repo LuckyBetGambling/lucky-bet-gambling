@@ -19,13 +19,10 @@ const StyledModal = styled.div`
   padding: 15px;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
 `
 const StyledModalOverlay = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -36,13 +33,6 @@ const StyledModalOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.35);
   z-index: 69;
 `
-
-export function openModal(callback) {
-	const body = document.body
-	body.style.position = 'fixed'
-	body.style.width = '100%'
-	callback()
-}
 
 /**
  * Generic modal with close button and dismiss click functionality
@@ -61,7 +51,6 @@ const Modal = ({ show, onClose, children, title }) => {
 
 	const handleCloseClick = (e) => {
 		e.preventDefault()
-		document.body.style.position = 'initial'
 		onClose()
 	}
 
