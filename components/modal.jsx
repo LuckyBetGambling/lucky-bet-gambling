@@ -19,10 +19,14 @@ const StyledModal = styled.div`
   padding: 15px;
   display: flex;
   flex-direction: column;
+<<<<<<< Updated upstream
   transform: translateY(-250%);
+=======
+  position: relative;
+>>>>>>> Stashed changes
 `
 const StyledModalOverlay = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -36,8 +40,6 @@ const StyledModalOverlay = styled.div`
 
 export function openModal(callback) {
 	const body = document.body
-	body.style.position = 'fixed'
-	body.style.width = '100%'
 	callback()
 }
 
