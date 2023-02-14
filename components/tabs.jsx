@@ -3,9 +3,7 @@ import Link from 'next/link'
 import { withRouter } from 'next/router'
 import styled from 'styled-components'
 
-
 export const TabHead = styled.div`
-  border-bottom: 1px solid black;
   display: flex;
   background: black;
 `
@@ -22,9 +20,9 @@ export const TabBody = styled.div`
 export const Tab = styled.div`
   padding: 1em;
   text-align: center;
-  background: ${({ selected }) => (selected ? 'grey' : 'black')};
+  background: ${({ theme, selected }) => (selected ? theme.alt : theme.secondary)};
   * {
-    color: white;
+    color:  ${({ theme, selected }) => (selected ? theme.primary : theme.alt)};
   }
   flex: 1; 
 `

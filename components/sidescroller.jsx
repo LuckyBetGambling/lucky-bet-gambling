@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Link from 'next/link'
 
 const Title = styled.h3`
     font-weight: 800;
@@ -27,7 +28,7 @@ const SideScrollingContainer = styled.div`
 
 const Wrapper = styled.div`
     padding: 20px;
-    background-color: magenta;
+    background-color: ${props => props.theme.secondary};
 `
 
 /**
@@ -40,11 +41,17 @@ const SideScroller = ({ items, title }) => {
 
 	return (
 		<Wrapper>
-			<Title>{title}</Title>
+			<Title>
+				<Link href='/casino'>
+					{title}
+				</Link>
+			</Title>
 			<SideScrollingContainer>
 				{items.map(
 					(item) => {
-						return <Card key={item.id}>{item.content}</Card>
+						return (<Link key={item.id} href={`/casino/games/${item.id}`}>
+							<Card>{item.content}</Card>
+						</Link>)
 					} 
 				)}
 			</SideScrollingContainer>
