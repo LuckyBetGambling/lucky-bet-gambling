@@ -14,7 +14,12 @@
 
 ## Getting Started
 
-To run the site, type in your terminal (command line):
+First, to install all dependencies, type in your terminal:
+```bash
+npm install
+```
+
+To run the site, type in your terminal:
 
 ```bash
 npm run dev
