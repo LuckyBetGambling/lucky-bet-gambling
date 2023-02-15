@@ -28,7 +28,7 @@ const SideScrollingContainer = styled.div`
 
 const Wrapper = styled.div`
     padding: 20px;
-    background-color: ${props => props.theme.secondary};
+    background-color: ${({theme}) => theme.secondary};
 `
 
 /**
