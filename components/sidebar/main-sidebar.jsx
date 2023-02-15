@@ -2,12 +2,11 @@ import styled from 'styled-components'
 import { SidebarData } from './sidebar-data'
 
 const SidebarContainer = styled.div`
-    background-color: #2F4050;
-    width: 300px;
-    height: 100vh;
+    background-color:  ${({theme}) => theme.secondary};
+    max-width: 250px;
+    height: 100%;
     margin: 0;
     padding: 0;
-  
 `
 
 const SidebarList = styled.ul`
@@ -19,17 +18,16 @@ const SidebarList = styled.ul`
 const SidebarRow = styled.li`
     width: 100%;
     height: 60px;
-    border: 1px solid black;
     list-style-type: none;
     margin: 0;
     display: flex;
     flex-direction: row;
-    color: white;
     justify-content: center;
     align-items: center;
 
     &:hover {
-        background-color: #293846;
+        color: ${({theme}) => theme.secondary};
+        background-color: ${({theme}) => theme.alt};
         cursor: pointer;
       }
 `

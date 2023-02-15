@@ -13,7 +13,7 @@ const StyledModalHeader = styled.div`
 `
 
 const StyledModal = styled.div`
-  background: white;
+  background: ${props => props.theme.secondary};
   width: 500px;
   border-radius: 15px;
   padding: 15px;

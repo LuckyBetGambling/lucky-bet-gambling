@@ -6,7 +6,7 @@ import Link from 'next/link'
 const Wrapper = styled.nav`
   display: flex;
   width: 100%;
-  background-color: red;
+  background-color:  ${({theme}) => theme.secondary};
   padding: 15px;
   position: fixed;
   z-index: 68;
@@ -14,21 +14,20 @@ const Wrapper = styled.nav`
 
 const Wallet = styled.div`
   flex: 1;
-  background-color: orange;
+  border: 1px solid orange;
   display: flex;
   align-items: center; 
   justify-content: center;
-  color: #00FF00;
 `
 
 const Title = styled.h1`
   flex: 1;
-  background-color: maroon;
+  border: 1px solid maroon;
   text-align: center;
 `
 
 const NavActions = styled.div`
-  background-color: green;
+  border: 1px solid green;
   flex: 1;
   display: flex;
   flex-direction: row;
@@ -44,7 +43,7 @@ const NavActions = styled.div`
  * @param {function} loginCallback - callback function to open log in modal
  * @returns 
  */
-const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback, logoutCallback }) => {
+const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback, logoutCallback, themeCallback }) => {
 
 	return (
 		<Wrapper>
@@ -60,6 +59,7 @@ const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback, log
 				{currentUser && <LinkButton path={'/admin'} title='Admin' />}
 				{currentUser && <LinkButton path={`/user/${currentUser.uid}`} title='Profile' />}
 				{currentUser && <button onClick={() => logoutCallback()}>Log Out</button>}
+				<button onClick={() => themeCallback()}>Theme</button>
 			</NavActions>
 		</Wrapper>
 	)

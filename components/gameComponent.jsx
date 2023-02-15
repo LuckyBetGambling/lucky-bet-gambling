@@ -10,7 +10,7 @@ import ToggleOnIcon from '@mui/icons-material/ToggleOn'
 const GameCard = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1000px;
+  width: 100%;
   height: 600px;
   background-color: orange;
   border-radius: 16px;
