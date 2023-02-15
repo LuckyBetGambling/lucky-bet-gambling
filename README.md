@@ -1,3 +1,6 @@
+[![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)](https://www.notion.so/Dashboard-e31f3ba10d904b17b9cf3e7850717a2c)
+[![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/O0I3HuNe7Nrw1J7vk5g6ME/LuckyBet?node-id=0%3A1&t=RY3LWTkAnILQh5eH-0)
+
 ## Contribution Guidelines
 - DO NOT PUSH TO `main` DIRECTLY
 - For any changes to this repo, first create a new branch locally using `git checkout -b <branch-name>`
@@ -8,9 +11,6 @@
   - `git pull origin main`, resolve any merge conflicts and commit those as well
   - `git push origin <branch-name>`
 - Once your branch has been pushed up, navigate to this repo in GitHub and create a Pull Request and notify the team so we can review it
-
-[Notion](https://www.notion.so/Dashboard-e31f3ba10d904b17b9cf3e7850717a2c)
-[Figma](https://www.figma.com/file/O0I3HuNe7Nrw1J7vk5g6ME/LuckyBet?node-id=0%3A1&t=RY3LWTkAnILQh5eH-0)
 
 ## Getting Started
 
