@@ -14,16 +14,17 @@
 
 ## Getting Started
 
-First, run the development server:
+To run the site, type in your terminal (command line):
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To open the **Home** page go to [http://localhost:3000](http://localhost:3000) in Chrome.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+To edit the themes, go to `styles/themeConfig.js` and edit the color values for `primary`, `secondary`, and `alt` for either theme.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+To see you changed colors, close the development server in your terminal by pressing `Ctrl + C`, pres `Y` when prompted and 
+then restart the site using the directions from above.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+To cycle between themes, press on the **Theme** button on the header on any page :)
