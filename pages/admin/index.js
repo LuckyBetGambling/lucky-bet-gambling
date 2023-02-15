@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import Sidebar from '../../components/sidebar/main-sidebar'
+import AdminSidebar from '../../components/adminSidebar'
 import Tabs from '../../components/tabs'
 
 const Page = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+	min-height: calc(100vh - 30px);
+	display: flex;
+	flex-direction: column;
 
 `
 
@@ -39,7 +39,7 @@ export default function AdminPage() {
 				<h1>Admin Dashboard</h1>
 			</AdminHeader>
 
-			<Sidebar/>
+			<AdminSidebar/>
 
       
 		</Page>

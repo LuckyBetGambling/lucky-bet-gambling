@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import LinkButton from './linkButton'
 import Link from 'next/link'
+import Sidebar from './Sidebar.jsx'
 
 const Wrapper = styled.nav`
   display: flex;
@@ -10,6 +11,16 @@ const Wrapper = styled.nav`
   padding: 15px;
   position: fixed;
   z-index: 68;
+`
+
+const SidebarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  background-color: white;
+  
 `
 
 const Wallet = styled.div`
@@ -48,6 +59,9 @@ const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback, log
 
 	return (
 		<Wrapper>
+			<SidebarContainer>
+        Sidebar
+			</SidebarContainer>
 			<Title>
 				<Link href='/'>{title}</Link>
 			</Title>

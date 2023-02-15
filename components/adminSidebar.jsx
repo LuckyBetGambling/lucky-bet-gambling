@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { SidebarData } from './sidebar-data'
+import { adminSidebarData } from '../utils/adminSidebarData'
 
 const SidebarContainer = styled.div`
     background-color: #2F4050;
@@ -44,13 +44,13 @@ const SidebarTitle = styled.div`
     flex: 70%;
 `
 
-export default function Sidebar() {
+export default function AdminSidebar() {
 
 
 	return (
 		<SidebarContainer>
 			<SidebarList>
-				{SidebarData.map((val, key) => {
+				{adminSidebarData.map((val, key) => {
 					return (
 						<SidebarRow key={key} onClick={() => { window.location.pathname = val.link }}>
 							<SidebarIcon>{val.icon}</SidebarIcon>

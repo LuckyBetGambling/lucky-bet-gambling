@@ -7,6 +7,7 @@ import {auth, signInWithGoogle, signInWithFacebook} from '../config/firebase'
 import styled from 'styled-components'
 import Modal from '../components/modal'
 import { loginUser, logoutUser, registerUser } from '../services/auth-manager'
+import Sidebar from '../components/Sidebar'
 
 
 
@@ -40,6 +41,11 @@ export default function App({ Component, pageProps }) {
 
 	const [user, setUser] = useState({})
 
+	
+
+	
+
+
 
 	useEffect(() => {
 		onAuthStateChanged(auth, (currentUser) => {
@@ -47,6 +53,8 @@ export default function App({ Component, pageProps }) {
 		})
 
 	}, [])
+
+	
 
 	// function for handling register
 	const handleRegister = async (e) => {

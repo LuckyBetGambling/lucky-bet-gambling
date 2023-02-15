@@ -1,10 +1,9 @@
-import React from 'react'
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings'
 import SettingsIcon from '@mui/icons-material/Settings'
 import ShareIcon from '@mui/icons-material/Share'
 import ContactSupportIcon from '@mui/icons-material/ContactSupport'
 
-export const SidebarData = [
+export const adminSidebarData = [
 	{
 		title: 'Manage Team',
 		icon: <AdminPanelSettingsIcon />,
