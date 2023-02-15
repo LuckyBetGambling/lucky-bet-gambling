@@ -6,7 +6,8 @@ const Button = styled.div`
     display: flex;
     height: 100%;
     width: 60px;
-    background-color: yellow;
+    background-color:  ${({theme}) => theme.alt};
+    color:  ${({theme}) => theme.secondary};
     justify-content: center;
     align-items: center;
 `

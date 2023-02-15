@@ -37,7 +37,6 @@ const GameTitleBet = styled.div`
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    width: 1000px;
     height: 4rem;
     background-color: #0f212e;
     color: #FFF;

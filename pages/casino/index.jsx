@@ -7,10 +7,8 @@ import { sampleGames } from '../../utils/sampleData'
 
 const Page = styled.div`
   min-height: calc(100vh - 30px);
-  background-color: navy;
   width: 100%;
   padding: 60px;
-  color: yellow;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +19,6 @@ const ShowcaseItem = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  background-color: navy;
   padding: 20px;
   margin: 20px
 `
@@ -59,7 +56,7 @@ const showcaseGames = [
 
 ]
 
-export default function Home() {
+export default function Casino() {
 
 	return (
 		<Fragment>
@@ -73,7 +70,7 @@ export default function Home() {
 
 				<h1>Casino Page</h1>
 				<Showcase carouselItems={showcaseGames} title={'Showcase Game'} styles={{
-					backgroundColor: 'navy', width: '100%', minWidth: '600px'
+					width: '100%', minWidth: '600px'
 				}}/>
 
 

@@ -7,8 +7,8 @@ const Wrapper = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: blue;
-  color: white;
+  background-color:  ${props => props.theme.secondary};
+  border-top: 1px solid ${props => props.theme.primary};
 `
 
 /** Generic footer that lives on every page
