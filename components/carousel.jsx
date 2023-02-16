@@ -41,7 +41,7 @@ const Carouse1 = ({carouselItems, title, styles}) => {
 				hasThumbnails={false}
 				shouldSwipeOnMouse={false} // for selecting text
 				shouldMinimizeOnSwipeDown={false} 
-				style={{ userSelect: 'text', ...styles }}
+				style={{ userSelect: 'text', backgroundColor: 'inherit', ...styles }}
 				leftIcon={<Left>back</Left>}
 				rightIcon={<Right>next</Right>}
 			>

@@ -4,7 +4,8 @@ import Footer from '../components/footer'
 import { Fragment, useState, useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import {auth, signInWithGoogle, signInWithFacebook} from '../config/firebase'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+import { lightTheme, darkTheme, GlobalStyles } from '../styles/ThemeConfig'
 import Modal from '../components/modal'
 import { loginUser, logoutUser, registerUser } from '../services/auth-manager'
 import Sidebar from '../components/Sidebar'
@@ -41,11 +42,11 @@ export default function App({ Component, pageProps }) {
 
 	const [user, setUser] = useState({})
 
-	
+	const [theme, setTheme] = useState('light') 
 
-	
-
-
+	const toggleTheme = () => {
+		theme == 'light' ? setTheme('dark') : setTheme('light')
+	}
 
 	useEffect(() => {
 		onAuthStateChanged(auth, (currentUser) => {
@@ -81,47 +82,50 @@ export default function App({ Component, pageProps }) {
 
 	return (
 		<Fragment>
-			<Header 
-				title='Lucky Bet' wallet='1000' currentUser={user} 
-				signUpCallback={() => setShowSignUpModal(true)} 
-				loginCallback={() => setShowLoginModal(true)}
-				logoutCallback={() => setShowLogoutModal(true)}
-			/>
-			<Component
+			<ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
+				<GlobalStyles />
+				<Header 
+					title='Lucky Bet' wallet='1000' currentUser={user} 
+					signUpCallback={() => setShowSignUpModal(true)} 
+					loginCallback={() => setShowLoginModal(true)}
+					logoutCallback={() => setShowLogoutModal(true)}
+					themeCallback={() => toggleTheme()}
+				/>
+				<Component
 				
 				 {...pageProps} />
-			<Footer>GamblingCompanyLLC - est. 2023</Footer>
+				<Footer>GamblingCompanyLLC - est. 2023</Footer>
 
-			<Modal show={showSignUpModal} onClose={() => { setShowSignUpModal(false) }} title='Sign Up'>
-				<RegisterForm onSubmit={handleRegister} >
-					<label htmlFor='email'>Email</label>  
-					<input type='email' name='email' onChange={(e) => {setRegisterEmail(e.target.value)}} />
-					<label htmlFor='password'>Password</label>
-					<input type='password' name='password' onChange={(e) => {setRegisterPassword(e.target.value)}} />
-					<button type='submit'>Sign Up</button>
+				<Modal show={showSignUpModal} onClose={() => { setShowSignUpModal(false) }} title='Sign Up'>
+					<RegisterForm onSubmit={handleRegister} >
+						<label htmlFor='email'>Email</label>  
+						<input type='email' name='email' onChange={(e) => {setRegisterEmail(e.target.value)}} />
+						<label htmlFor='password'>Password</label>
+						<input type='password' name='password' onChange={(e) => {setRegisterPassword(e.target.value)}} />
+						<button type='submit'>Sign Up</button>
             
-				</RegisterForm>
-			</Modal>      
+					</RegisterForm>
+				</Modal>      
 
-			<Modal show={showLoginModal} onClose={() => { setShowLoginModal(false) }} title='Log In'>
-				<LoginForm onSubmit={handleLogin}>
-					<label htmlFor='email'>Email</label>
-					<input type='email' name='email' onChange={(e) => {setLoginEmail(e.target.value)}} />
-					<label htmlFor='password'>Password</label>
-					<input type='password' name='password' onChange={(e) => {setLoginPassword(e.target.value)}} />
-					<button type='submit'>Log In</button>
-				</LoginForm>
-				<button onClick={signInWithGoogle}>Sign In With Google</button>
-				<button onClick={signInWithFacebook}>Sign In With Facebook</button>
-			</Modal>
+				<Modal show={showLoginModal} onClose={() => { setShowLoginModal(false) }} title='Log In'>
+					<LoginForm onSubmit={handleLogin}>
+						<label htmlFor='email'>Email</label>
+						<input type='email' name='email' onChange={(e) => {setLoginEmail(e.target.value)}} />
+						<label htmlFor='password'>Password</label>
+						<input type='password' name='password' onChange={(e) => {setLoginPassword(e.target.value)}} />
+						<button type='submit'>Log In</button>
+					</LoginForm>
+					<button onClick={signInWithGoogle}>Sign In With Google</button>
+					<button onClick={signInWithFacebook}>Sign In With Facebook</button>
+				</Modal>
 
-			<Modal show={showLogoutModal} onClose={() => { setShowLogoutModal(false) }} title='Sign Out'>
-				<LogoutForm onSubmit={handleLogout}>
-					<h4>User Logged in: {user ? user.email : 'Not Logged in'}</h4>
-					<button>Sign Out</button>
-				</LogoutForm>
-			</Modal>
-
+				<Modal show={showLogoutModal} onClose={() => { setShowLogoutModal(false) }} title='Sign Out'>
+					<LogoutForm onSubmit={handleLogout}>
+						<h4>User Logged in: {user ? user.email : 'Not Logged in'}</h4>
+						<button>Sign Out</button>
+					</LogoutForm>
+				</Modal>
+			</ThemeProvider>
 		</Fragment>
 	)
 }

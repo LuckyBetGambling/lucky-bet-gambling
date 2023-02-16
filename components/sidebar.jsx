@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { SidebarData } from '../utils/sidebarData'
-
+import Row from './row'
 
 const SidebarContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #2F4050;
-    width: 300px;
-    min-height: cal(100vh - 30px);
+    background-color:  ${({theme}) => theme.secondary};
+    max-width: 250px;
+    height: 100%;
     margin: 0;
     padding: 0;
-  
 `
 
 const SidebarList = styled.ul`
@@ -24,17 +20,16 @@ const SidebarList = styled.ul`
 const SidebarRow = styled.li`
     width: 100%;
     height: 60px;
-    border: 1px solid black;
     list-style-type: none;
     margin: 0;
     display: flex;
     flex-direction: row;
-    color: white;
     justify-content: center;
     align-items: center;
 
     &:hover {
-        background-color: #293846;
+        color: ${({theme}) => theme.secondary};
+        background-color: ${({theme}) => theme.alt};
         cursor: pointer;
       }
 `
@@ -60,13 +55,21 @@ export default function Sidebar(){
 	return(
 		<SidebarContainer>
 			<SidebarList>
-				{SidebarData.map((val, key) => {
-					<SidebarRow key={key} onClick={() => { window.location.pathname = val.link }}>
-						<SidebarIcon>{val.icon}</SidebarIcon>
-						<SidebarTitle>{val.title}</SidebarTitle>
-						  </SidebarRow>
-				})}
+				{SidebarData.map((row, idx) => (
+					<Row key={idx} title={row.title} link={row.link}/>
+				))}
+
+
+				{/* {SidebarData.map((val, key) => {
+					return (
+						<SidebarRow key={key} onClick={() => { window.location.pathname = val.link }}>
+							<SidebarIcon>{val.icon}</SidebarIcon>
+							<SidebarTitle>{val.title}</SidebarTitle>
+						</SidebarRow>
+					)
+				})} */}
 			</SidebarList>
+
 		</SidebarContainer>
 	)
 }

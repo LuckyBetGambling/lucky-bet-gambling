@@ -20,7 +20,7 @@ const GameContainer = styled.div`
 const GameCard = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1000px;
+  width: 100%;
   height: 600px;
   background-color: orange;
   border-radius: 16px;

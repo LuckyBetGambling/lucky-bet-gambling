@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import AdminSidebar from '../../components/adminSidebar'
+import Sidebar from '../../components/sidebar'
 import Tabs from '../../components/tabs'
 
 const Page = styled.div`
@@ -39,7 +40,7 @@ export default function AdminPage() {
 				<h1>Admin Dashboard</h1>
 			</AdminHeader>
 
-			<AdminSidebar/>
+			<Sidebar/>
 
       
 		</Page>
