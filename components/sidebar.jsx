@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
 import styled from 'styled-components'
-import { SidebarData } from '../utils/sidebarData'
-import Row from './row'
+import { SidebarData } from '../utils/SidebarData'
+
 
 const SidebarContainer = styled.div`
     background-color:  ${({theme}) => theme.secondary};
-    max-width: 250px;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    max-width: 200px;
+    min-height: 100%;
+    position: fixed;
+    top: 4.2rem;
+    left: 0;
+    bottom: 40px;
+    right: 200px;
 `
 
 const SidebarList = styled.ul`
@@ -19,7 +21,7 @@ const SidebarList = styled.ul`
 
 const SidebarRow = styled.li`
     width: 100%;
-    height: 60px;
+    height: 3rem;
     list-style-type: none;
     margin: 0;
     display: flex;
@@ -44,30 +46,20 @@ const SidebarTitle = styled.div`
     flex: 70%;
 `
 
-export default function Sidebar(){
+export default function AdminSidebar() {
 
-	// const [sidebarOpen, setSidebarOpen] = useState(false);
 
-	// function toggleSidebar() {
-	// 	setSidebarOpen(!sidebarOpen);
-	// }
-
-	return(
+	return (
 		<SidebarContainer>
 			<SidebarList>
-				{SidebarData.map((row, idx) => (
-					<Row key={idx} title={row.title} link={row.link}/>
-				))}
-
-
-				{/* {SidebarData.map((val, key) => {
+				{SidebarData.map((val, key) => {
 					return (
 						<SidebarRow key={key} onClick={() => { window.location.pathname = val.link }}>
 							<SidebarIcon>{val.icon}</SidebarIcon>
 							<SidebarTitle>{val.title}</SidebarTitle>
 						</SidebarRow>
 					)
-				})} */}
+				})}
 			</SidebarList>
 
 		</SidebarContainer>
