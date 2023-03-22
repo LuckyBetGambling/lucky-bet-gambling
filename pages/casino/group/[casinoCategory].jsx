@@ -31,7 +31,7 @@ export default function CategoryPage(){
 
 			<SideScroller 
 				items={sampleGames} 
-				title='Recommended Games' 
+				title='Placeholder' 
 			/>
 				
 				

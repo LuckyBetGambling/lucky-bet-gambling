@@ -74,9 +74,11 @@ export default function Casino() {
 				}}/>
 
 
-				<SideScroller items={sampleGames} title='Casino' />
+				<SideScroller items={sampleGames} title='Stake Originals' />
 				<SideScroller items={sampleGames} title='Slots' />
-				<SideScroller items={sampleGames} title='Cards' />
+				<SideScroller items={sampleGames} title='Live Casino' />
+				<SideScroller items={sampleGames} title='Table Games' />
+				<SideScroller items={sampleGames} title='New Releases' />
 
 			</Page>
 		</Fragment>

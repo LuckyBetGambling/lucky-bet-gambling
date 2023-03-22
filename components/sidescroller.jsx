@@ -42,7 +42,7 @@ const SideScroller = ({ items, title }) => {
 	return (
 		<Wrapper>
 			<Title>
-				<Link href='/casino'>
+				<Link href={`/casino/group/${title}`}>
 					{title}
 				</Link>
 			</Title>
