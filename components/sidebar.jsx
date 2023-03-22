@@ -1,12 +1,16 @@
 import styled from 'styled-components'
-import { SidebarData } from './sidebar-data'
+import { SidebarData } from '../utils/SidebarData'
+
 
 const SidebarContainer = styled.div`
     background-color:  ${({theme}) => theme.secondary};
-    max-width: 250px;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    max-width: 200px;
+    min-height: 100%;
+    position: fixed;
+    top: 4.2rem;
+    left: 0;
+    bottom: 40px;
+    right: 200px;
 `
 
 const SidebarList = styled.ul`
@@ -17,7 +21,7 @@ const SidebarList = styled.ul`
 
 const SidebarRow = styled.li`
     width: 100%;
-    height: 60px;
+    height: 3rem;
     list-style-type: none;
     margin: 0;
     display: flex;

@@ -8,7 +8,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme, GlobalStyles } from '../styles/ThemeConfig'
 import Modal from '../components/modal'
 import { loginUser, logoutUser, registerUser } from '../services/auth-manager'
-
+import Sidebar from '../components/sidebar'
 
 
 const LoginForm = styled.form`
@@ -32,16 +32,13 @@ export default function App({ Component, pageProps }) {
 	const [showLoginModal, setShowLoginModal] = useState(false)
 	const [showSignUpModal, setShowSignUpModal] = useState(false)
 	const [showLogoutModal, setShowLogoutModal] = useState(false)
-
 	const [registerEmail, setRegisterEmail] = useState('')
 	const [registerPassword, setRegisterPassword] = useState('')
-
 	const [loginEmail, setLoginEmail] = useState('')
 	const [loginPassword, setLoginPassword] = useState('')
-
 	const [user, setUser] = useState({})
-
 	const [theme, setTheme] = useState('light') 
+	const [showSidebar, setShowSidebar] = useState(false)
 
 	const toggleTheme = () => {
 		theme == 'light' ? setTheme('dark') : setTheme('light')
@@ -50,9 +47,7 @@ export default function App({ Component, pageProps }) {
 	useEffect(() => {
 		onAuthStateChanged(auth, (currentUser) => {
 			setUser(currentUser)
-		})
-
-	}, [])
+		})}, [])
 
 	// function for handling register
 	const handleRegister = async (e) => {
@@ -66,16 +61,20 @@ export default function App({ Component, pageProps }) {
 		e.preventDefault()
 		loginUser(auth, loginEmail, loginPassword)
 		setShowLoginModal(false)
-    
 	}
 
 	// function for handling log out
 	const handleLogout = async (e) => {
 		e.preventDefault()
-
 		logoutUser(auth)
 		setShowLogoutModal(false)
 	}
+
+	// function for toggling sidebar
+	const toggleSidebar = () => {
+		setShowSidebar(!showSidebar)
+	}
+	
 
 	return (
 		<Fragment>
@@ -87,10 +86,11 @@ export default function App({ Component, pageProps }) {
 					loginCallback={() => setShowLoginModal(true)}
 					logoutCallback={() => setShowLogoutModal(true)}
 					themeCallback={() => toggleTheme()}
+					showSidebar={showSidebar}
+					toggleSidebar={toggleSidebar}
 				/>
-				<Component
-				
-				 {...pageProps} />
+				{showSidebar && <Sidebar />}
+				<Component {...pageProps} />
 				<Footer>GamblingCompanyLLC - est. 2023</Footer>
 
 				<Modal show={showSignUpModal} onClose={() => { setShowSignUpModal(false) }} title='Sign Up'>
@@ -100,7 +100,6 @@ export default function App({ Component, pageProps }) {
 						<label htmlFor='password'>Password</label>
 						<input type='password' name='password' onChange={(e) => {setRegisterPassword(e.target.value)}} />
 						<button type='submit'>Sign Up</button>
-            
 					</RegisterForm>
 				</Modal>      
 
