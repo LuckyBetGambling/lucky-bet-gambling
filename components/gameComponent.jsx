@@ -8,15 +8,6 @@ import StarIcon from '@mui/icons-material/Star'
 import ToggleOnIcon from '@mui/icons-material/ToggleOn'
 
 
-const GameContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
-  background-color: #1a2c38;
-  min-height: cal(100vh - 30px);
-`
-
 const GameCard = styled.div`
   display: flex;
   flex-direction: column;

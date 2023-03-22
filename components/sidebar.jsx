@@ -46,7 +46,7 @@ const SidebarTitle = styled.div`
     flex: 70%;
 `
 
-export default function AdminSidebar() {
+export default function Sidebar() {
 
 
 	return (
