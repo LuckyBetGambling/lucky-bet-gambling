@@ -7,6 +7,7 @@ import AutoGraphIcon from '@mui/icons-material/AutoGraph'
 import StarIcon from '@mui/icons-material/Star'
 import ToggleOnIcon from '@mui/icons-material/ToggleOn'
 
+
 const GameCard = styled.div`
   display: flex;
   flex-direction: column;

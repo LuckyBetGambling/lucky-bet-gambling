@@ -23,7 +23,9 @@ const Wallet = styled.div`
 const Title = styled.h1`
   flex: 1;
   border: 1px solid maroon;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const NavActions = styled.div`
@@ -34,6 +36,26 @@ const NavActions = styled.div`
   justify-content: space-evenly;
 `
 
+const SidebarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border: 1px solid blue;
+`
+
+const SidebarButton = styled.button`
+  border: none;
+  font-size: 2rem;
+  background-color: ${({theme}) => theme.secondary};
+  color: ${({theme}) => theme.alt};
+  
+  &:hover {
+    cursor: pointer;
+  }
+`
+
 /**
  * Generic header component that will live on every page
  * @param {array} wallet - ammount of money the player has
@@ -41,12 +63,16 @@ const NavActions = styled.div`
  * @param {object} currentUser - object containing current logged in user's data
  * @param {function} signUpCallback - callback to open sign up modal
  * @param {function} loginCallback - callback function to open log in modal
+ * @param {function} sidebarCallback - callback function to open sidebar
  * @returns 
  */
-const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback, logoutCallback, themeCallback }) => {
+const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback, logoutCallback, themeCallback, toggleSidebar}) => {
 
 	return (
 		<Wrapper>
+			<SidebarContainer>
+				<SidebarButton onClick={toggleSidebar}>Sidebar</SidebarButton>
+			</SidebarContainer>
 			<Title>
 				<Link href='/'>{title}</Link>
 			</Title>
