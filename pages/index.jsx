@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styled from 'styled-components'
 import SideScroller from '../components/sidescroller'
 import { sampleGames } from '../utils/sampleData'
+import HomePageCard from '../components/homePageCards'
 
 const Page = styled.div`
 	margin: 0;
@@ -27,6 +28,12 @@ const Body = styled.section`
   align-items: center;
 `
 
+const CardContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+	
+`
+
 export default function Home() {
 
 	return (
@@ -42,7 +49,34 @@ export default function Home() {
         		Hero Banner
 			</Hero>
 
+			
+
 			<Body>
+
+				<CardContainer>
+					<HomePageCard
+						href='casino/'
+						title='Casino'
+						imageSrc='/images/casino.avif'
+						summary='Leading Online Crypto Casino'
+						description='Browse our giant range of casino games as Stake offers a fair and fun online gambling experience. Play Slots, Live Casino, Blackjack, Baccarat, Roulette, and thousands of classic casino games right from your browser, including your favourite Stake Originals.'
+						buttonText='Go to Casino'
+					/>
+
+					<HomePageCard
+						href='sports/'
+						title='Sports'
+						imageSrc='/images/sports.avif'
+						summary='Best Crypto Sports Betting Online'
+						description='Bet on your favourite teams, players and leagues from all around the world on our sports betting platform. Gamble on a wide range of sports betting options and markets for live sports across MMA, Basketball, Soccer and more for an unbeatable sports betting experience.'
+						buttonText='Go to Sports Book'
+					/>
+				</CardContainer>
+				
+
+
+
+				{/* imageSrc, imageAlt, title */}
 				<SideScroller items={sampleGames} title='Casino' />
 				<SideScroller items={sampleGames} title='Slots' />
 				<SideScroller items={sampleGames} title='Cards' />
