@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Head from 'next/head'
 import SideScroller from '../../../components/sidescroller'
 import { sampleGames } from '../../../utils/sampleData'
+import { useRouter } from 'next/router'
 
 
 const Page = styled.div`
@@ -19,6 +20,9 @@ const Page = styled.div`
 
 export default function CategoryPage(){
 
+	const router = useRouter()
+	const casinoCategory = router.query.casinoCategory
+
 	return(
 		<Page>
 			<Head>
@@ -31,7 +35,7 @@ export default function CategoryPage(){
 
 			<SideScroller 
 				items={sampleGames} 
-				title='Placeholder' 
+				title={casinoCategory}
 			/>
 				
 				
