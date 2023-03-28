@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import SideScroller from '../components/sidescroller'
 import { sampleGames } from '../utils/sampleData'
 import HomePageCard from '../components/homePageCards'
+import RaceBoard from '../components/raceBoard'
 
 const Page = styled.div`
 	margin: 0;
@@ -72,6 +73,8 @@ export default function Home() {
 						buttonText='Go to Sports Book'
 					/>
 				</CardContainer>
+
+				<RaceBoard/>
 				
 
 
