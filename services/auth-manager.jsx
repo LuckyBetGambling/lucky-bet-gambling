@@ -37,11 +37,11 @@ export const loginUser = async (auth, loginEmail, loginPassword) => {
 		
 		const { data } = await axios.get(`api/user/${userCred.user.uid}`)
 		
-		if (!data.isAdmin) {
+		if (!data.admin) {
 			return false
 		}
 		
-		return data.isAdmin
+		return data.admin
 	}
 	catch(err){
 		console.log(err.message)
