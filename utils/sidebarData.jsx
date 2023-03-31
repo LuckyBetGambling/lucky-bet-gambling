@@ -11,38 +11,38 @@ export const SidebarData = [
 	{
 		title: 'Casino',
 		icon: <CasinoRoundedIcon />,
-		link: '/casino'
+		link: '/casino/'
 	},
 	// casino categories
 	{
 		title: 'Stake Originals',
 		icon: <SportsIcon />,
-		link: '/stake-originals'
+		link: 'casino/group/stake-originals'
 	},
 	{
 		title: 'Stake Exclusives',
 		icon: <SportsIcon />,
-		link: '/stake-exclusives'
+		link: 'casino/group/stake-exclusives'
 	},
 	{
 		title: 'Slots',
 		icon: <SportsIcon />,
-		link: '/slots'
+		link: 'casino/group/slots'
 	},
 	{
 		title: 'Live Casino',
 		icon: <SportsIcon />,
-		link: '/live-casino'
+		link: 'casino/group/live-casino'
 	},
 	{
 		title: 'Blackjack',
 		icon: <SportsIcon />,
-		link: '/blackjack'
+		link: 'casino/group/blackjack'
 	},
 	{
 		title: 'Roulette',
 		icon: <SportsIcon />,
-		link: '/roulette'
+		link: 'casino/group/roulette'
 	},
 	// sports section
 	{
