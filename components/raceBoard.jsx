@@ -43,14 +43,15 @@ const RaceBoardBodyCell = styled.td`
 export default function RaceBoard(){
 	return (
 		<RaceBoardWrapper>
-			<h2>Race Board</h2>
 			<RaceBoardTable>
 
 				<RaceBoardHead>
-					<RaceBoardHeadCell>Rank</RaceBoardHeadCell>
-					<RaceBoardHeadCell>User</RaceBoardHeadCell>
-					<RaceBoardHeadCell>Wagered</RaceBoardHeadCell>
-					<RaceBoardHeadCell>Prize</RaceBoardHeadCell>
+					<RaceBoardBodyRow>
+						<RaceBoardHeadCell>Rank</RaceBoardHeadCell>
+						<RaceBoardHeadCell>User</RaceBoardHeadCell>
+						<RaceBoardHeadCell>Wagered</RaceBoardHeadCell>
+						<RaceBoardHeadCell>Prize</RaceBoardHeadCell>
+					</RaceBoardBodyRow>
 				</RaceBoardHead>
 
 				<RaceBoardBody>

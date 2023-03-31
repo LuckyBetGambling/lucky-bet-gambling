@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import { Fragment, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import {auth, signInWithGoogle, signInWithFacebook} from '../config/firebase'
 import styled, { ThemeProvider } from 'styled-components'
@@ -36,7 +36,11 @@ export default function App({ Component, pageProps }) {
 	const [registerPassword, setRegisterPassword] = useState('')
 	const [loginEmail, setLoginEmail] = useState('')
 	const [loginPassword, setLoginPassword] = useState('')
-	const [user, setUser] = useState({})
+	const [isAdmin, setIsAdmin] = useState(false)
+	const [user, setUser] = useState({
+		currentUser: null,
+		isAdmin: isAdmin
+	})
 	const [theme, setTheme] = useState('light') 
 	const [showSidebar, setShowSidebar] = useState(false)
 
@@ -45,9 +49,12 @@ export default function App({ Component, pageProps }) {
 	}
 
 	useEffect(() => {
-		onAuthStateChanged(auth, (currentUser) => {
-			setUser(currentUser)
-		})}, [])
+		onAuthStateChanged(auth, () => {
+			setUser({
+				currentUser: auth.currentUser,
+				isAdmin: isAdmin
+			})
+		})}, [isAdmin])
 
 	// function for handling register
 	const handleRegister = async (e) => {
@@ -59,7 +66,7 @@ export default function App({ Component, pageProps }) {
 	// function for handling login
 	const handleLogin = async (e) => {
 		e.preventDefault()
-		loginUser(auth, loginEmail, loginPassword)
+		setIsAdmin(await loginUser(auth, loginEmail, loginPassword))
 		setShowLoginModal(false)
 	}
 
@@ -67,6 +74,7 @@ export default function App({ Component, pageProps }) {
 	const handleLogout = async (e) => {
 		e.preventDefault()
 		logoutUser(auth)
+		setIsAdmin(false)
 		setShowLogoutModal(false)
 	}
 
@@ -75,53 +83,50 @@ export default function App({ Component, pageProps }) {
 		setShowSidebar(!showSidebar)
 	}
 	
-
 	return (
-		<Fragment>
-			<ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
-				<GlobalStyles />
-				<Header 
-					title='Lucky Bet' wallet='1000' currentUser={user} 
-					signUpCallback={() => setShowSignUpModal(true)} 
-					loginCallback={() => setShowLoginModal(true)}
-					logoutCallback={() => setShowLogoutModal(true)}
-					themeCallback={() => toggleTheme()}
-					showSidebar={showSidebar}
-					toggleSidebar={toggleSidebar}
-				/>
-				{showSidebar && <Sidebar />}
-				<Component {...pageProps} />
-				<Footer>GamblingCompanyLLC - est. 2023</Footer>
+		<ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
+			<GlobalStyles />
+			<Header 
+				title='Lucky Bet' wallet='1000' userData={user} 
+				signUpCallback={() => setShowSignUpModal(true)} 
+				loginCallback={() => setShowLoginModal(true)}
+				logoutCallback={() => setShowLogoutModal(true)}
+				themeCallback={() => toggleTheme()}
+				showSidebar={showSidebar}
+				toggleSidebar={toggleSidebar}
+			/>
+			{showSidebar && <Sidebar />}
+			<Component {...pageProps} />
+			<Footer>GamblingCompanyLLC - est. 2023</Footer>
 
-				<Modal show={showSignUpModal} onClose={() => { setShowSignUpModal(false) }} title='Sign Up'>
-					<RegisterForm onSubmit={handleRegister} >
-						<label htmlFor='email'>Email</label>  
-						<input type='email' name='email' onChange={(e) => {setRegisterEmail(e.target.value)}} />
-						<label htmlFor='password'>Password</label>
-						<input type='password' name='password' onChange={(e) => {setRegisterPassword(e.target.value)}} />
-						<button type='submit'>Sign Up</button>
-					</RegisterForm>
-				</Modal>      
+			<Modal show={showSignUpModal} onClose={() => { setShowSignUpModal(false) }} title='Sign Up'>
+				<RegisterForm onSubmit={handleRegister} >
+					<label htmlFor='email'>Email</label>  
+					<input type='email' name='email' onChange={(e) => {setRegisterEmail(e.target.value)}} />
+					<label htmlFor='password'>Password</label>
+					<input type='password' name='password' onChange={(e) => {setRegisterPassword(e.target.value)}} />
+					<button type='submit'>Sign Up</button>
+				</RegisterForm>
+			</Modal>      
 
-				<Modal show={showLoginModal} onClose={() => { setShowLoginModal(false) }} title='Log In'>
-					<LoginForm onSubmit={handleLogin}>
-						<label htmlFor='email'>Email</label>
-						<input type='email' name='email' onChange={(e) => {setLoginEmail(e.target.value)}} />
-						<label htmlFor='password'>Password</label>
-						<input type='password' name='password' onChange={(e) => {setLoginPassword(e.target.value)}} />
-						<button type='submit'>Log In</button>
-					</LoginForm>
-					<button onClick={signInWithGoogle}>Sign In With Google</button>
-					<button onClick={signInWithFacebook}>Sign In With Facebook</button>
-				</Modal>
+			<Modal show={showLoginModal} onClose={() => { setShowLoginModal(false) }} title='Log In'>
+				<LoginForm onSubmit={handleLogin}>
+					<label htmlFor='email'>Email</label>
+					<input type='email' name='email' onChange={(e) => {setLoginEmail(e.target.value)}} />
+					<label htmlFor='password'>Password</label>
+					<input type='password' name='password' onChange={(e) => {setLoginPassword(e.target.value)}} />
+					<button type='submit'>Log In</button>
+				</LoginForm>
+				<button onClick={signInWithGoogle}>Sign In With Google</button>
+				<button onClick={signInWithFacebook}>Sign In With Facebook</button>
+			</Modal>
 
-				<Modal show={showLogoutModal} onClose={() => { setShowLogoutModal(false) }} title='Sign Out'>
-					<LogoutForm onSubmit={handleLogout}>
-						<h4>User Logged in: {user ? user.email : 'Not Logged in'}</h4>
-						<button>Sign Out</button>
-					</LogoutForm>
-				</Modal>
-			</ThemeProvider>
-		</Fragment>
+			<Modal show={showLogoutModal} onClose={() => { setShowLogoutModal(false) }} title='Sign Out'>
+				<LogoutForm onSubmit={handleLogout}>
+					<h4>User Logged in: {user.currentUser ? user.currentUser.email : 'Not Logged in'}</h4>
+					<button>Sign Out</button>
+				</LogoutForm>
+			</Modal>
+		</ThemeProvider>
 	)
 }

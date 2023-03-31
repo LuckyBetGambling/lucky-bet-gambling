@@ -58,6 +58,7 @@ export default function Home() {
 					<HomePageCard
 						href='casino/'
 						title='Casino'
+						imageAlt='casino'
 						imageSrc='/images/casino.avif'
 						summary='Leading Online Crypto Casino'
 						description='Browse our giant range of casino games as Stake offers a fair and fun online gambling experience. Play Slots, Live Casino, Blackjack, Baccarat, Roulette, and thousands of classic casino games right from your browser, including your favourite Stake Originals.'
@@ -67,6 +68,7 @@ export default function Home() {
 					<HomePageCard
 						href='sports/'
 						title='Sports'
+						imageAlt='sports'
 						imageSrc='/images/sports.avif'
 						summary='Best Crypto Sports Betting Online'
 						description='Bet on your favourite teams, players and leagues from all around the world on our sports betting platform. Gamble on a wide range of sports betting options and markets for live sports across MMA, Basketball, Soccer and more for an unbeatable sports betting experience.'
