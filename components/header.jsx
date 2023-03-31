@@ -67,7 +67,6 @@ const SidebarButton = styled.button`
  * @returns 
  */
 const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logoutCallback, themeCallback, toggleSidebar}) => {
-	console.log(userData.isAdmin)
 	return (
 		<Wrapper>
 			<SidebarContainer>

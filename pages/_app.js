@@ -83,8 +83,6 @@ export default function App({ Component, pageProps }) {
 		setShowSidebar(!showSidebar)
 	}
 	
-
-	console.log('User Obj: ', user)
 	return (
 		<ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
 			<GlobalStyles />
