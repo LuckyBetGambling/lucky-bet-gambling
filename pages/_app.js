@@ -66,7 +66,7 @@ export default function App({ Component, pageProps }) {
 	// function for handling login
 	const handleLogin = async (e) => {
 		e.preventDefault()
-		setIsAdmin(loginUser(auth, loginEmail, loginPassword))
+		setIsAdmin(await loginUser(auth, loginEmail, loginPassword))
 		setShowLoginModal(false)
 	}
 

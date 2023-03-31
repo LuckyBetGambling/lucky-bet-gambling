@@ -36,6 +36,11 @@ export const loginUser = async (auth, loginEmail, loginPassword) => {
 		const userCred = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
 		
 		const { data } = await axios.get(`api/user/${userCred.user.uid}`)
+		
+		if (!data.isAdmin) {
+			return false
+		}
+		
 		return data.isAdmin
 	}
 	catch(err){

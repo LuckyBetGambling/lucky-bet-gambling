@@ -67,7 +67,7 @@ const SidebarButton = styled.button`
  * @returns 
  */
 const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logoutCallback, themeCallback, toggleSidebar}) => {
-  
+	console.log(userData.isAdmin)
 	return (
 		<Wrapper>
 			<SidebarContainer>
@@ -82,7 +82,7 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 				{!userData.currentUser && <button onClick={() => loginCallback()}>Log In</button>}
               
               
-				{userData.currentUser && userData.isAdmin && <LinkButton path={'/admin'} title='Admin' />}
+				{(userData.currentUser && userData.isAdmin) && <LinkButton path={'/admin'} title='Admin' />}
 				{userData.currentUser && <LinkButton path={`/user/${userData.currentUser.uid}`} title='Profile' />}
 				{userData.currentUser && <button onClick={() => logoutCallback()}>Log Out</button>}
 				<button onClick={() => themeCallback()}>Theme</button>
