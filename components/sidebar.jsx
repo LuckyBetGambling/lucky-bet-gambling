@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { SidebarData } from '../utils/SidebarData'
+import { useState, Fragment } from 'react'
 
 
 const SidebarContainer = styled.div`
@@ -46,18 +47,80 @@ const SidebarTitle = styled.div`
     flex: 70%;
 `
 
+// for the dropdown categories
+const NestedList = styled.ul`
+    list-style-type: none;
+    padding: 0;
+`
+
+const SidebarDropdown = styled.ul`
+    padding: 0;
+`
+
+const SidebarDropdownItem = styled.li`
+    height: 3rem;
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        color: ${({ theme }) => theme.secondary};
+        background-color: ${({ theme }) => theme.alt};
+        cursor: pointer;
+    }
+`
+
+
+
 export default function Sidebar() {
+
+	const [expandedItems, setExpandedItems] = useState([])
+
+	const handleItemClick = (index) => {
+		if (expandedItems.includes(index)) {
+			setExpandedItems((prevState) =>
+				prevState.filter((item) => item !== index)
+			)
+		} else {
+			setExpandedItems((prevState) => [...prevState, index])
+		}
+	}
+
 
 
 	return (
 		<SidebarContainer>
 			<SidebarList>
-				{SidebarData.map((val, key) => {
-					return (
-						<SidebarRow key={key} onClick={() => { window.location.pathname = val.link }}>
-							<SidebarIcon>{val.icon}</SidebarIcon>
-							<SidebarTitle>{val.title}</SidebarTitle>
-						</SidebarRow>
+				{SidebarData.map((val, index) => {
+					const isExpanded = expandedItems.includes(index)
+
+					return(
+						<Fragment key={index}>
+							<SidebarRow onClick={() => handleItemClick(index)}>
+								<SidebarIcon>{val.icon}</SidebarIcon>
+								<SidebarTitle>{val.title}</SidebarTitle>
+							</SidebarRow>
+
+							{isExpanded && val.categories && (
+								<SidebarDropdown>
+									{val.categories.map((category, index) => (
+										<SidebarDropdownItem
+											key={index}
+											onClick={() => {
+												window.location.pathname =
+                                                    category.link
+											}}
+										>
+											<SidebarIcon>{category.icon}</SidebarIcon>
+											<SidebarTitle>{category.title}</SidebarTitle>
+										</SidebarDropdownItem>
+									))}
+								</SidebarDropdown>
+							)}
+						</Fragment>
 					)
 				})}
 			</SidebarList>
@@ -65,3 +128,9 @@ export default function Sidebar() {
 		</SidebarContainer>
 	)
 }
+
+
+{/* <SidebarRow key={key} onClick={() => { window.location.pathname = val.link }}>
+<SidebarIcon>{val.icon}</SidebarIcon>
+<SidebarTitle>{val.title}</SidebarTitle>
+</SidebarRow> */}
