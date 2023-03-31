@@ -33,10 +33,14 @@ export const registerUser = async (auth, registerEmail, registerPassword ) => {
 export const loginUser = async (auth, loginEmail, loginPassword) => {
 
 	try{
-		const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+		const userCred = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+		
+		const { data } = await axios.get(`api/user/${userCred.user.uid}`)
+		return data.isAdmin
 	}
 	catch(err){
 		console.log(err.message)
+		return false
 	}
     
 }

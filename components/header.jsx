@@ -60,14 +60,14 @@ const SidebarButton = styled.button`
  * Generic header component that will live on every page
  * @param {array} wallet - ammount of money the player has
  * @param {string} title - title for header
- * @param {object} currentUser - object containing current logged in user's data
+ * @param {object} userData - object containing current logged in user's data
  * @param {function} signUpCallback - callback to open sign up modal
  * @param {function} loginCallback - callback function to open log in modal
  * @param {function} sidebarCallback - callback function to open sidebar
  * @returns 
  */
-const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback, logoutCallback, themeCallback, toggleSidebar}) => {
-
+const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logoutCallback, themeCallback, toggleSidebar}) => {
+  
 	return (
 		<Wrapper>
 			<SidebarContainer>
@@ -76,15 +76,15 @@ const Header = ({ title, wallet, currentUser, signUpCallback, loginCallback, log
 			<Title>
 				<Link href='/'>{title}</Link>
 			</Title>
-			{currentUser && <Wallet>${wallet}</Wallet>}
+			{userData.currentUser && <Wallet>${wallet}</Wallet>}
 			<NavActions>
-				{!currentUser && <button onClick={() => signUpCallback()}>Sign Up</button>}
-				{!currentUser && <button onClick={() => loginCallback()}>Log In</button>}
+				{!userData.currentUser && <button onClick={() => signUpCallback()}>Sign Up</button>}
+				{!userData.currentUser && <button onClick={() => loginCallback()}>Log In</button>}
               
               
-				{currentUser && <LinkButton path={'/admin'} title='Admin' />}
-				{currentUser && <LinkButton path={`/user/${currentUser.uid}`} title='Profile' />}
-				{currentUser && <button onClick={() => logoutCallback()}>Log Out</button>}
+				{userData.currentUser && userData.isAdmin && <LinkButton path={'/admin'} title='Admin' />}
+				{userData.currentUser && <LinkButton path={`/user/${userData.currentUser.uid}`} title='Profile' />}
+				{userData.currentUser && <button onClick={() => logoutCallback()}>Log Out</button>}
 				<button onClick={() => themeCallback()}>Theme</button>
 			</NavActions>
 		</Wrapper>
