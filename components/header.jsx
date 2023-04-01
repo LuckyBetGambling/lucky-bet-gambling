@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import LinkButton from './linkButton'
 import Link from 'next/link'
+import CasinoRoundedIcon from '@mui/icons-material/CasinoRounded'
+import SportsBaseballIcon from '@mui/icons-material/SportsBaseball'
+import WestIcon from '@mui/icons-material/West'
 
 const Wrapper = styled.nav`
   display: flex;
@@ -38,14 +41,28 @@ const NavActions = styled.div`
 
 const SidebarContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  flex: 1;
   border: 1px solid blue;
+  width: 200px;
 `
 
-const SidebarButton = styled.button`
+const IconContainer = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.2rem;
+  color: ${({theme}) => theme.text};
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`
+
+
+const SidebarButton = styled.div`
   border: none;
   font-size: 2rem;
   background-color: ${({theme}) => theme.secondary};
@@ -55,6 +72,8 @@ const SidebarButton = styled.button`
     cursor: pointer;
   }
 `
+
+
 
 /**
  * Generic header component that will live on every page
@@ -67,10 +86,27 @@ const SidebarButton = styled.button`
  * @returns 
  */
 const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logoutCallback, themeCallback, toggleSidebar}) => {
+
 	return (
 		<Wrapper>
 			<SidebarContainer>
-				<SidebarButton onClick={toggleSidebar}>Sidebar</SidebarButton>
+				<Link href='/casino'>
+					<IconContainer>
+						<CasinoRoundedIcon/>
+						<span>Casino</span>
+					</IconContainer>
+				</Link>
+				<Link href='/sports'>
+					<IconContainer>
+						<SportsBaseballIcon/>
+						<span>Sports</span>
+					</IconContainer>
+				</Link>
+				<SidebarButton onClick={toggleSidebar}>
+					<span>
+						<WestIcon/>
+					</span>
+				</SidebarButton>
 			</SidebarContainer>
 			<Title>
 				<Link href='/'>{title}</Link>
