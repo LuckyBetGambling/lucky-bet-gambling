@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import LinkButton from './linkButton'
 import Link from 'next/link'
 import ProfileDropdown from './profileDropdown'
+import CasinoRoundedIcon from '@mui/icons-material/CasinoRounded'
+import SportsBaseballIcon from '@mui/icons-material/SportsBaseball'
+import WestIcon from '@mui/icons-material/West'
 
 const Wrapper = styled.nav`
   display: flex;
@@ -12,6 +15,7 @@ const Wrapper = styled.nav`
   padding-left: 0px;
   position: fixed;
   z-index: 68;
+  padding-left: 0;
 `
 const Title = styled.h1`
   flex: 10;
@@ -30,13 +34,29 @@ const NavActions = styled.div`
 
 const SidebarContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   flex: 1;
+  border: 1px solid blue;
+  width: 200px;
 `
 
-const SidebarButton = styled.button`
+const IconContainer = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.2rem;
+  color: ${({theme}) => theme.text};
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`
+
+
+const SidebarButton = styled.div`
   border: none;
   font-size: 2rem;
   background-color: ${({theme}) => theme.secondary};
@@ -47,6 +67,8 @@ const SidebarButton = styled.button`
   }
 `
 
+
+
 /**
  * Generic header component that will live on every page
  * @param {string} title - title for header
@@ -56,12 +78,38 @@ const SidebarButton = styled.button`
  * @param {function} sidebarCallback - callback function to open sidebar
  * @returns 
  */
-const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logoutCallback, themeCallback, toggleSidebar}) => {
+const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logoutCallback, themeCallback, showSidebar, toggleSidebar}) => {
+
 	return (
 		<Wrapper>
-			<SidebarContainer>
-				<SidebarButton onClick={toggleSidebar}>Sidebar</SidebarButton>
-			</SidebarContainer>
+			{!showSidebar && <SidebarButton onClick={toggleSidebar}>
+				<span>
+					<WestIcon/>
+				</span>
+			</SidebarButton>
+			}
+			{showSidebar && 
+        <SidebarContainer>
+        	<Link href='/casino'>
+        		<IconContainer>
+        			<CasinoRoundedIcon/>
+        			<span>Casino</span>
+        		</IconContainer>
+        	</Link>
+        	<Link href='/sports'>
+        		<IconContainer>
+        			<SportsBaseballIcon/>
+        			<span>Sports</span>
+        		</IconContainer>
+        	</Link>
+        	<SidebarButton onClick={toggleSidebar}>
+        		<span>
+        			<WestIcon/>
+        		</span>
+        	</SidebarButton>
+			  </SidebarContainer>
+			}
+			
 			<Title>
 				<Link href='/'>{title}</Link>
 			</Title>
