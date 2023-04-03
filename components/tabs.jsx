@@ -37,7 +37,11 @@ export const Tab = styled.div`
  */
 const Tabs = ({ router, tabs, path }) => {
 
-	const [currentTab, setCurrentTab] = useState(router.query?.tab)
+	const [currentTab, setCurrentTab] = useState(tabs[0].name)
+
+	const {
+		query: { userId }
+	} = router
 
 	const isSelected = (tabName) => {
 		return currentTab == tabName
@@ -54,12 +58,10 @@ const Tabs = ({ router, tabs, path }) => {
 			<TabHead>
 				{tabs.map(
 					(tab) => {
-						return <Tab key={tab.name} selected={isSelected(tab.name)} 
-							onClick={() => {
-								setCurrentTab(tab.name)
-								router.push(`/user/${router?.query?.userId}?tab=${tab.name}`, null, { shallow: true })
-							}}>
-							{tab.name}
+						return <Tab key={tab.name} selected={isSelected(tab.name)}>
+							<Link href={{ pathname: `${path}`, query: {userId: userId, tab: tab.name}}} passHref>
+								<div onClick={() => {setCurrentTab(tab.name)}}>{tab.name}</div>
+							</Link>
 						</Tab>
 					}
 				)}

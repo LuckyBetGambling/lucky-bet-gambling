@@ -170,7 +170,7 @@ const AdminPage = (props) => {
 				</AdminHeader>
 
 				<TabContainer>
-					<Tabs tabs={tabs} path={router.pathname} />
+					<Tabs tabs={tabs} path={router.pathname} router={router} />
 				</TabContainer>
       
 			</Page>
