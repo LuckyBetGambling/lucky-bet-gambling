@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const lightTheme = {
-	primary: '#EEEEEE',
-	secondary: '#6fb8f2', 
-	accent: '#333333'
+	primary: '#fafafa',
+	secondary: '#e4e5f1', 
+	accent: '#9394a5'
 }
 
 export const darkTheme = {
