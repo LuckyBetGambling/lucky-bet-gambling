@@ -39,6 +39,7 @@ const Tabs = ({ router, tabs, path }) => {
 
 	const [currentTab, setCurrentTab] = useState(tabs[0].name)
 
+	// TODO: Need to refactor tabs to be more use case agnostic
 	const {
 		query: { userId }
 	} = router
