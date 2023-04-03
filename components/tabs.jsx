@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { withRouter } from 'next/router'
 import styled from 'styled-components'
@@ -20,11 +20,12 @@ export const TabBody = styled.div`
 export const Tab = styled.div`
   padding: 1em;
   text-align: center;
-  background: ${({ theme, selected }) => (selected ? theme.alt : theme.secondary)};
-  * {
-    color:  ${({ theme, selected }) => (selected ? theme.primary : theme.alt)};
-  }
+  background: ${({ theme, selected }) => (selected ? theme.accent : theme.secondary)};
+  color:  ${({ theme, selected }) => (selected ? theme.primary : theme.accent)};
   flex: 1; 
+  &:hover {
+	cursor: pointer;
+  }
 `
 
 /**
@@ -36,25 +37,29 @@ export const Tab = styled.div`
  */
 const Tabs = ({ router, tabs, path }) => {
 
-	const [currentTab, setCurrentTab] = useState(tabs[0].name)
-
-	const {
-		query: { userId }
-	} = router
+	const [currentTab, setCurrentTab] = useState(router.query?.tab)
 
 	const isSelected = (tabName) => {
 		return currentTab == tabName
 	}
+
+	useEffect(
+		() => {
+			setCurrentTab(router.query?.tab)
+		}, [router.query.tab]
+	)
 
 	return (
 		<TabContainer>
 			<TabHead>
 				{tabs.map(
 					(tab) => {
-						return <Tab key={tab.name} selected={isSelected(tab.name)}>
-							<Link href={{ pathname: `${path}`, query: {userId: userId, tab: tab.name}}} passHref>
-								<div onClick={() => {setCurrentTab(tab.name)}}>{tab.name}</div>
-							</Link>
+						return <Tab key={tab.name} selected={isSelected(tab.name)} 
+							onClick={() => {
+								setCurrentTab(tab.name)
+								router.push(`/user/${router?.query?.userId}?tab=${tab.name}`, null, { shallow: true })
+							}}>
+							{tab.name}
 						</Tab>
 					}
 				)}

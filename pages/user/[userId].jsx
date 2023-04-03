@@ -111,7 +111,7 @@ const Profile = (props) => {
 					</ProfileHeader>
 
 					<TabContainer>
-						<Tabs tabs={tabs} path={router.pathname} />
+						<Tabs tabs={tabs} path={router.pathname} router={router} />
 					</TabContainer>
 			
 				</Page>

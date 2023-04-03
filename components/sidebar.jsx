@@ -11,6 +11,7 @@ const SidebarContainer = styled.div`
     left: 0;
     bottom: 40px;
     right: 200px;
+    z-index: 420000000000000000000000;
 `
 
 const SidebarList = styled.ul`
@@ -31,7 +32,7 @@ const SidebarRow = styled.li`
 
     &:hover {
         color: ${({theme}) => theme.secondary};
-        background-color: ${({theme}) => theme.alt};
+        background-color: ${({theme}) => theme.accent};
         cursor: pointer;
       }
 `

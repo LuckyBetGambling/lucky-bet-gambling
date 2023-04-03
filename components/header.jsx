@@ -2,38 +2,30 @@ import React from 'react'
 import styled from 'styled-components'
 import LinkButton from './linkButton'
 import Link from 'next/link'
+import ProfileDropdown from './profileDropdown'
 
 const Wrapper = styled.nav`
   display: flex;
   width: 100%;
   background-color:  ${({theme}) => theme.secondary};
-  padding: 15px;
+  padding: 15px 35px;
+  padding-left: 0px;
   position: fixed;
   z-index: 68;
 `
-
-const Wallet = styled.div`
-  flex: 1;
-  border: 1px solid orange;
-  display: flex;
-  align-items: center; 
-  justify-content: center;
-`
-
 const Title = styled.h1`
-  flex: 1;
-  border: 1px solid maroon;
+  flex: 10;
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
 const NavActions = styled.div`
-  border: 1px solid green;
   flex: 1;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+  gap: 30px;
 `
 
 const SidebarContainer = styled.div`
@@ -42,14 +34,13 @@ const SidebarContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex: 1;
-  border: 1px solid blue;
 `
 
 const SidebarButton = styled.button`
   border: none;
   font-size: 2rem;
   background-color: ${({theme}) => theme.secondary};
-  color: ${({theme}) => theme.alt};
+  color: ${({theme}) => theme.accent};
   
   &:hover {
     cursor: pointer;
@@ -58,7 +49,6 @@ const SidebarButton = styled.button`
 
 /**
  * Generic header component that will live on every page
- * @param {array} wallet - ammount of money the player has
  * @param {string} title - title for header
  * @param {object} userData - object containing current logged in user's data
  * @param {function} signUpCallback - callback to open sign up modal
@@ -75,16 +65,14 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 			<Title>
 				<Link href='/'>{title}</Link>
 			</Title>
-			{userData.currentUser && <Wallet>${wallet}</Wallet>}
 			<NavActions>
 				{!userData.currentUser && <button onClick={() => signUpCallback()}>Sign Up</button>}
 				{!userData.currentUser && <button onClick={() => loginCallback()}>Log In</button>}
               
               
 				{(userData.currentUser && userData.isAdmin) && <LinkButton path={'/admin'} title='Admin' />}
-				{userData.currentUser && <LinkButton path={`/user/${userData.currentUser.uid}`} title='Profile' />}
-				{userData.currentUser && <button onClick={() => logoutCallback()}>Log Out</button>}
-				<button onClick={() => themeCallback()}>Theme</button>
+				{userData.currentUser && <ProfileDropdown uid={userData.currentUser.uid} logoutCallback={logoutCallback} themeCallback={themeCallback} />}
+				
 			</NavActions>
 		</Wrapper>
 	)
