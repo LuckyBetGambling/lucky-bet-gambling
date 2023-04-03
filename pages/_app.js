@@ -42,7 +42,7 @@ export default function App({ Component, pageProps }) {
 		isAdmin: isAdmin
 	})
 	const [theme, setTheme] = useState('light') 
-	const [showSidebar, setShowSidebar] = useState(false)
+	const [showSidebar, setShowSidebar] = useState(true)
 
 	const toggleTheme = () => {
 		theme == 'light' ? setTheme('dark') : setTheme('light')

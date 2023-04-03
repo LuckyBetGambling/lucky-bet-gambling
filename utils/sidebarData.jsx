@@ -11,72 +11,70 @@ export const SidebarData = [
 	{
 		title: 'Casino',
 		icon: <CasinoRoundedIcon />,
-		link: '/casino/'
+		link: '/casino',
+		categories: [
+			{
+				title: 'Stake Originals',
+				icon: <SportsIcon />,
+				link: '/casino/group/Stake Originals'
+			},
+			{
+				title: 'Slots',
+				icon: <SportsIcon />,
+				link: '/casino/group/Slots'
+			},
+			{
+				title: 'Live Casino',
+				icon: <SportsIcon />,
+				link: '/casino/group/Live Casino'
+			},
+			{
+				title: 'Table Games',
+				icon: <SportsIcon />,
+				link: '/casino/group/Table Games'
+			},
+			{
+				title: 'New Releases',
+				icon: <SportsIcon />,
+				link: '/casino/group/New Releases'
+			}
+		]
 	},
-	// casino categories
-	{
-		title: 'Stake Originals',
-		icon: <SportsIcon />,
-		link: 'casino/group/stake-originals'
-	},
-	{
-		title: 'Stake Exclusives',
-		icon: <SportsIcon />,
-		link: 'casino/group/stake-exclusives'
-	},
-	{
-		title: 'Slots',
-		icon: <SportsIcon />,
-		link: 'casino/group/slots'
-	},
-	{
-		title: 'Live Casino',
-		icon: <SportsIcon />,
-		link: 'casino/group/live-casino'
-	},
-	{
-		title: 'Blackjack',
-		icon: <SportsIcon />,
-		link: 'casino/group/blackjack'
-	},
-	{
-		title: 'Roulette',
-		icon: <SportsIcon />,
-		link: 'casino/group/roulette'
-	},
+	
 	// sports section
 	{
 		title: 'Sports',
 		icon: <SportsIcon />,
-		link: '/sports'
+		link: '/sports',
+		categories: [
+			{
+				title: 'Football',
+				icon: <SportsIcon />,
+				link: '/sports/group/Football'
+			},
+			{
+				title: 'Basketball',
+				icon: <SportsIcon />,
+				link: '/sports/group/Basketball'
+			},
+			{
+				title: 'UFC',
+				icon: <SportsIcon />,
+				link: '/sports/group/UFC'
+			},
+			{
+				title: 'Ice Hockey',
+				icon: <SportsIcon />,
+				link: '/sports/group/Ice Hockey'
+			},
+			{
+				title: 'Table Tennis',
+				icon: <SportsIcon />,
+				link: '/sports/group/Table Tennis'
+			}
+		]
 	},
 	// sports categories
-	{
-		title: 'Soccer',
-		icon: <SportsIcon />,
-		link: '/soccer'
-	},
-	{
-		title: 'Tennis',
-		icon: <SportsIcon />,
-		link: '/tennis'
-	},
-	{
-		title: 'Basketball',
-		icon: <SportsIcon />,
-		link: '/basketball'
-	},
-	{
-		title: 'Ice Hockey',
-		icon: <SportsIcon />,
-		link: '/ice-hockey'
-	},
-	{
-		title: 'Table Tennis',
-		icon: <SportsIcon />,
-		link: '/table-tennis'
-	},
-	// finished sports section
 	{
 		title: 'Promotions',
 		icon: <ShareIcon />,
