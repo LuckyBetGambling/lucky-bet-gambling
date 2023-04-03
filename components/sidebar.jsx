@@ -90,9 +90,6 @@ const SidebarSeparator = styled.div`
 
 `
 
-
-
-
 export default function Sidebar() {
 
 	const [expandedItems, setExpandedItems] = useState([])

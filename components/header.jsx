@@ -13,6 +13,7 @@ const Wrapper = styled.nav`
   padding: 15px;
   position: fixed;
   z-index: 68;
+  padding-left: 0;
 `
 
 const Wallet = styled.div`
@@ -85,29 +86,38 @@ const SidebarButton = styled.div`
  * @param {function} sidebarCallback - callback function to open sidebar
  * @returns 
  */
-const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logoutCallback, themeCallback, toggleSidebar}) => {
+const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logoutCallback, themeCallback, showSidebar, toggleSidebar}) => {
 
 	return (
 		<Wrapper>
-			<SidebarContainer>
-				<Link href='/casino'>
-					<IconContainer>
-						<CasinoRoundedIcon/>
-						<span>Casino</span>
-					</IconContainer>
-				</Link>
-				<Link href='/sports'>
-					<IconContainer>
-						<SportsBaseballIcon/>
-						<span>Sports</span>
-					</IconContainer>
-				</Link>
-				<SidebarButton onClick={toggleSidebar}>
-					<span>
-						<WestIcon/>
-					</span>
-				</SidebarButton>
-			</SidebarContainer>
+			{!showSidebar && <SidebarButton onClick={toggleSidebar}>
+				<span>
+					<WestIcon/>
+				</span>
+			</SidebarButton>
+			}
+			{showSidebar && 
+        <SidebarContainer>
+        	<Link href='/casino'>
+        		<IconContainer>
+        			<CasinoRoundedIcon/>
+        			<span>Casino</span>
+        		</IconContainer>
+        	</Link>
+        	<Link href='/sports'>
+        		<IconContainer>
+        			<SportsBaseballIcon/>
+        			<span>Sports</span>
+        		</IconContainer>
+        	</Link>
+        	<SidebarButton onClick={toggleSidebar}>
+        		<span>
+        			<WestIcon/>
+        		</span>
+        	</SidebarButton>
+			  </SidebarContainer>
+			}
+			
 			<Title>
 				<Link href='/'>{title}</Link>
 			</Title>
