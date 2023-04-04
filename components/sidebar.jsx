@@ -4,16 +4,19 @@ import { useState, Fragment } from 'react'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
 
 const SidebarContainer = styled.div`
-    background-color:  ${({theme}) => theme.secondary};
-    max-width: 200px;
-    min-height: 100%;
     position: fixed;
-    top: 4.2rem;
+    top: 4.85rem;
     left: 0;
     bottom: 40px;
     right: 200px;
-    z-index: 420000000000000000000000;
+    background-color:  ${({theme}) => theme.secondary};
+    max-width: 190px;
+    min-height: 100%;
+    z-index: 1;
+    transform: ${props => props.showSidebar ? 'translateX(0)' : 'translateX(-240px)'}
+    transition: transform 3s ease-in-out;
 `
+
 
 const SidebarList = styled.ul`
     height: auto;
@@ -35,6 +38,7 @@ const SidebarRow = styled.li`
         color: ${({theme}) => theme.secondary};
         background-color: ${({theme}) => theme.accent};
         cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
       }
 
       ${({ isExpanded }) =>
@@ -77,9 +81,10 @@ const SidebarDropdownItem = styled.li`
     padding: 8px;
 
     &:hover {
-        color: ${({ theme }) => theme.secondary};
-        background-color: ${({ theme }) => theme.alt};
         cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+        background-color: ${({theme}) => theme.accent};
+        color: ${({theme}) => theme.primary};
     }
 `
 
@@ -91,7 +96,7 @@ const SidebarSeparator = styled.div`
 
 `
 
-export default function Sidebar() {
+export default function Sidebar({showSidebar}) {
 
 	const [expandedItems, setExpandedItems] = useState([])
 
@@ -111,21 +116,18 @@ export default function Sidebar() {
 
 
 	return (
-		<SidebarContainer>
+		<SidebarContainer showSidebar={showSidebar}>
 			<SidebarList>
 				{SidebarData.map((val, index) => {
 					const isExpanded = expandedItems.includes(index)
 
 					return(
 						<Fragment key={index}>
-
-
 							<SidebarRow onClick={() => handleItemClick(index)} isExpanded={isExpanded}>
 								<SidebarIcon>{val.icon}</SidebarIcon>
 								<SidebarTitle>{val.title}</SidebarTitle>
 
 								{val.categories && <KeyboardArrowLeftIcon />}
-
 							</SidebarRow>
 
 							{isExpanded && val.categories && (
