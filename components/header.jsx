@@ -92,7 +92,9 @@ const SidebarButton = styled.button`
     background-color: ${({theme}) => theme.accent};
     color: ${({theme}) => theme.primary};
 
-    
+    svg{
+      color: ${({theme}) => theme.primary};
+    }
   }
   span {
     display: flex;
@@ -105,7 +107,7 @@ const SidebarButton = styled.button`
     svg {
       font-size: 20px;
       color: ${({theme}) => theme.accent};
-      transform: ${({ showSidebar }) => (showSidebar ? 'rotate(0deg)' : 'rotate(180deg)')};
+      
     }
   }
 `
@@ -137,6 +139,11 @@ const HeaderButton = styled.button`
   }
 `
 
+const MenuOpen = styled(MenuOpenIcon)`
+  transition: transform 1s ease-in-out;
+  transform: ${({ showSidebar }) => (showSidebar ? 'rotate(0deg)' : 'rotate(180deg)')};
+`
+
 
 /**
  * Generic header component that will live on every page
@@ -153,8 +160,8 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 		<Wrapper>
 			{!showSidebar && <SidebarContainer>
 				<SidebarButton onClick={toggleSidebar}>
-					<span showSidebar={showSidebar}>
-						<MenuOpenIcon showSidebar={showSidebar}/>
+					<span>
+						<MenuOpen showSidebar={showSidebar}/>
 					</span>
 				</SidebarButton>
 			</SidebarContainer>
@@ -177,8 +184,8 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
         	</PillLink>
 
         	<SidebarButton onClick={toggleSidebar}>
-        		<span showSidebar={showSidebar}>
-        			<MenuOpenIcon showSidebar={showSidebar} />
+        		<span>
+        			<MenuOpen showSidebar={showSidebar} />
         		</span>
         	</SidebarButton>
 			  </SidebarContainer>
