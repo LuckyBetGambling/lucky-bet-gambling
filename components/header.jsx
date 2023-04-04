@@ -5,7 +5,7 @@ import Link from 'next/link'
 import ProfileDropdown from './profileDropdown'
 import CasinoRoundedIcon from '@mui/icons-material/CasinoRounded'
 import SportsBaseballIcon from '@mui/icons-material/SportsBaseball'
-import WestIcon from '@mui/icons-material/West'
+import MenuOpen from '@mui/icons-material/MenuOpen'
 
 const Wrapper = styled.nav`
   display: flex;
@@ -40,11 +40,10 @@ const SidebarContainer = styled.div`
   align-items: center;
   flex: 1;
   width: 200px;
+  margin-left: 0.2rem;
 `
 
-
 // new CSS for casino and sports buttons
-
 const PillContainer = styled.div`
   display: flex;
   align-items: center;
@@ -64,13 +63,12 @@ const PillLink = styled(Link)`
   text-decoration: none;
 `
 
-
 const CasinoIcon = styled(CasinoRoundedIcon)`
-  margin-right: 0.25rem;
+  margin-right: 0;
 `
 
 const SportsIcon = styled(SportsBaseballIcon)`
-  margin-right: 0.25rem;
+  margin-right: 0;
 `
 
 const PillText = styled.span`
@@ -142,9 +140,10 @@ const HeaderButton = styled.button`
   }
 `
 
-
-
-
+const MenuOpenIcon = styled(MenuOpen)`
+  transition: transform 5s ease-in-out;
+  transform: ${({ showSidebar }) => (showSidebar ? 'rotate(0deg)' : 'rotate(180deg)')};
+`
 
 /**
  * Generic header component that will live on every page
@@ -159,11 +158,14 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 
 	return (
 		<Wrapper>
-			{!showSidebar && <SidebarButton onClick={toggleSidebar}>
-				<span>
-					<WestIcon/>
-				</span>
-			</SidebarButton>
+			{!showSidebar && <SidebarContainer>
+				<SidebarButton onClick={toggleSidebar}>
+					<span>
+						<MenuOpenIcon showSidebar={showSidebar}/>
+					</span>
+				</SidebarButton>
+			</SidebarContainer>
+        
 			}
 			{showSidebar && 
         <SidebarContainer>
@@ -183,7 +185,7 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 
         	<SidebarButton onClick={toggleSidebar}>
         		<span>
-        			<WestIcon/>
+        			<MenuOpenIcon showSidebar={showSidebar}/>
         		</span>
         	</SidebarButton>
 			  </SidebarContainer>
