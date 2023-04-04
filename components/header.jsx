@@ -11,11 +11,9 @@ const Wrapper = styled.nav`
   display: flex;
   width: 100%;
   background-color:  ${({theme}) => theme.secondary};
-  padding: 15px 35px;
-  padding-left: 0px;
+  padding: 15px 0px;
   position: fixed;
   z-index: 68;
-  padding-left: 0;
 `
 const Title = styled.h1`
   flex: 10;
@@ -30,6 +28,7 @@ const NavActions = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   gap: 30px;
+  padding-right: 15px;
 `
 
 const SidebarContainer = styled.div`
@@ -112,12 +111,37 @@ const SidebarButton = styled.button`
   }
 `
 
+const HeaderButton = styled.button`
+  background-color:  ${({theme}) => theme.accent};
+  color: ${({theme}) => theme.primary};
+  font-size: 16px;
+  border: 2px solid ;
+  cursor: pointer;
+  min-width: 90px;
+  width: max-content;
+ 
+  outline: 0;
+  appearance: none;
+  padding: 0px 12px;
+  border: 0px solid transparent;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 400;
+  height: 36px;
+  transition: all 150ms ease-out 0s;
+  
+  &:hover {
+    
+      color: ${({theme}) => theme.accent};
+      background-color: ${({theme}) => theme.secondary};
+      box-shadow: ${({theme}) => theme.secondary} 0px 2px 3px, ${({theme}) => theme.accent} 0px 0px 0px 3px;
+  }
+`
+
 const MenuOpenIcon = styled(MenuOpen)`
   transition: transform 5s ease-in-out;
   transform: ${({ showSidebar }) => (showSidebar ? 'rotate(0deg)' : 'rotate(180deg)')};
 `
-
-
 
 /**
  * Generic header component that will live on every page
@@ -169,11 +193,11 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 				<Link href='/'>{title}</Link>
 			</Title>
 			<NavActions>
-				{!userData.currentUser && <button onClick={() => signUpCallback()}>Sign Up</button>}
-				{!userData.currentUser && <button onClick={() => loginCallback()}>Log In</button>}
-              
-              
-				{(userData.currentUser && userData.isAdmin) && <LinkButton path={'/admin'} title='Admin' />}
+				{!userData.currentUser && <HeaderButton onClick={() => signUpCallback()}>Sign Up</HeaderButton>}
+				{!userData.currentUser && <HeaderButton onClick={() => loginCallback()}>Log In</HeaderButton>}
+				{(userData.currentUser && userData.isAdmin) && <HeaderButton>
+					<LinkButton path={'/admin'} title='Admin' />
+				</HeaderButton>}
 				{userData.currentUser && <ProfileDropdown uid={userData.currentUser.uid} logoutCallback={logoutCallback} themeCallback={themeCallback} />}
 				
 			</NavActions>

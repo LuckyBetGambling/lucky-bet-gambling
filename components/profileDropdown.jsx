@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import LinkButton from './linkButton'
+import { tabNames } from '../pages/user/[userId]'
 
 const DropdownBtn = styled.div`
     background-color:  ${({theme}) => theme.accent};
@@ -11,20 +12,23 @@ const DropdownBtn = styled.div`
     box-sizing: border-box;
 
     align-items: center;
-    border-radius: 8px;
+    border-radius: 4px;
     display: flex;
-    height: 48px;
     justify-content: center;
-    line-height: 24px;
-    max-width: 100%;
+    max-width: 95px;
     padding: 0 25px;
+    
+    transition: all 1s ease-out;
+    
+    height: 36px;
     position: relative;
 
     &:hover {
         box-shadow: inset 0 0 0 10em rgba(255, 255, 255, 0.1);
         outline: 0;
-        background-color:  ${({theme}) => theme.primary};
         color: ${({theme}) => theme.accent};
+        background-color: ${({theme}) => theme.secondary};
+        box-shadow: ${({theme}) => theme.secondary} 0px 2px 3px, ${({theme}) => theme.primary} 0px 0px 0px 3px;
     }
 
     &:hover > div {
@@ -36,8 +40,8 @@ const DropdownBtn = styled.div`
 `
 
 const DropdownContent = styled.div`
-    background-color: #fff;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    background-color: ${({theme}) => theme.secondary};
+    box-shadow: ${({theme}) => theme.secondary} 0px 2px 3px, ${({theme}) => theme.primary} 0px 0px 0px 3px;
     top: 40px;
     opacity: 0;
     transition: ease-out 500ms;
@@ -45,8 +49,36 @@ const DropdownContent = styled.div`
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 98px;
+    max-width: 98px;
     border-radius: 8px;
+    border: 2px solid ${({theme}) => theme.accent};
+    color: ${({theme}) => theme.accent};
+`
+
+
+const DropdownButton = styled.button`
+    color: ${({theme}) => theme.accent};
+    background-color: transparent;
+    font-size: 1em;
+    border: 2px solid ;
+    cursor: pointer;
+    min-width: 90px;
+    
+    outline: 0;
+    appearance: none;
+    padding: 0px 12px;
+    border: 0px solid transparent;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 400;
+    height: 36px;
+    transition: all 150ms ease-out 0s;
+    
+    &:hover {
+        color: ${({theme}) => theme.accent};
+        background-color: ${({theme}) => theme.secondary};
+        box-shadow: ${({theme}) => theme.secondary} 0px 2px 3px, ${({theme}) => theme.accent} 0px 0px 0px 3px;
+    }
 `
 
 
@@ -57,15 +89,15 @@ export default function ProfileDropdown({uid, themeCallback, logoutCallback}){
 		<DropdownBtn>
             Profile
 			<DropdownContent>
-				
-				<LinkButton path={`/user/${uid}?tab=Profile`} title='Profile' />
-				<LinkButton path={`/user/${uid}?tab=Wallet`} title='Wallet' />
-				<LinkButton path={`/user/${uid}?tab=Statistics`} title='Statistics' />
-				<LinkButton path={`/user/${uid}?tab=Transactions`} title='Transactions' />
-				<LinkButton path={`/user/${uid}?tab=Settings`} title='Settings' />
-				<button onClick={() => logoutCallback()}>Log Out</button>
-				<button onClick={() => themeCallback()}>Theme</button>
-
+				{tabNames.map(
+					(tab) => {
+						return <DropdownButton key={tab}>
+							<LinkButton path={`/user/${uid}?tab=${tab}`} title={tab} />
+						</DropdownButton>
+					}
+				)}
+				<DropdownButton onClick={() => logoutCallback()}>Log Out</DropdownButton>
+				<DropdownButton onClick={() => themeCallback()}>Theme</DropdownButton>
 			</DropdownContent>
 		</DropdownBtn>
 	)
