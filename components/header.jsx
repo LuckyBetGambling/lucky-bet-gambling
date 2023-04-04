@@ -159,7 +159,7 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 			{!showSidebar && <SidebarContainer>
 				<SidebarButton onClick={toggleSidebar}>
 					<span>
-						<MenuOpenIcon showSidebar={showSidebar}/>
+						<MenuOpenIcon/>
 					</span>
 				</SidebarButton>
 			</SidebarContainer>
@@ -183,7 +183,7 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 
         	<SidebarButton onClick={toggleSidebar}>
         		<span>
-        			<MenuOpenIcon showSidebar={showSidebar}/>
+        			<MenuOpenIcon/>
         		</span>
         	</SidebarButton>
 			  </SidebarContainer>
