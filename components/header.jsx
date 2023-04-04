@@ -5,7 +5,7 @@ import Link from 'next/link'
 import ProfileDropdown from './profileDropdown'
 import CasinoRoundedIcon from '@mui/icons-material/CasinoRounded'
 import SportsBaseballIcon from '@mui/icons-material/SportsBaseball'
-import MenuOpen from '@mui/icons-material/MenuOpen'
+import MenuOpenIcon from '@mui/icons-material/MenuOpen'
 
 const Wrapper = styled.nav`
   display: flex;
@@ -92,9 +92,7 @@ const SidebarButton = styled.button`
     background-color: ${({theme}) => theme.accent};
     color: ${({theme}) => theme.primary};
 
-    svg{
-      color: ${({theme}) => theme.primary};
-    }
+    
   }
   span {
     display: flex;
@@ -107,6 +105,7 @@ const SidebarButton = styled.button`
     svg {
       font-size: 20px;
       color: ${({theme}) => theme.accent};
+      transform: ${({ showSidebar }) => (showSidebar ? 'rotate(0deg)' : 'rotate(180deg)')};
     }
   }
 `
@@ -138,10 +137,6 @@ const HeaderButton = styled.button`
   }
 `
 
-const MenuOpenIcon = styled(MenuOpen)`
-  transition: transform 5s ease-in-out;
-  transform: ${({ showSidebar }) => (showSidebar ? 'rotate(0deg)' : 'rotate(180deg)')};
-`
 
 /**
  * Generic header component that will live on every page
@@ -158,8 +153,8 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 		<Wrapper>
 			{!showSidebar && <SidebarContainer>
 				<SidebarButton onClick={toggleSidebar}>
-					<span>
-						<MenuOpenIcon/>
+					<span showSidebar={showSidebar}>
+						<MenuOpenIcon showSidebar={showSidebar}/>
 					</span>
 				</SidebarButton>
 			</SidebarContainer>
@@ -182,8 +177,8 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
         	</PillLink>
 
         	<SidebarButton onClick={toggleSidebar}>
-        		<span>
-        			<MenuOpenIcon/>
+        		<span showSidebar={showSidebar}>
+        			<MenuOpenIcon showSidebar={showSidebar} />
         		</span>
         	</SidebarButton>
 			  </SidebarContainer>
