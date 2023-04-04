@@ -23,6 +23,8 @@ const DropdownBtn = styled.div`
     &:hover {
         box-shadow: inset 0 0 0 10em rgba(255, 255, 255, 0.1);
         outline: 0;
+        background-color:  ${({theme}) => theme.primary};
+        color: ${({theme}) => theme.accent};
     }
 
     &:hover > div {
