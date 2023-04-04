@@ -18,7 +18,9 @@ const DropdownBtn = styled.div`
     max-width: 95px;
     padding: 0 25px;
     
-  height: 36px;
+    transition: all 1s ease-out;
+    
+    height: 36px;
     position: relative;
 
     &:hover {
@@ -68,7 +70,6 @@ const DropdownButton = styled.button`
     border: 0px solid transparent;
     border-radius: 4px;
     text-decoration: none;
-    box-shadow: rgb(19 170 82 / 40%) 0px 2px 3px;
     font-weight: 400;
     height: 36px;
     transition: all 150ms ease-out 0s;

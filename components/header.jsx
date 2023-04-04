@@ -117,6 +117,7 @@ const SidebarButton = styled.button`
 
 const HeaderButton = styled.button`
   background-color:  ${({theme}) => theme.accent};
+  color: ${({theme}) => theme.primary};
   font-size: 16px;
   border: 2px solid ;
   cursor: pointer;
@@ -129,7 +130,6 @@ const HeaderButton = styled.button`
   border: 0px solid transparent;
   border-radius: 4px;
   text-decoration: none;
-  box-shadow: rgb(19 170 82 / 40%) 0px 2px 3px;
   font-weight: 400;
   height: 36px;
   transition: all 150ms ease-out 0s;
