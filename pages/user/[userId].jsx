@@ -61,6 +61,13 @@ const Settings = styled.div`
   height: 100%;
 `
 
+export const tabNames =[
+	'Profile',
+	'Wallet',
+	'Statistics',
+	'Settings'
+]
+
 const Profile = (props) => {
 
 	const router = useRouter()
@@ -78,10 +85,6 @@ const Profile = (props) => {
 		{
 			name: 'Statistics',
 			content: <Statistics />
-		},
-		{
-			name: 'Transactions',
-			content: <Transactions />
 		},
 		{
 			name: 'Settings',
