@@ -12,10 +12,8 @@ const Wrapper = styled.nav`
   width: 100%;
   background-color:  ${({theme}) => theme.secondary};
   padding: 15px 0px;
-  padding-left: 0px;
   position: fixed;
   z-index: 68;
-  padding-left: 0;
 `
 const Title = styled.h1`
   flex: 10;
