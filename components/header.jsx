@@ -39,32 +39,79 @@ const SidebarContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   flex: 1;
-  border: 1px solid blue;
   width: 200px;
 `
 
-const IconContainer = styled.span`
+
+// new CSS for casino and sports buttons
+
+const PillContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 5px;
+  padding: 0.5rem;
+  border-radius: 1rem;
   font-size: 1.2rem;
-  color: ${({theme}) => theme.text};
-  text-decoration: none;
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`
-
-
-const SidebarButton = styled.div`
-  border: none;
-  font-size: 2rem;
-  background-color: ${({theme}) => theme.secondary};
   color: ${({theme}) => theme.accent};
   
   &:hover {
     cursor: pointer;
+    transition: background-color 0.4s ease-in-out;
+    background-color: ${({theme}) => theme.accent};
+    color: ${({theme}) => theme.primary};
+  }
+`
+const PillLink = styled(Link)`
+  text-decoration: none;
+`
+
+
+const CasinoIcon = styled(CasinoRoundedIcon)`
+  margin-right: 0.25rem;
+`
+
+const SportsIcon = styled(SportsBaseballIcon)`
+  margin-right: 0.25rem;
+`
+
+const PillText = styled.span`
+  font-size: 1rem;
+`
+
+
+const SidebarButton = styled.button`
+  display: flex;
+  border-radius: 20px;
+  padding: 5px 10px;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: ${({theme}) => theme.secondary};
+  color: ${({theme}) => theme.accent};
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: ${({theme}) => theme.accent};
+    color: ${({theme}) => theme.primary};
+
+    svg{
+      color: ${({theme}) => theme.primary};
+    }
+  }
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+    svg {
+      font-size: 20px;
+      color: ${({theme}) => theme.accent};
+    }
   }
 `
 
@@ -97,6 +144,8 @@ const HeaderButton = styled.button`
 
 
 
+
+
 /**
  * Generic header component that will live on every page
  * @param {string} title - title for header
@@ -118,18 +167,20 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 			}
 			{showSidebar && 
         <SidebarContainer>
-        	<Link href='/casino'>
-        		<IconContainer>
-        			<CasinoRoundedIcon/>
-        			<span>Casino</span>
-        		</IconContainer>
-        	</Link>
-        	<Link href='/sports'>
-        		<IconContainer>
-        			<SportsBaseballIcon/>
-        			<span>Sports</span>
-        		</IconContainer>
-        	</Link>
+        	<PillLink href='/casino'>
+        		<PillContainer>
+        			<CasinoIcon />
+        			<PillText>Casino</PillText>
+        		</PillContainer>
+        	</PillLink>
+
+        	<PillLink href='/sports'>
+        		<PillContainer>
+        			<SportsIcon />
+        			<PillText>Sports</PillText>
+        		</PillContainer>
+        	</PillLink>
+
         	<SidebarButton onClick={toggleSidebar}>
         		<span>
         			<WestIcon/>
