@@ -5,7 +5,7 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
 
 const SidebarContainer = styled.div`
     position: fixed;
-    top: 4.85rem;
+    top: 4.2rem;
     left: 0;
     bottom: 40px;
     right: 200px;
