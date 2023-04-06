@@ -7,8 +7,9 @@ const Wrapper = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: ${({theme}) => theme.primary};
   background-color:  ${({theme}) => theme.secondary};
-  border-top: 1px solid ${({theme}) => theme.primary};
+  box-shadow: 0 -3px 10px 3px rgba(0,0,0,0.5);
 `
 
 /** Generic footer that lives on every page

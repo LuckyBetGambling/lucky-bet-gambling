@@ -87,7 +87,7 @@ export default function App({ Component, pageProps }) {
 		<ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
 			<GlobalStyles />
 			<Header 
-				title='Lucky Bet' userData={user} 
+				title='LUCKY BET' userData={user} 
 				signUpCallback={() => setShowSignUpModal(true)} 
 				loginCallback={() => setShowLoginModal(true)}
 				logoutCallback={() => setShowLogoutModal(true)}

@@ -15,12 +15,17 @@ const Wrapper = styled.nav`
   padding: 15px 0px;
   position: fixed;
   z-index: 68;
+  box-shadow: 0 -6px 15px 10px rgba(0,0,0,0.5);
 `
 const Title = styled.h1`
   flex: 10;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #FFBF00;
+  text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+  font-size: 30px;
+  letter-spacing: 2.5px;
 `
 
 const NavActions = styled.div`
@@ -51,7 +56,6 @@ const SidebarButton = styled.button`
   width: 30px;
   height: 30px;
   background-color: ${({theme}) => theme.secondary};
-  color: ${({theme}) => theme.accent};
   border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -74,8 +78,7 @@ const SidebarButton = styled.button`
 
     svg {
       font-size: 20px;
-      color: ${({theme}) => theme.accent};
-      
+      color: ${({theme}) => theme.primary};
     }
   }
 `
@@ -102,7 +105,7 @@ const HeaderButton = styled.button`
   text-decoration: none;
   font-weight: 400;
   height: 36px;
-  transition: all 150ms ease-out 0s;
+  transition: all 0.2s ease-out;
   
   &:hover {
     

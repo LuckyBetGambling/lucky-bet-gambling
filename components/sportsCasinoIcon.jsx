@@ -11,7 +11,7 @@ const PillContainer = styled.div`
   padding: 0.5rem;
   border-radius: 1rem;
   font-size: 1.2rem;
-  color: ${({theme}) => theme.accent};
+  color: ${({theme}) => theme.primary};
   
   &:hover {
     cursor: pointer;

@@ -9,6 +9,7 @@ const SidebarContainer = styled.div`
     left: 0;
     bottom: 40px;
     right: 200px;
+    color: ${({theme}) => theme.primary};
     background-color:  ${({theme}) => theme.secondary};
     max-width: 190px;
     min-height: 100%;
@@ -35,7 +36,6 @@ const SidebarRow = styled.li`
     align-items: center;
 
     &:hover {
-        color: ${({theme}) => theme.secondary};
         background-color: ${({theme}) => theme.accent};
         cursor: pointer;
         transition: background-color 0.3s ease-in-out;

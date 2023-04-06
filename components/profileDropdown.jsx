@@ -18,17 +18,16 @@ const DropdownBtn = styled.div`
     max-width: 95px;
     padding: 0 25px;
     
-    transition: all 1s ease-out;
+    transition: all 0.2s ease-out;
     
     height: 36px;
     position: relative;
 
     &:hover {
-        box-shadow: inset 0 0 0 10em rgba(255, 255, 255, 0.1);
         outline: 0;
         color: ${({theme}) => theme.accent};
-        background-color: ${({theme}) => theme.secondary};
-        box-shadow: ${({theme}) => theme.secondary} 0px 2px 3px, ${({theme}) => theme.primary} 0px 0px 0px 3px;
+        background-color: ${({theme}) => theme.primary};
+        box-shadow:  ${({theme}) => theme.primary} 0px 2px 3px, ${({theme}) => theme.primary} 0px 0px 0px 3px;
     }
 
     &:hover > div {
@@ -40,8 +39,8 @@ const DropdownBtn = styled.div`
 `
 
 const DropdownContent = styled.div`
-    background-color: ${({theme}) => theme.secondary};
-    box-shadow: ${({theme}) => theme.secondary} 0px 2px 3px, ${({theme}) => theme.primary} 0px 0px 0px 3px;
+    background-color: ${({theme}) => theme.primary};
+    box-shadow:  ${({theme}) => theme.primary} 0px 2px 3px, ${({theme}) => theme.primary} 0px 0px 0px 3px;
     top: 40px;
     opacity: 0;
     transition: ease-out 500ms;
@@ -67,7 +66,7 @@ const DropdownButton = styled.button`
     outline: 0;
     appearance: none;
     padding: 0px 12px;
-    border: 0px solid transparent;
+    border: 0px solid ${({theme}) => theme.accent};
     border-radius: 4px;
     text-decoration: none;
     font-weight: 400;
@@ -75,9 +74,9 @@ const DropdownButton = styled.button`
     transition: all 150ms ease-out 0s;
     
     &:hover {
-        color: ${({theme}) => theme.accent};
+        color: ${({theme}) => theme.primary};
         background-color: ${({theme}) => theme.secondary};
-        box-shadow: ${({theme}) => theme.secondary} 0px 2px 3px, ${({theme}) => theme.accent} 0px 0px 0px 3px;
+        box-shadow:  ${({theme}) => theme.primary} 0px 2px 3px, ${({theme}) => theme.accent} 0px 0px 0px 3px;
     }
 `
 
