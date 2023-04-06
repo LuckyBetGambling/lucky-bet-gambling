@@ -3,14 +3,16 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import GameCard from './gameCard'
 
-
-const Wrapper = styled.div`
-    padding: 20px;
-    background-color: ${({theme}) => theme.secondary};
-`
-
 const Title = styled.h3`
     font-weight: 800;
+`
+
+const Card = styled.div`
+    flex: 0 0 auto;
+    border: 2px solid red;
+    width: 150px;
+    height: 175px;
+    background: white;
 `
 
 const SideScrollingContainer = styled.div`
@@ -25,8 +27,10 @@ const SideScrollingContainer = styled.div`
     margin: 20px;
 `
 
-
-
+const Wrapper = styled.div`
+    padding: 20px;
+    background-color: ${({theme}) => theme.secondary};
+`
 
 /**
  * Side Scrolling container for games
@@ -34,18 +38,20 @@ const SideScrollingContainer = styled.div`
  * @param {string} title - title of this section of games
  * @returns 
  */
-const SideScroller = ({ items, title, content }) => {
+const SideScroller = ({ items, title }) => {
 
 	return (
 		<Wrapper>
 			<Title>
-				<Link href={`/casino/group/${title}`}>{title}</Link>
+				<Link href={`/casino/group/${title}`}>
+					{title}
+				</Link>
 			</Title>
 			<SideScrollingContainer>
 				{items.map(
-					(item) => {
+					(item, index) => {
 						return (
-							<GameCard key={item.id} id={item.id} content={item.content} />
+							<GameCard key={index} item={item}/>
 						)
 					} 
 				)}
@@ -56,3 +62,4 @@ const SideScroller = ({ items, title, content }) => {
 }
 
 export default SideScroller
+
