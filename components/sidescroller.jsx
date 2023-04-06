@@ -48,9 +48,9 @@ const SideScroller = ({ items, title }) => {
 			</Title>
 			<SideScrollingContainer>
 				{items.map(
-					(item) => {
-						return (<Link key={item.id} href={`/casino/games/${item.id}`}>
-							<Card>{item.content}</Card>
+					(item, index) => {
+						return (<Link key={index} href={`/casino/games/${item.identifier2}`}>
+							<Card>{item.title}</Card>
 						</Link>)
 					} 
 				)}
