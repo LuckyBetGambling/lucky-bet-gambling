@@ -13,11 +13,21 @@ const Page = styled.div`
 const Hero = styled.section`
   width: 100%;
   height: 600px;
-  background-color: blue;
+  background-color: blue;    
+  background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjE0M2MzNjM5NjFlZDQ2NWM0YTM4ZGE2ZTM4MGMzMGY2YzQwZmUyNCZjdD1n/VGoZVlR9naOZCiRLSy/giphy.gif);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #FFBF00;
+  text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
+  font-size: 90px;
+  letter-spacing: 2.5px;
+  font-weight: 900;
+  box-shadow: 0 -6px 15px 7.5px rgba(0,0,0,0.5);
 `
 
 const Body = styled.section`
@@ -32,7 +42,6 @@ const Body = styled.section`
 const CardContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
-	
 `
 
 export default function Home() {
@@ -47,7 +56,7 @@ export default function Home() {
 			</Head>
 
 			<Hero>
-        		Hero Banner
+        		LUCKY BET
 			</Hero>
 
 			
@@ -57,7 +66,7 @@ export default function Home() {
 				<CardContainer>
 					<HomePageCard
 						href='casino/'
-						title='Casino'
+						title='CASINO'
 						imageAlt='casino'
 						imageSrc='/images/casino.avif'
 						summary='Leading Online Crypto Casino'
@@ -67,7 +76,7 @@ export default function Home() {
 
 					<HomePageCard
 						href='sports/'
-						title='Sports'
+						title='SPORTS'
 						imageAlt='sports'
 						imageSrc='/images/sports.avif'
 						summary='Best Crypto Sports Betting Online'

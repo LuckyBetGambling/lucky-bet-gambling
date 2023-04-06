@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 
 const CardContainer = styled.div`
+  background-color: ${({theme}) => theme.secondary};
   width: 100%;
   max-width: 400px;
   border-radius: 8px;
@@ -25,9 +26,12 @@ const CardImage = styled(Image)`
 `
 
 const CardTitle = styled.h2`
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   margin: 0.5rem;
+  text-align: center; 
+  letter-spacing: 2.5px;
+  text-shadow: -1px 1px 0 #FFBF00, 1px 1px 0 #FFBF00, 1px -1px 0 #FFBF00, -1px -1px 0 #FFBF00;
 `
 
 const CardContent = styled.div`
@@ -37,13 +41,14 @@ const CardContent = styled.div`
 const CardSummary = styled.h5`
   font-size: 16px;
   margin: 0;
-  color: #777777;
+  color: #fff;
 `
 
 const CardDescription = styled.p`
   font-size: 14px;
   margin: 16px 0;
   line-height: 1.4;
+  color: ${({theme}) => theme.primary};
 `
 
 const CardButton = styled.button`
@@ -57,6 +62,10 @@ const CardButton = styled.button`
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
 `
 
 
