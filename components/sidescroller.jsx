@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
+import GameCard from './gameCard'
 
 const Title = styled.h3`
     font-weight: 800;
@@ -49,9 +50,9 @@ const SideScroller = ({ items, title }) => {
 			<SideScrollingContainer>
 				{items.map(
 					(item, index) => {
-						return (<Link key={index} href={`/casino/games/${item.identifier2}`}>
-							<Card>{item.title}</Card>
-						</Link>)
+						return (
+							<GameCard key={index} item={item}/>
+						)
 					} 
 				)}
 			</SideScrollingContainer>
@@ -61,3 +62,4 @@ const SideScroller = ({ items, title }) => {
 }
 
 export default SideScroller
+
