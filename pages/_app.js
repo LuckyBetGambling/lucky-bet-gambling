@@ -95,7 +95,7 @@ export default function App({ Component, pageProps }) {
 				showSidebar={showSidebar}
 				toggleSidebar={toggleSidebar}
 			/>
-			{showSidebar && <Sidebar showSidebar={showSidebar} />}
+			{showSidebar && <Sidebar showSidebar={showSidebar}/>}
 			<Component {...pageProps} />
 			<Footer>GamblingCompanyLLC - est. 2023</Footer>
 

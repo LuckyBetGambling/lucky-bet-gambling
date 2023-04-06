@@ -5,7 +5,8 @@ import Link from 'next/link'
 import ProfileDropdown from './profileDropdown'
 import CasinoRoundedIcon from '@mui/icons-material/CasinoRounded'
 import SportsBaseballIcon from '@mui/icons-material/SportsBaseball'
-import MenuOpen from '@mui/icons-material/MenuOpen'
+import MenuOpenIcon from '@mui/icons-material/MenuOpen'
+import SportsCasinoIcon from './sportsCasinoIcon'
 
 const Wrapper = styled.nav`
   display: flex;
@@ -46,39 +47,6 @@ const SidebarContainer = styled.div`
   margin-left: 0.2rem;
 `
 
-// new CSS for casino and sports buttons
-const PillContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  font-size: 1.2rem;
-  color: ${({theme}) => theme.primary};
-  
-  &:hover {
-    cursor: pointer;
-    transition: background-color 0.4s ease-in-out;
-    background-color: ${({theme}) => theme.accent};
-    color: ${({theme}) => theme.primary};
-  }
-`
-const PillLink = styled(Link)`
-  text-decoration: none;
-`
-
-const CasinoIcon = styled(CasinoRoundedIcon)`
-  margin-right: 0;
-`
-
-const SportsIcon = styled(SportsBaseballIcon)`
-  margin-right: 0;
-`
-
-const PillText = styled.span`
-  font-size: 1rem;
-`
-
-
 const SidebarButton = styled.button`
   display: flex;
   border-radius: 20px;
@@ -115,6 +83,11 @@ const SidebarButton = styled.button`
   }
 `
 
+const MenuOpen = styled(MenuOpenIcon)`
+  transition: transform 1s ease-in-out;
+  transform: ${({ rotate  }) => (rotate === 'true' ? 'rotate(0deg)' : 'rotate(180deg)')};
+`
+
 const HeaderButton = styled.button`
   background-color:  ${({theme}) => theme.accent};
   color: ${({theme}) => theme.primary};
@@ -142,10 +115,8 @@ const HeaderButton = styled.button`
   }
 `
 
-const MenuOpenIcon = styled(MenuOpen)`
-  transition: transform 5s ease-in-out;
-  transform: ${({ showSidebar }) => (showSidebar ? 'rotate(0deg)' : 'rotate(180deg)')};
-`
+
+
 
 /**
  * Generic header component that will live on every page
@@ -161,9 +132,9 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 	return (
 		<Wrapper>
 			{!showSidebar && <SidebarContainer>
-				<SidebarButton onClick={toggleSidebar}>
+				<SidebarButton onClick={toggleSidebar} showSidebar={showSidebar}>
 					<span>
-						<MenuOpenIcon showSidebar={showSidebar}/>
+						<MenuOpen rotate={showSidebar.toString()}/>
 					</span>
 				</SidebarButton>
 			</SidebarContainer>
@@ -171,23 +142,20 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 			}
 			{showSidebar && 
         <SidebarContainer>
-        	<PillLink href='/casino'>
-        		<PillContainer>
-        			<CasinoIcon />
-        			<PillText>Casino</PillText>
-        		</PillContainer>
-        	</PillLink>
 
-        	<PillLink href='/sports'>
-        		<PillContainer>
-        			<SportsIcon />
-        			<PillText>Sports</PillText>
-        		</PillContainer>
-        	</PillLink>
+        	<SportsCasinoIcon
+        		href='/casino'
+        		title='Casino'
+        	/>
 
-        	<SidebarButton onClick={toggleSidebar}>
+        	<SportsCasinoIcon
+        		href='/sports'
+        		title='Sports'
+        	/>
+        	
+        	<SidebarButton onClick={toggleSidebar} showSidebar={showSidebar}>
         		<span>
-        			<MenuOpenIcon showSidebar={showSidebar}/>
+        			<MenuOpen rotate={showSidebar.toString()} />
         		</span>
         	</SidebarButton>
 			  </SidebarContainer>
