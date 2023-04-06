@@ -23,7 +23,7 @@ const Hero = styled.section`
   align-items: center;
   justify-content: center;
   color: #FFBF00;
-  text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
+  text-shadow: -1px 1px 0 #f00, 1px 1px 0 #f00, 1px -1px 0 #f00, -1px -1px 0 #f00;
   font-size: 90px;
   letter-spacing: 2.5px;
   font-weight: 900;

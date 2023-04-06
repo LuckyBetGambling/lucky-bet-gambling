@@ -1,5 +1,3 @@
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings'
-import SettingsIcon from '@mui/icons-material/Settings'
 import ShareIcon from '@mui/icons-material/Share'
 import ContactSupportIcon from '@mui/icons-material/ContactSupport'
 import CasinoRoundedIcon from '@mui/icons-material/CasinoRounded'
