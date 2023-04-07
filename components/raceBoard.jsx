@@ -1,28 +1,36 @@
 import styled from 'styled-components'
 
-const RaceBoardWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  margin: 2rem;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  width: 800px;
-  overflow: hidden;
+
+const Wrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+    padding: 20px;
+    background-color: ${({theme}) => theme.secondary};
+	border-radius: 15px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+`
+const Title = styled.h3`
+    font-weight: 900;
+	text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+	text-shadow: -1px 1px 0 #FFBF00, 1px 1px 0 #FFBF00, 1px -1px 0 #FFBF00, -1px -1px 0 #FFBF00;
+	letter-spacing: 5px;
 `
 
+
 const RaceBoardTable = styled.table`
-  width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  width: 800px;
 `
 
 const RaceBoardHead = styled.thead`
-  background-color: #f8f8f8;
-  text-transform: uppercase;
+	background-color: ${({theme}) => theme.secondary};
+  	text-transform: uppercase;
 `
 
 const RaceBoardHeadCell = styled.th`
@@ -31,20 +39,23 @@ const RaceBoardHeadCell = styled.th`
   font-weight: bold;
 `
 
-const RaceBoardBody = styled.tbody``
+const RaceBoardBody = styled.tbody`
+	
+`
 
 const RaceBoardBodyRow = styled.tr``
 
 const RaceBoardBodyCell = styled.td`
   padding: 12px;
   text-align: center;
+  color: #FFF;
 `
 
 export default function RaceBoard(){
 	return (
-		<RaceBoardWrapper>
+		<Wrapper>
+			<Title>Race Leaderboard</Title>
 			<RaceBoardTable>
-
 				<RaceBoardHead>
 					<RaceBoardBodyRow>
 						<RaceBoardHeadCell>Rank</RaceBoardHeadCell>
@@ -93,6 +104,6 @@ export default function RaceBoard(){
           
 				</RaceBoardBody>
 			</RaceBoardTable>
-		</RaceBoardWrapper>
+		</Wrapper>
 	)
 };

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 
 
 
@@ -12,9 +13,14 @@ const CardWrapper = styled(Link)`
     align-items: center;
 `
 
+const PlayArrow = styled(PlayArrowIcon)`
+    width: 4rem;
+    height: 4rem;
+`
+
 const Card = styled.div`
     flex: 0 0 auto;
-    width: 200px;
+    width: 150px;
     height: 100%;
     background: linear-gradient(43deg, rgb(255, 36, 186), rgb(0, 209, 185));
     color: white;
@@ -77,7 +83,7 @@ export default function GameCard({item}){
 				{item.title}
 				<HoverContent className="hover-content">
 					<HoverTitle>{item.title}</HoverTitle>
-					<FontAwesomeIcon icon={faArrowRight} size="2x" />
+					<PlayArrow/>
 					<HoverProvider>{item.provider}</HoverProvider>
 				</HoverContent>
                 
