@@ -14,46 +14,20 @@ const Page = styled.div`
   align-items: center;
 `
 
-const ShowcaseItem = styled.div`
-  height: 300px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  margin: 20px
-`
-
-const GamePicture = styled.div`
-  height: 250px;
-  width: 50%;
-  background-color: yellow;
-  margin: 20px;
-  transform: translateX(15%);
-`
-
-const GameDescription = styled.div`
-  height: 270px;
-  transform: translateX(-15%);
-  width: 50%;
-  background-color: blue;
-  border-radius: 15px;
-  z-index: 1;
-  padding: 20px;
-  margin: 20px;
+const Title = styled.h1`
+    font-weight: 900;
+	text-align: center;
+    padding-top: 20px;
+    font-size: 30px;
+    text-transform: uppercase;
+	text-shadow: -1px 1px 0 #FFBF00, 1px 1px 0 #FFBF00, 1px -1px 0 #FFBF00, -1px -1px 0 #FFBF00;
 `
 
 const Showcase = styled(Carouse1)``
 
 const showcaseGames = [
-	<ShowcaseItem key={1}>
-		<GamePicture></GamePicture>
-		<GameDescription>Lorem Ipsum</GameDescription>
-	</ShowcaseItem>, 
-	<ShowcaseItem key={2}>
-		<GamePicture></GamePicture>
-		<GameDescription style={{backgroundColor: 'green'}}>Lorem Ipsum</GameDescription>
-	</ShowcaseItem>, 
-
+	sampleGames[0],
+	sampleGames[1]
 ]
 
 export default function Casino() {
@@ -68,9 +42,9 @@ export default function Casino() {
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
 
-				<h1>Casino Page</h1>
-				<Showcase carouselItems={showcaseGames} title={'Showcase Game'} styles={{
-					width: '100%', minWidth: '600px'
+				<Title>Featured Games</Title>
+				<Showcase carouselItems={showcaseGames} styles={{
+					width: '600px'
 				}}/>
 
 

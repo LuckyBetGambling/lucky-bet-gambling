@@ -7,17 +7,18 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 const CardWrapper = styled(Link)`
     text-decoration: none;
-    margin-right: 10px;
+    padding: 20px;
     display: flex;
     align-items: center;
 `
 
 const Card = styled.div`
     flex: 0 0 auto;
-    border: 2px solid red;
-    width: 150px;
-    height: 175px;
-    background: white;
+    width: 200px;
+    height: 100%;
+    background: linear-gradient(43deg, rgb(255, 36, 186), rgb(0, 209, 185));
+    color: white;
+    font-weight: bold;
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -26,22 +27,19 @@ const Card = styled.div`
     overflow: hidden;   
 
     &:hover {
-        transform: scale(1.05);
-      }
+        transform: scale(1.15);
+    }
     
-      &:hover > .hover-content {
+    &:hover > .hover-content {
         opacity: 1;
         visibility: visible;
-      }
+    }
     
 
 `
 const HoverContent = styled.div`
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -68,7 +66,13 @@ const HoverProvider = styled.div`
 export default function GameCard({item}){
 
 	return(
-		<CardWrapper href={`/casino/games/${item.identifier2}`}>
+		<CardWrapper href={{
+			pathname: `/casino/games/${item.identifier2}`,
+			query: {
+				id: item.identifier2,
+				title: item.title,
+			}
+		}}>
 			<Card>
 				{item.title}
 				<HoverContent className="hover-content">

@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import LinkButton from './linkButton'
 import Link from 'next/link'
 import ProfileDropdown from './profileDropdown'
-import CasinoRoundedIcon from '@mui/icons-material/CasinoRounded'
-import SportsBaseballIcon from '@mui/icons-material/SportsBaseball'
 import MenuOpenIcon from '@mui/icons-material/MenuOpen'
 import SportsCasinoIcon from './sportsCasinoIcon'
 
@@ -23,7 +21,7 @@ const Title = styled.h1`
   justify-content: center;
   align-items: center;
   color: #FFBF00;
-  text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+  text-shadow: -1px 1px 0 #f00, 1px 1px 0 #F00, 1px -1px 0 #F00, -1px -1px 0 #F00;
   font-size: 30px;
   letter-spacing: 2.5px;
 `
