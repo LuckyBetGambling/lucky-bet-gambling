@@ -155,16 +155,16 @@ const ProfileSection = ({ user, auth }) => {
 					<Title>Favorite Games</Title>
 					<FavoritesContainer>
 						<Square>
-							<GameCard item={sampleGames[0]} />
+							<GameCard item={sampleGames[0]} shape='wide'/>
 						</Square>
 						<Square>
-							<GameCard item={sampleGames[1]} />
+							<GameCard item={sampleGames[1]} shape='wide'/>
 						</Square>
 						<Square>
-							<GameCard item={sampleGames[2]} />
+							<GameCard item={sampleGames[2]} shape='wide'/>
 						</Square>
 						<Square>
-							<GameCard item={sampleGames[3]} />
+							<GameCard item={sampleGames[3]} shape='wide'/>
 						</Square>
 					</FavoritesContainer>
 				</FavoritesCard>

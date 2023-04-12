@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 
 
@@ -20,7 +18,7 @@ const PlayArrow = styled(PlayArrowIcon)`
 
 const Card = styled.div`
     flex: 0 0 auto;
-    width: 150px;
+    width: ${props => props.shape == 'wide' ? '200px' : '150px'};
     height: 100%;
     background: linear-gradient(43deg, rgb(255, 36, 186), rgb(0, 209, 185));
     color: white;
@@ -69,7 +67,7 @@ const HoverProvider = styled.div`
 
 
 
-export default function GameCard({item}){
+export default function GameCard({item, shape}){
 
 	return(
 		<CardWrapper href={{
@@ -79,7 +77,7 @@ export default function GameCard({item}){
 				title: item.title,
 			}
 		}}>
-			<Card>
+			<Card shape={shape}>
 				{item.title}
 				<HoverContent className="hover-content">
 					<HoverTitle>{item.title}</HoverTitle>
