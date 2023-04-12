@@ -12,6 +12,7 @@ const Title = styled.h3`
     font-size: 30px;
     text-transform: uppercase;
 	text-shadow: -1px 1px 0 #FFBF00, 1px 1px 0 #FFBF00, 1px -1px 0 #FFBF00, -1px -1px 0 #FFBF00;
+	letter-spacing: 5px;
 `
 const SideScrollingContainer = styled.div`
     display: flex;
