@@ -16,6 +16,7 @@ const SidebarContainer = styled.div`
     z-index: 42;
     transform: ${props => props.showSidebar ? 'translateX(0)' : 'translateX(-240px)'}
     transition: transform 3s ease-in-out;
+    box-shadow: 0 -6px 15px 10px rgba(0,0,0,0.5);
 `
 
 

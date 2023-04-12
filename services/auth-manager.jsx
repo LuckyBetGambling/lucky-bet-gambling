@@ -13,7 +13,8 @@ export const registerUser = async (auth, registerEmail, registerPassword ) => {
 					uid: user.user.uid,
 					user: JSON.stringify(user),
 					metadata: user.user.metadata,
-					email: user.user.email
+					email: user.user.email,
+					profilePhoto: user.user.photoURL,
 				}).catch(
 					// Sign up was successful but we were unable to add the user data to the db
 					(e) => console.log(e.message)
@@ -53,4 +54,12 @@ export const loginUser = async (auth, loginEmail, loginPassword) => {
 // function for handling log out
 export const logoutUser = async (auth) => {
 	await signOut(auth)
+}
+
+
+// TODO: handle authentiaction ofthese requests
+export const updateUser = async (user, auth) => {
+	await axios.put(`/api/user/${user.uid}`, {
+		...user
+	})
 }
