@@ -8,14 +8,9 @@ export const TabHead = styled.div`
   background: black;
 `
 export const TabContainer = styled.div`
-  width: 80vw;
-  height: 80vh;
-  webkit-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
-  -moz-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
-  box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
+  box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.51);
 `
 export const TabBody = styled.div`
-  height: 100%;
 `
 export const Tab = styled.div`
   padding: 1em;

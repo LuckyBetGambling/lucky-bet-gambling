@@ -15,76 +15,64 @@ const Page = styled.div`
 `
 
 const ProfileHeader = styled.section`
-  width: 100%;
-  height: 400px;
-  background-color: blue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
+	width: 100%;
+	height: 400px;
+	background-color: blue;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
 `
 
 const ProfilePicture = styled.div`
-  height: 250px;
-  width: 250px;
-  background-color: Lime;
-  border-radius: 250px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 100px;
-  color: red;
+	height: 250px;
+	width: 250px;
+	background-color: Lime;
+	background-image: ${ props => props.profilePhoto ? `url("${props.profilePhoto}")` : 'none'};
+	background-position: center;
+	border-radius: 250px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 100px;
+	color: red;
 `
 
 const TabContainer = styled.div`
-  transform: translateY(-5%);
+	max-width: 750px;
 `
 
 const Wallet = styled.div`
-  background-color: Lime;
-  height: 100%;
-`
-
-const Statistics = styled.div`
-  background-color: orange;
-  height: 100%;
-`
-
-const Transactions = styled.div`
-  background-color: magenta;
-  height: 100%;
+	background-color: Lime;
+	height: 100%;
 `
 
 const Settings = styled.div`
-  background-color: yellow;
-  height: 100%;
+	background-color: yellow;
+	height: 100%;
 `
 
 export const tabNames =[
 	'Profile',
 	'Wallet',
-	'Statistics',
 	'Settings'
 ]
 
-const Profile = (props) => {
-
+// user: database entry for the signed in user
+// auth: auth instance
+const Profile = ({user, auth}) => {
 	const router = useRouter()
-	const { user } = props
+	// Get 'user' from the userDocument
   
 	const tabs = [
 		{
 			name: 'Profile',
-			content: <ProfileSection user={user} />
+			content: <ProfileSection auth={auth} user={user} />
 		},
 		{
 			name: 'Wallet',
 			content: <Wallet />
-		},
-		{
-			name: 'Statistics',
-			content: <Statistics />
 		},
 		{
 			name: 'Settings',
@@ -108,8 +96,8 @@ const Profile = (props) => {
 					</Head>
 
 					<ProfileHeader>
-						<ProfilePicture>
-							{user.providerData ? null : user.email[0].toUpperCase()}
+						<ProfilePicture profilePhoto={user.profilePhoto}>
+							{user.profilePhoto ? null : user.email[0].toUpperCase()}
 						</ProfilePicture>
 					</ProfileHeader>
 

@@ -36,6 +36,7 @@ const AdminHeader = styled.section`
 `
 const TabContainer = styled.div`
   transform: translateY(-5%);
+  width: 80vw;
 `
 
 const ManageTeam = styled.div`
