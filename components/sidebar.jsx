@@ -13,7 +13,7 @@ const SidebarContainer = styled.div`
     background-color:  ${({theme}) => theme.secondary};
     max-width: 190px;
     min-height: 100%;
-    z-index: 1;
+    z-index: 42;
     transform: ${props => props.showSidebar ? 'translateX(0)' : 'translateX(-240px)'}
     transition: transform 3s ease-in-out;
 `
