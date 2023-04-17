@@ -96,7 +96,11 @@ export default function App({ Component, pageProps }) {
 				toggleSidebar={toggleSidebar}
 			/>
 			{showSidebar && <Sidebar showSidebar={showSidebar}/>}
-			<Component auth={auth} {...pageProps} />
+			<Component
+				auth={auth} 
+				{...pageProps} 
+				themeCallback={() => toggleTheme()}
+			/>
 			<Footer>GamblingCompanyLLC - est. 2023</Footer>
 
 			<Modal show={showSignUpModal} onClose={() => { setShowSignUpModal(false) }} title='Sign Up'>
