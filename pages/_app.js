@@ -87,7 +87,8 @@ export default function App({ Component, pageProps }) {
 		<ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
 			<GlobalStyles />
 			<Header 
-				title='LUCKY BET' userData={user} 
+				title='LUCKY BET' 
+				userData={user} 
 				signUpCallback={() => setShowSignUpModal(true)} 
 				loginCallback={() => setShowLoginModal(true)}
 				logoutCallback={() => setShowLogoutModal(true)}
@@ -97,9 +98,9 @@ export default function App({ Component, pageProps }) {
 			/>
 			{showSidebar && <Sidebar showSidebar={showSidebar}/>}
 			<Component
-				auth={auth} 
-				{...pageProps} 
+				auth={auth}  
 				themeCallback={() => toggleTheme()}
+				{...pageProps}
 			/>
 			<Footer>GamblingCompanyLLC - est. 2023</Footer>
 
