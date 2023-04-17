@@ -14,6 +14,7 @@ const Container = styled.div`
 const Container1 = styled.div`
 	display: flex;
 	flex-wrap: wrap;
+    justify-content: center;
 `
 
 const UserCard = styled.div`
@@ -25,7 +26,7 @@ const UserCard = styled.div`
 `
 
 const ThemeCard = styled.div`
-    flex: 2;
+    flex: 1;
     border-radius: 8px;
     margin: 10px;
     padding: 15px;
@@ -41,10 +42,16 @@ const LogoutForm = styled.form`
   flex-direction: column;
 `
 
+const DeleteForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`
+
 const SettingsSection = ({auth, user, themeCallback}) => {
 
 	const [editPassword, setEditPassword] = useState(false)
 	const [editSignOut, setEditSignOut] = useState(false)
+	const [deleteMode, setDeleteMode] = useState(false)
 	// not sure if I should be creating useState variable to store password or get it somewhere else
 	const [password, SetPassword] = useState('')
 
@@ -61,7 +68,7 @@ const SettingsSection = ({auth, user, themeCallback}) => {
 					{editPassword ? 
 						<RegisterForm onSubmit={() => {
 							updateUser(userObj, auth)
-						}} >
+						}}>
 							<label htmlFor='password' placeholder='Password'>Password</label>
 							<input type='password' name='password' onChange={(e) => {SetPassword(e.target.value)}} />
                             
@@ -74,7 +81,7 @@ const SettingsSection = ({auth, user, themeCallback}) => {
 							</div>
 						</>
 					}
-					<button onClick={(e) => {setEditPassword(!editPassword)}}>Go edit Password</button>
+					<button onClick={(e) => {setEditPassword(!editPassword)}}>{editPassword ? 'Back' : 'Go edit Password'}</button>
 
 					{editSignOut ? 
 						<LogoutForm onSubmit={() => {
@@ -90,7 +97,24 @@ const SettingsSection = ({auth, user, themeCallback}) => {
 						</>
 					}
 
-					<button onClick={(e) => {setEditSignOut(!editSignOut)}}>Go to Sign Out</button>
+					<button onClick={(e) => {setEditSignOut(!editSignOut)}}>{editSignOut ? 'Back' : 'Go to Sign Out'}</button>
+
+					{deleteMode ? 
+						<DeleteForm onSubmit={() => {
+							deleteUser(userObj, auth)
+						}}> 
+							<h4>User Logged in: {user.name ? user.name : 'Not Logged in'}</h4>
+							<button>Delete User</button>
+						</DeleteForm> :
+
+						<>
+							<div>
+                            
+							</div>
+						</>
+					}
+
+					<button onClick={(e) => {setDeleteMode(!deleteMode)}}>{deleteMode ? 'Back' : 'Go delete User'}</button>
                     
 
 				</UserCard>
