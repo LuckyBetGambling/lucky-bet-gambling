@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { updateUser, logoutUser, deleteUser } from '../services/auth-manager'
+import { logoutUser, deleteUser, updateUserPassword } from '../services/auth-manager'
 
 const Container = styled.div`
 	background-color: white;
@@ -14,7 +14,6 @@ const Container = styled.div`
 const Container1 = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-    justify-content: center;
 `
 
 const UserCard = styled.div`
@@ -26,7 +25,7 @@ const UserCard = styled.div`
 `
 
 const ThemeCard = styled.div`
-    flex: 1;
+    flex: 2;
     border-radius: 8px;
     margin: 10px;
     padding: 15px;
@@ -48,70 +47,62 @@ const DeleteForm = styled.form`
 `
 
 const SettingsSection = ({auth, user, themeCallback}) => {
-
 	const [editPassword, setEditPassword] = useState(false)
 	const [editSignOut, setEditSignOut] = useState(false)
 	const [deleteMode, setDeleteMode] = useState(false)
 	// not sure if I should be creating useState variable to store password or get it somewhere else
-	const [password, SetPassword] = useState('')
+	const [newPassword, setNewPassword] = useState('')
 
 	const userObj = {
-		...user,
-		password: password
+		...user
 	}
+
+	// apparently I need to find some way to pass in tenantId into here to update my password
+	const handlePasswordChange = async (e) => {
+		e.preventDefault()
+		const success = await updateUserPassword(newPassword)
+		if (success) {
+		  console.log('password successfully updated')
+		} else {
+		  console.log('error')
+		}
+	  }
+	  
 
 	return(
 		<Container>
 			<h2>User Settings</h2>
 			<Container1>
 				<UserCard>
-					{editPassword ? 
-						<RegisterForm onSubmit={() => {
-							updateUser(userObj, auth)
-						}}>
+					{editPassword &&
+						<RegisterForm onSubmit={handlePasswordChange}>
 							<label htmlFor='password' placeholder='Password'>Password</label>
-							<input type='password' name='password' onChange={(e) => {SetPassword(e.target.value)}} />
+							<input type='password' name='password' onChange={(e) => {setNewPassword(e.target.value)}} />
                             
-							<button type='submit'>Confirm Edits</button>
+							<button type='submit'>Update Password</button>
 
-						</RegisterForm> :
-						<>
-							<div>
-                                
-							</div>
-						</>
+						</RegisterForm> 
 					}
 					<button onClick={(e) => {setEditPassword(!editPassword)}}>{editPassword ? 'Back' : 'Go edit Password'}</button>
 
-					{editSignOut ? 
+					{editSignOut && 
 						<LogoutForm onSubmit={() => {
 							logoutUser(auth)
 						}}>
 							<h4>User Logged in: {user.name ? user.name : 'Not Logged in'}</h4>
 							<button>Sign Out</button>
-						</LogoutForm> : 
-						<>
-							<div>
-                            
-							</div>
-						</>
+						</LogoutForm> 
 					}
 
 					<button onClick={(e) => {setEditSignOut(!editSignOut)}}>{editSignOut ? 'Back' : 'Go to Sign Out'}</button>
 
-					{deleteMode ? 
+					{deleteMode &&
 						<DeleteForm onSubmit={() => {
 							deleteUser(userObj, auth)
 						}}> 
 							<h4>User Logged in: {user.name ? user.name : 'Not Logged in'}</h4>
 							<button>Delete User</button>
-						</DeleteForm> :
-
-						<>
-							<div>
-                            
-							</div>
-						</>
+						</DeleteForm> 
 					}
 
 					<button onClick={(e) => {setDeleteMode(!deleteMode)}}>{deleteMode ? 'Back' : 'Go delete User'}</button>

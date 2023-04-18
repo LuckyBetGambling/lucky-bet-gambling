@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, reauthenticateWithCredential, EmailAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, updatePassword  } from 'firebase/auth'
 import {auth, signInWithGoogle, signInWithFacebook} from '../config/firebase'
 import axios from 'axios'
 
@@ -55,6 +55,25 @@ export const loginUser = async (auth, loginEmail, loginPassword) => {
 export const logoutUser = async (auth) => {
 	await signOut(auth)
 }
+
+// function for handling password change
+export const updateUserPassword = async (user, loginPassword, newPassword) => {
+	const credential = EmailAuthProvider.credential(
+		user.email,
+		loginPassword,
+		user.tenantId
+	  )
+
+	try {
+		await reauthenticateWithCredential(user, credential, { tenantId: user.tenantId })
+		await updatePassword(user, newPassword, user.tenantId)
+		console.log('Password updated successfully.')
+	} 
+	catch (error) {
+		console.log(error)
+	}
+}
+  
 
 
 // TODO: handle authentiaction ofthese requests

@@ -98,7 +98,7 @@ export default function App({ Component, pageProps }) {
 			/>
 			{showSidebar && <Sidebar showSidebar={showSidebar}/>}
 			<Component
-				auth={auth}  
+				auth={auth}
 				themeCallback={() => toggleTheme()}
 				{...pageProps}
 			/>
