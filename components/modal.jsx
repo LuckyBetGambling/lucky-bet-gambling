@@ -3,18 +3,38 @@ import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 
 const StyledModalBody = styled.div`
-  padding-top: 10px;
 `
+
+// const StyledModalHeader = styled.div`
+//   display: flex;
+//   justify-content: flex-end;
+//   font-size: 25px;
+// `
 
 const StyledModalHeader = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   font-size: 25px;
+  font-weight: bold;
+  height: 70px;
+`
+
+const StyledCloseButton = styled.a`
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 35px;
 `
 
 const StyledModal = styled.div`
   background: ${({theme}) => theme.secondary};
   width: 500px;
+  max-width: 100%;
   border-radius: 15px;
   padding: 15px;
   display: flex;
@@ -57,12 +77,8 @@ const Modal = ({ show, onClose, children, title }) => {
 	const modalContent = show ? (
 		<StyledModalOverlay onClick={handleCloseClick}>
 			<StyledModal onClick={(e) => {e.stopPropagation()}}>
-				<StyledModalHeader>
-					<a href="#" onClick={handleCloseClick}>
-            x
-					</a>
-				</StyledModalHeader>
-				{title}
+				<StyledCloseButton href="#" onClick={handleCloseClick}>X</StyledCloseButton>
+				<StyledModalHeader>{title}</StyledModalHeader>
 				<StyledModalBody>{children}</StyledModalBody>
 			</StyledModal>
 		</StyledModalOverlay>
