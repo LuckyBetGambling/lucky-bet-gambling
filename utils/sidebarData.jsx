@@ -87,7 +87,6 @@ export const SidebarData = [
 			}
 		]
 	},
-	// sports categories
 	{
 		title: 'Promotions',
 		icon: <ShareIcon />,
