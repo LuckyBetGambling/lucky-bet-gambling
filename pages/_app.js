@@ -9,7 +9,6 @@ import { lightTheme, darkTheme, GlobalStyles } from '../styles/ThemeConfig'
 import Modal from '../components/modal'
 import { loginUser, logoutUser, registerUser } from '../services/auth-manager'
 import Sidebar from '../components/sidebar'
-import { useRouter } from 'next/router'
 
 
 const LoginForm = styled.form`

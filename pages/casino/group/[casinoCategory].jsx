@@ -77,9 +77,9 @@ export default function CategoryPage() {
 		}
 	}
 
+	// When category is known update and format the title
 	useEffect(() => {
 		setTitle(casinoCategory)
-		
 	}, [casinoCategory])
 
 	return(
