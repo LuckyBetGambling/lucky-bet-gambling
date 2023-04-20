@@ -7,7 +7,7 @@ import GameCard from '../../../components/gameCard'
 
 
 const Page = styled.div`
-background: linear-gradient(90deg, ${({theme}) => theme.primary} 21px, transparent 1%) center, linear-gradient(${({theme}) => theme.primary} 20px, transparent 1%) center, ${({theme}) => theme.secondary};
+	background: linear-gradient(90deg, ${({theme}) => theme.primary} 21px, transparent 1%) center, linear-gradient(${({theme}) => theme.primary} 20px, transparent 1%) center, ${({theme}) => theme.secondary};
 	background-size: 22px 22px;
 	min-height: calc(100vh - 30px);
 	display: flex;
