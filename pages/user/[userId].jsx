@@ -4,6 +4,7 @@ import db from '../../services/db'
 import styled from 'styled-components'
 import Tabs from '../../components/tabs'
 import ProfileSection from '../../components/profileSection'
+import WalletSection from '../../components/walletSection'
 
 const Page = styled.div`
 	margin-bottom: 40px;
@@ -43,10 +44,6 @@ const TabContainer = styled.div`
 	max-width: 750px;
 `
 
-const Wallet = styled.div`
-	background-color: Lime;
-	height: 100%;
-`
 
 const Settings = styled.div`
 	background-color: yellow;
@@ -72,7 +69,7 @@ const Profile = ({user, auth}) => {
 		},
 		{
 			name: 'Wallet',
-			content: <Wallet />
+			content: <WalletSection />
 		},
 		{
 			name: 'Settings',
