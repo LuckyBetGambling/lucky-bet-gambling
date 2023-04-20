@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
-import SideScroller from '../../../components/sidescroller'
 import { sampleGames } from '../../../utils/sampleData'
 import { useRouter } from 'next/router'
+import GameCard from '../../../components/gameCard'
 
 
 const Page = styled.div`
-	background-color: #1a2c38;
+background: linear-gradient(90deg, ${({theme}) => theme.primary} 21px, transparent 1%) center, linear-gradient(${({theme}) => theme.primary} 20px, transparent 1%) center, ${({theme}) => theme.secondary};
+	background-size: 22px 22px;
 	min-height: calc(100vh - 30px);
 	display: flex;
 	flex-direction: column;
@@ -17,11 +18,69 @@ const Page = styled.div`
 	padding-bottom: 3rem;
 `
 
+const GamesBox = styled.div`
+	min-height: calc(100vh - 40px);
+	max-width: 1000px;
+	display: flex;
+	flex-flow: column wrap;
+	margin: 40px;
+	border-radius: 15px;
+	background-color: ${ ({theme}) => theme.secondary };
+	padding: 20px;
+`
 
-export default function CategoryPage(){
+const GamesViewer = styled.div`
+	min-height: calc(100vh - 40px);
+	max-width: 960px;
+	display: flex;
+	flex-flow: row wrap;
+	border-radius: 15px;
+	background: rgba(0,0,0,0.2);
+	position: relative;
+`
+
+const PageTitle = styled.h1`
+	font-size: 45px;
+	text-shadow: -1px 1px 0 #f00, 1px 1px 0 #F00, 1px -1px 0 #F00, -1px -1px 0 #F00;
+	color: #FFBF00;
+	width: 100%;
+	text-align: center;
+	padding-bottom: 20px;
+`
+
+const Overlay = styled.div`
+	border-radius: 15px;
+	position: absolute;
+	background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(9,9,121,0) 5%, rgba(9,9,121,0) 95%, rgba(0,0,0,0.4) 100%);
+	top:0;
+	left:0;
+	width: 100%;
+	height:100%;
+	color:black;
+	text-align: center;
+	z-index: 10;
+	pointer-events: none;	
+`
+
+export default function CategoryPage() {
 
 	const router = useRouter()
 	const casinoCategory = router.query.casinoCategory
+	const [title, setTitle] = useState()
+
+	const formatTitle = (str) => {
+		if(str != undefined) {
+			str = str.replace(/_/g, ' ')
+			var reg = /\b([a-zÁ-ú]{3,})/g
+ 			str = str.replace(reg, (w) => w.charAt(0).toUpperCase() + w.slice(1))
+			return str
+		}
+	}
+
+	useEffect(() => {
+		setTitle(casinoCategory)
+		
+	}, [casinoCategory])
 
 	return(
 		<Page>
@@ -32,14 +91,23 @@ export default function CategoryPage(){
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
+			<GamesBox>
+				<PageTitle>
+					{formatTitle(title)}
+				</PageTitle>
 
-			<SideScroller 
-				items={sampleGames} 
-				title={casinoCategory}
-			/>
-				
-				
-
+				<GamesViewer >
+					<Overlay />
+					{
+						sampleGames.map(
+							(game, index) =>
+							{
+								return <GameCard item={game} key={index} shape='wide' />
+							}
+						)
+					}
+				</GamesViewer>
+			</GamesBox>
 		</Page>
 	)
 }

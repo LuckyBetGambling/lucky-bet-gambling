@@ -6,12 +6,14 @@ import SideScroller from '../../components/sidescroller'
 import { sampleGames } from '../../utils/sampleData'
 
 const Page = styled.div`
-  min-height: calc(100vh - 30px);
-  width: 100%;
-  padding: 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	background: linear-gradient(90deg, ${({theme}) => theme.primary} 21px, transparent 1%) center, linear-gradient(${({theme}) => theme.primary} 20px, transparent 1%) center, ${({theme}) => theme.secondary};
+	background-size: 22px 22px;
+	min-height: calc(100vh - 30px);
+	width: 100%;
+	padding: 60px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 `
 
 const Title = styled.h1`
@@ -48,11 +50,14 @@ export default function Casino() {
 				}}/>
 
 
-				<SideScroller items={sampleGames} title='Stake Originals' />
-				<SideScroller items={sampleGames} title='Slots' />
-				<SideScroller items={sampleGames} title='Live Casino' />
-				<SideScroller items={sampleGames} title='Table Games' />
 				<SideScroller items={sampleGames} title='New Releases' />
+				<SideScroller items={sampleGames} title='Card Games' />
+				<SideScroller items={sampleGames} title='Casual Games' />
+				<SideScroller items={sampleGames} title='Craps' />
+				<SideScroller items={sampleGames} title='Lottery' />
+				<SideScroller items={sampleGames} title='Poker' />
+				<SideScroller items={sampleGames} title='Slots' />
+				<SideScroller items={sampleGames} title='Video Poker' />
 
 			</Page>
 		</Fragment>

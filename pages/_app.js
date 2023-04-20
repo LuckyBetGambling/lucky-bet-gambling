@@ -9,6 +9,7 @@ import { lightTheme, darkTheme, GlobalStyles } from '../styles/ThemeConfig'
 import Modal from '../components/modal'
 import { loginUser, logoutUser, registerUser } from '../services/auth-manager'
 import Sidebar from '../components/sidebar'
+import { useRouter } from 'next/router'
 
 
 const LoginForm = styled.form`
@@ -73,9 +74,11 @@ export default function App({ Component, pageProps }) {
 	// function for handling log out
 	const handleLogout = async (e) => {
 		e.preventDefault()
-		logoutUser(auth)
+		await logoutUser(auth)
 		setIsAdmin(false)
 		setShowLogoutModal(false)
+		// Send user back to home page
+		window.location.pathname = '/'
 	}
 
 	// function for toggling sidebar

@@ -18,11 +18,13 @@ const Page = styled.div`
 const ProfileHeader = styled.section`
 	width: 100%;
 	height: 400px;
-	background-color: blue;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	color: white;
+	box-shadow: 0 -6px 15px 7.5px rgba(0,0,0,0.5);
+	background: linear-gradient(90deg, ${ ({theme}) => theme.accent } 18px, transparent 1%) center, linear-gradient(${ ({theme}) => theme.accent } 18px, transparent 1%) center, white;
+	background-size: 22px 22px;
 `
 
 const ProfilePicture = styled.div`
@@ -42,6 +44,7 @@ const ProfilePicture = styled.div`
 
 const TabContainer = styled.div`
 	max-width: 750px;
+	transform: translateY(-50px);
 `
 
 

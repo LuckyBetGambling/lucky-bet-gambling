@@ -11,6 +11,8 @@ const Container = styled.div`
 	align-items: center;
 	padding: 20px;
 	width: 750px;
+	border-bottom-left-radius: 14px;
+	border-bottom-right-radius: 14px;
 `
 
 const Container1 = styled.div`

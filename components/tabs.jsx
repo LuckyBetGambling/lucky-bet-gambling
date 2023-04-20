@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 export const TabHead = styled.div`
   display: flex;
-  background: black;
+  background: none;
 `
 export const TabContainer = styled.div`
   box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.51);
@@ -18,6 +18,15 @@ export const Tab = styled.div`
   background: ${({ theme, selected }) => (selected ? theme.accent : theme.secondary)};
   color:  ${({ theme, selected }) => (selected ? theme.primary : theme.accent)};
   flex: 1; 
+  
+  &:first-child {
+	border-top-left-radius: 14px;
+  }
+
+  &:last-child {
+	border-top-right-radius: 14px;
+  }
+
   &:hover {
 	cursor: pointer;
   }
