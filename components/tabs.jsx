@@ -9,6 +9,7 @@ export const TabHead = styled.div`
 `
 export const TabContainer = styled.div`
   box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.51);
+  border-radius: 14px;
 `
 export const TabBody = styled.div`
 `
