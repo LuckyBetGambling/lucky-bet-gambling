@@ -76,7 +76,7 @@ export default function HomePageCard({href, imageSrc, imageAlt, title, summary, 
 		<Link href={href}>
 			<CardContainer>
 				<CardTitle>{title}</CardTitle>
-				<CardImage src={imageSrc} alt={imageAlt} width={400} height={200} />
+				<CardImage src={imageSrc} alt={imageAlt} width={400} height={300} />
 				<CardContent>
 					<CardSummary>{summary}</CardSummary>
 					<CardDescription>{description}</CardDescription>
