@@ -51,7 +51,7 @@ const RaceBoardBodyCell = styled.td`
   color: #FFF;
 `
 
-export default function RaceBoard(){
+export default function RaceBoard() {
 	return (
 		<Wrapper>
 			<Title>Race Leaderboard</Title>

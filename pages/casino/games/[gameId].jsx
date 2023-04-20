@@ -6,7 +6,8 @@ import SideScroller from '../../../components/sidescroller'
 import { sampleGames } from '../../../utils/sampleData'
 
 const Page = styled.div`
-	background-color: #1a2c38;
+	background: linear-gradient(90deg, ${({theme}) => theme.primary} 21px, transparent 1%) center, linear-gradient(${({theme}) => theme.primary} 20px, transparent 1%) center, ${({theme}) => theme.secondary};
+	background-size: 22px 22px;
 	min-height: calc(100vh - 30px);
 	display: flex;
 	flex-direction: column;
@@ -21,7 +22,6 @@ const GameContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
-  background-color: #1a2c38;
 `
 
 const OptionContainer = styled.div`
@@ -29,18 +29,6 @@ const OptionContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-`
-
-const GameTitleBet = styled.div`
-    display: flex;
-    margin: 1rem 1rem 2rem 1rem;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    height: 4rem;
-    background-color: #0f212e;
-    color: #FFF;
-    border-radius: 10px;
 `
 
 const GamePage = (props) => {
@@ -60,11 +48,6 @@ const GamePage = (props) => {
 					gameSrc={props.id}
 				/>
 				<OptionContainer>
-					<GameTitleBet>
-						<h2 style={{padding: '0 0.3rem 0 1rem'}} >{props.title}</h2>
-						<span style={{color: '#b1bad3'}}>{props.provider}</span>
-				
-					</GameTitleBet>
 
 					<SideScroller 
 						items={sampleGames} 

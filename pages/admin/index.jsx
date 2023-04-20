@@ -28,33 +28,47 @@ const Page = styled.div`
 const AdminHeader = styled.section`
   width: 100%;
   height: 400px;
-  background-color: blue;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  background: radial-gradient(1.5em 6.28571em at 1.95em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(1.5em 6.28571em at -0.45em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 1.5em 5.5em, radial-gradient(2.3em 4.57143em at 2.99em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(2.3em 4.57143em at -0.69em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 2.3em 4em, radial-gradient(3.5em 6.28571em at 4.55em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(3.5em 6.28571em at -1.05em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 3.5em 5.5em, radial-gradient(#00a8ff,#00fdff);
+  background-color: mediumspringgreen;
+  background-size: 1.5em 11em, 1.5em 11em, 2.3em 8em, 2.3em 8em, 3.5em 11em, 3.5em 11em, 100% 100%;
+  background-repeat: repeat;
+  box-shadow: 0 -6px 15px 7.5px rgba(0,0,0,0.5);
 `
 const TabContainer = styled.div`
-  transform: translateY(-5%);
+  transform: translateY(-20%);
   width: 80vw;
+  min-height: 60vh;
 `
 
 const ManageTeam = styled.div`
-  height: 100%;
+	height: 60vh;
+	background-color: white;
 `
 
-const CustomerOutreach = styled.div`
-  background-color: orange;
-  height: 100%;
+const GraphContainer = styled.div`
+	background-color: orange;
+	height: 40vh;
+	background-color: white;
 `
 
 const ContentManagement = styled.div`
-  background-color: magenta;
-  height: 100%;
+	background-color: white;
+	height: 60vh;
 `
 
 const Statistics = styled.div`
-	height: 100%;
+	background-color: white;
+	min-height: 60vh;
+`
+
+const PageTitle = styled.h1`
+	font-size: 70px;
+	text-shadow: -1px 1px 0 #f00, 1px 1px 0 #F00, 1px -1px 0 #F00, -1px -1px 0 #F00;
+	color: #FFBF00;
 `
 
 const AdminPage = (props) => {
@@ -139,16 +153,10 @@ const AdminPage = (props) => {
 						)}
 					</tbody>
 				</table>
-				<Line data={data1} options={options} />
+				<GraphContainer>
+					<Line data={data1} options={options} />
+				</GraphContainer>
 			</Statistics>
-		},
-		{
-			name: 'Customer Outreach',
-			content: <CustomerOutreach />
-		},
-		{
-			name: 'Content Management',
-			content: <ContentManagement />
 		}
 	]
 
@@ -167,7 +175,7 @@ const AdminPage = (props) => {
 				</Head>
 
 				<AdminHeader>
-					<h1>Admin Dashboard</h1>
+					<PageTitle>Admin Dashboard</PageTitle>
 				</AdminHeader>
 
 				<TabContainer>

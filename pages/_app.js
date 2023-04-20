@@ -9,7 +9,8 @@ import { lightTheme, darkTheme, GlobalStyles } from '../styles/ThemeConfig'
 import Modal from '../components/modal'
 import { loginUser, logoutUser, registerUser } from '../services/auth-manager'
 import Sidebar from '../components/sidebar'
-
+import RouteGuard from '../components/routeGuard'
+import Router from 'next/router'
 
 const LoginForm = styled.form`
   display: flex;
@@ -38,7 +39,7 @@ export default function App({ Component, pageProps }) {
 	const [loginPassword, setLoginPassword] = useState('')
 	const [isAdmin, setIsAdmin] = useState(false)
 	const [user, setUser] = useState({
-		currentUser: null,
+		currentUser: auth.currentUser,
 		isAdmin: isAdmin
 	})
 	const [theme, setTheme] = useState('light') 
@@ -73,65 +74,67 @@ export default function App({ Component, pageProps }) {
 	// function for handling log out
 	const handleLogout = async (e) => {
 		e.preventDefault()
-		logoutUser(auth)
+		await logoutUser(auth)
 		setIsAdmin(false)
 		setShowLogoutModal(false)
+		// Send user back to home page
+		window.location.pathname = '/'
 	}
 
 	// function for toggling sidebar
 	const toggleSidebar = () => {
 		setShowSidebar(!showSidebar)
 	}
-	
+
+	console.log('Auth: ',auth)
+	console.log('Current User: ', user)
+
 	return (
-		<ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
-			<GlobalStyles />
-			<Header 
-				title='LUCKY BET' 
-				userData={user} 
-				signUpCallback={() => setShowSignUpModal(true)} 
-				loginCallback={() => setShowLoginModal(true)}
-				logoutCallback={() => setShowLogoutModal(true)}
-				themeCallback={() => toggleTheme()}
-				showSidebar={showSidebar}
-				toggleSidebar={toggleSidebar}
-			/>
-			{showSidebar && <Sidebar showSidebar={showSidebar}/>}
-			<Component
-				auth={auth}
-				themeCallback={() => toggleTheme()}
-				{...pageProps}
-			/>
-			<Footer>GamblingCompanyLLC - est. 2023</Footer>
+		<RouteGuard auth={auth} isAdmin={isAdmin}>
+			<ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
+				<GlobalStyles />
+				<Header 
+					title='LUCKY BET' userData={user} 
+					signUpCallback={() => setShowSignUpModal(true)} 
+					loginCallback={() => setShowLoginModal(true)}
+					logoutCallback={() => setShowLogoutModal(true)}
+					themeCallback={() => toggleTheme()}
+					showSidebar={showSidebar}
+					toggleSidebar={toggleSidebar}
+				/>
+				{showSidebar && <Sidebar showSidebar={showSidebar}/>}
+				<Component auth={auth} {...pageProps} />
+				<Footer>GamblingCompanyLLC - est. 2023</Footer>
 
-			<Modal show={showSignUpModal} onClose={() => { setShowSignUpModal(false) }} title='Sign Up'>
-				<RegisterForm onSubmit={handleRegister} >
-					<label htmlFor='email'>Email</label>  
-					<input type='email' name='email' onChange={(e) => {setRegisterEmail(e.target.value)}} />
-					<label htmlFor='password'>Password</label>
-					<input type='password' name='password' onChange={(e) => {setRegisterPassword(e.target.value)}} />
-					<button type='submit'>Sign Up</button>
-				</RegisterForm>
-			</Modal>      
+				<Modal show={showSignUpModal} onClose={() => { setShowSignUpModal(false) }} title='Sign Up'>
+					<RegisterForm onSubmit={handleRegister} >
+						<label htmlFor='email'>Email</label>  
+						<input type='email' name='email' onChange={(e) => {setRegisterEmail(e.target.value)}} />
+						<label htmlFor='password'>Password</label>
+						<input type='password' name='password' onChange={(e) => {setRegisterPassword(e.target.value)}} />
+						<button type='submit'>Sign Up</button>
+					</RegisterForm>
+				</Modal>      
 
-			<Modal show={showLoginModal} onClose={() => { setShowLoginModal(false) }} title='Log In'>
-				<LoginForm onSubmit={handleLogin}>
-					<label htmlFor='email'>Email</label>
-					<input type='email' name='email' onChange={(e) => {setLoginEmail(e.target.value)}} />
-					<label htmlFor='password'>Password</label>
-					<input type='password' name='password' onChange={(e) => {setLoginPassword(e.target.value)}} />
-					<button type='submit'>Log In</button>
-				</LoginForm>
-				<button onClick={signInWithGoogle}>Sign In With Google</button>
-				<button onClick={signInWithFacebook}>Sign In With Facebook</button>
-			</Modal>
+				<Modal show={showLoginModal} onClose={() => { setShowLoginModal(false) }} title='Log In'>
+					<LoginForm onSubmit={handleLogin}>
+						<label htmlFor='email'>Email</label>
+						<input type='email' name='email' onChange={(e) => {setLoginEmail(e.target.value)}} />
+						<label htmlFor='password'>Password</label>
+						<input type='password' name='password' onChange={(e) => {setLoginPassword(e.target.value)}} />
+						<button type='submit'>Log In</button>
+					</LoginForm>
+					<button onClick={signInWithGoogle}>Sign In With Google</button>
+					<button onClick={signInWithFacebook}>Sign In With Facebook</button>
+				</Modal>
 
-			<Modal show={showLogoutModal} onClose={() => { setShowLogoutModal(false) }} title='Sign Out'>
-				<LogoutForm onSubmit={handleLogout}>
-					<h4>User Logged in: {user.currentUser ? user.currentUser.email : 'Not Logged in'}</h4>
-					<button>Sign Out</button>
-				</LogoutForm>
-			</Modal>
-		</ThemeProvider>
+				<Modal show={showLogoutModal} onClose={() => { setShowLogoutModal(false) }} title='Sign Out'>
+					<LogoutForm onSubmit={handleLogout}>
+						<h4>User Logged in: {user.currentUser ? user.currentUser.email : 'Not Logged in'}</h4>
+						<button>Sign Out</button>
+					</LogoutForm>
+				</Modal>
+			</ThemeProvider>
+		</RouteGuard>
 	)
 }

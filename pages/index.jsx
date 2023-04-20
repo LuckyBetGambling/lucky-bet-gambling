@@ -31,12 +31,14 @@ const Hero = styled.section`
 `
 
 const Body = styled.section`
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+	background: linear-gradient(90deg, ${({theme}) => theme.primary} 21px, transparent 1%) center, linear-gradient(${({theme}) => theme.primary} 20px, transparent 1%) center, ${({theme}) => theme.secondary};
+	background-size: 22px 22px;
+	width: 100%;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
 `
 
 const CardContainer = styled.div`

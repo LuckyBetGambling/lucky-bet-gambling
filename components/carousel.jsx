@@ -47,7 +47,6 @@ const ShowcaseItem = styled.div`
 	display: flex;
 	align-items: center;
 	padding: 20px;
-	margin: 20px
 `
 
 const GamePicture = styled.div`
@@ -93,7 +92,7 @@ const Carouse1 = ({carouselItems, styles}) => {
 			hasThumbnails={false}
 			shouldSwipeOnMouse={false} // for selecting text
 			shouldMinimizeOnSwipeDown={false} 
-			style={{ userSelect: 'text', backgroundColor: 'inherit', ...styles }}
+			style={{ userSelect: 'text', backgroundColor: 'unset', ...styles }}
 			leftIcon={<Left>
 				<ArrowLeft />
 			</Left>}
