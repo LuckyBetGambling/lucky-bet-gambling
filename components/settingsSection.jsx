@@ -52,6 +52,7 @@ const SettingsSection = ({auth, user, themeCallback}) => {
 	const [deleteMode, setDeleteMode] = useState(false)
 	// not sure if I should be creating useState variable to store password or get it somewhere else
 	const [newPassword, setNewPassword] = useState('')
+	const [currentPassword, setCurrentPassword] = useState('')
 
 	const userObj = {
 		...user
@@ -60,7 +61,7 @@ const SettingsSection = ({auth, user, themeCallback}) => {
 	// apparently I need to find some way to pass in tenantId into here to update my password
 	const handlePasswordChange = async (e) => {
 		e.preventDefault()
-		const success = await updateUserPassword(newPassword)
+		const success = await updateUserPassword(auth, newPassword, currentPassword)
 		if (success) {
 		  console.log('password successfully updated')
 		} else {
@@ -76,8 +77,12 @@ const SettingsSection = ({auth, user, themeCallback}) => {
 				<UserCard>
 					{editPassword &&
 						<RegisterForm onSubmit={handlePasswordChange}>
-							<label htmlFor='password' placeholder='Password'>Password</label>
-							<input type='password' name='password' onChange={(e) => {setNewPassword(e.target.value)}} />
+
+							<label htmlFor='currentPassword' placeholder='Password'>Current Password</label>
+							<input type='password' name='currentPassword' onChange={(e) => {setCurrentPassword(e.target.value)}} />
+
+							<label htmlFor='newPassword' placeholder='Password'>Password</label>
+							<input type='password' name='newPassword' onChange={(e) => {setNewPassword(e.target.value)}} />
                             
 							<button type='submit'>Update Password</button>
 
