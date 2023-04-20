@@ -8,6 +8,7 @@ const Container = styled.div`
 	padding: 20px 40px;
 	width: 750px;
     min-height: 60vh;
+	background-color: white;
 `
 
 const Balance = styled.div`
