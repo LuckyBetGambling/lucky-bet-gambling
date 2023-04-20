@@ -8,6 +8,9 @@ const Container = styled.div`
 	padding: 20px 40px;
 	width: 750px;
     min-height: 60vh;
+	background-color: white;
+	border-bottom-left-radius: 14px;
+	border-bottom-right-radius: 14px;
 `
 
 const Balance = styled.div`
@@ -86,6 +89,7 @@ const Button = styled.button`
     &:hover {
         background-color: ${ ({theme}) => theme.accent};
         color: ${ ({theme}) => theme.secondary};
+		cursor: pointer;
     }
 `
 

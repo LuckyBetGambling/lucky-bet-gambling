@@ -9,10 +9,9 @@ const CardContainer = styled.div`
   max-width: 400px;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease-in-out;
-  margin: 2rem;
-  
+  margin: 20px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 
   &:hover {
     transform: scale(1.05);
@@ -77,7 +76,7 @@ export default function HomePageCard({href, imageSrc, imageAlt, title, summary, 
 		<Link href={href}>
 			<CardContainer>
 				<CardTitle>{title}</CardTitle>
-				<CardImage src={imageSrc} alt={imageAlt} width={400} height={200} />
+				<CardImage src={imageSrc} alt={imageAlt} width={400} height={300} />
 				<CardContent>
 					<CardSummary>{summary}</CardSummary>
 					<CardDescription>{description}</CardDescription>

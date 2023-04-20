@@ -166,7 +166,7 @@ const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logout
 				{!userData.currentUser && <HeaderButton onClick={() => signUpCallback()}>Sign Up</HeaderButton>}
 				{!userData.currentUser && <HeaderButton onClick={() => loginCallback()}>Log In</HeaderButton>}
 				{(userData.currentUser && userData.isAdmin) && <HeaderButton>
-					<LinkButton path={'/admin'} title='Admin' />
+					<LinkButton path={'/admin?tab=Manage+Team'} title='Admin' />
 				</HeaderButton>}
 				{userData.currentUser && <ProfileDropdown uid={userData.currentUser.uid} logoutCallback={logoutCallback} themeCallback={themeCallback} />}
 				

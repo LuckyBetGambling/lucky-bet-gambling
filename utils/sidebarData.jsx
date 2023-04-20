@@ -12,30 +12,45 @@ export const SidebarData = [
 		link: '/casino',
 		categories: [
 			{
-				title: 'Stake Originals',
-				icon: <SportsIcon />,
-				link: '/casino/group/Stake Originals'
+				title: 'New Releases',
+				icon: <CasinoRoundedIcon />,
+				link: '/casino/group/new_releases'
+			},
+			{
+				title: 'Card Games',
+				icon: <CasinoRoundedIcon />,
+				link: '/casino/group/card_games'
+			},
+			{
+				title: 'Casual Games',
+				icon: <CasinoRoundedIcon />,
+				link: '/casino/group/casual_games'
+			},
+			{
+				title: 'Craps',
+				icon: <CasinoRoundedIcon />,
+				link: '/casino/group/craps'
+			},
+			{
+				title: 'Lottery',
+				icon: <CasinoRoundedIcon />,
+				link: '/casino/group/lottery'
+			},
+			{
+				title: 'Poker',
+				icon: <CasinoRoundedIcon />,
+				link: '/casino/group/poker'
 			},
 			{
 				title: 'Slots',
-				icon: <SportsIcon />,
-				link: '/casino/group/Slots'
+				icon: <CasinoRoundedIcon />,
+				link: '/casino/group/slots'
 			},
 			{
-				title: 'Live Casino',
-				icon: <SportsIcon />,
-				link: '/casino/group/Live Casino'
+				title: 'Video Poker',
+				icon: <CasinoRoundedIcon />,
+				link: '/casino/group/video_poker'
 			},
-			{
-				title: 'Table Games',
-				icon: <SportsIcon />,
-				link: '/casino/group/Table Games'
-			},
-			{
-				title: 'New Releases',
-				icon: <SportsIcon />,
-				link: '/casino/group/New Releases'
-			}
 		]
 	},
 	
