@@ -4,6 +4,7 @@ import db from '../../services/db'
 import styled from 'styled-components'
 import Tabs from '../../components/tabs'
 import ProfileSection from '../../components/profileSection'
+import SettingsSection from '../../components/settingsSection'
 import WalletSection from '../../components/walletSection'
 
 const Page = styled.div`
@@ -63,7 +64,7 @@ export const tabNames =[
 
 // user: database entry for the signed in user
 // auth: auth instance
-const Profile = ({user, auth}) => {
+const Profile = ({user, auth, themeCallback}) => {
 	const router = useRouter()
 	// Get 'user' from the userDocument
   
@@ -78,7 +79,7 @@ const Profile = ({user, auth}) => {
 		},
 		{
 			name: 'Settings',
-			content: <Settings />
+			content: <SettingsSection auth={auth} user={user} themeCallback={themeCallback}/>
 		}
 	]
 
