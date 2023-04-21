@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, reauthenticateWithCredential, EmailAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, updatePassword  } from 'firebase/auth'
 import {auth, signInWithGoogle, signInWithFacebook} from '../config/firebase'
 import axios from 'axios'
 
@@ -56,10 +56,59 @@ export const logoutUser = async (auth) => {
 	await signOut(auth)
 }
 
+// Function to check if the provided email and password match the ones stored in Firebase Authentication
+const checkPassword = async (auth, loginEmail, currentPassword) => {
+	try {
+	  const userCredential = await signInWithEmailAndPassword(auth, loginEmail, currentPassword)
+	  // If sign-in is successful, return true
+	  return true
+	} catch (error) {
+	  // If there's an error, return false
+	  return false
+	}
+}
+  
+
+// function for handling password change
+export const updateUserPassword = async (auth, currentPassword, newPassword) => {
+	
+	const user = auth.currentUser
+
+	// Check if the user entered the correct current password
+	const passwordIsCorrect = await checkPassword(auth, user.email, currentPassword)
+
+	if (!passwordIsCorrect) {
+		console.log('The current password entered is incorrect.')
+		return
+	}
+
+
+	const credential = EmailAuthProvider.credential(
+		user.email,
+		currentPassword
+	  )
+
+	try {
+		
+		await user.reauthenticateWithCredential(credential)
+    	await updatePassword(user, newPassword)
+		console.log('Password updated successfully.')
+	} 
+	catch (error) {
+		console.log(error)
+	}} 
+
 
 // TODO: handle authentiaction ofthese requests
 export const updateUser = async (user, auth) => {
 	await axios.put(`/api/user/${user.uid}`, {
 		...user
 	})
+}
+
+export const deleteUser = async (user, auth) => {
+	await axios.delete(`/api/user/${user.uid}`, {
+		...user
+	})
+	console.log(user)
 }

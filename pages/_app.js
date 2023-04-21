@@ -10,20 +10,151 @@ import Modal from '../components/modal'
 import { loginUser, logoutUser, registerUser } from '../services/auth-manager'
 import Sidebar from '../components/sidebar'
 import RouteGuard from '../components/routeGuard'
-
-const LoginForm = styled.form`
-  display: flex;
-  flex-direction: column;
-`
+import FacebookIcon from '@mui/icons-material/Facebook'
 
 const RegisterForm = styled.form`
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
+
+	label {
+		margin-bottom: 0.5rem;
+		font-size: 1.2rem;
+	  	font-weight: bold;
+	}
+	  
+	input {
+		width: 100%;
+		padding: 0.5rem;
+		margin-bottom: 1rem;
+		border: none;
+		border-radius: 0.25rem;
+		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	}
+  
+`
+
+const LoginForm = styled.form`
+	display: flex;
+	flex-direction: column;
+
+	label {
+		margin-bottom: 0.5rem;
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+	
+	input {
+		width: 100%;
+		padding: 0.5rem;
+		margin-bottom: 1rem;
+		border: none;
+		border-radius: 0.25rem;
+		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	}
 `
 
 const LogoutForm = styled.form`
+	display: flex;
+	flex-direction: column;
+
+	h4{
+		color: #FFF;
+		font-size: 1.2rem;
+		margin-bottom: 10px;
+	}
+`
+
+const Button = styled.button`
+	background-color:  ${({theme}) => theme.accent};
+	color: ${({theme}) => theme.primary};
+	color: white;
+	font-size: 1.2rem;
+	font-weight: bold;
+	border-radius: 8px;
+	padding: 10px 20px;
+	margin-bottom: 5px;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+        outline: 0;
+        color: ${({theme}) => theme.accent};
+        background-color: ${({theme}) => theme.primary};
+        box-shadow:  ${({theme}) => theme.primary} 0px 2px 3px, ${({theme}) => theme.primary} 0px 0px 0px 3px;
+    }
+`
+
+const SocialMediaButtons = styled.div`
+	margin-top: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+`
+
+const GoogleButton = styled.button`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  color: #535353;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  padding: 12px 24px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  width: 100%;
+  max-width: 220px;
+  white-space: nowrap;
+  line-height: 1;
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+
+  svg {
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background-color: #EAEAEA;
+  }
+`
+
+const GoogleIcon = styled.img`
+  width: 20px;
+  height: 20px;
+`
+
+const FacebookButton = styled.button`
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #3b5998;
+	color: #FFF;
+	font-size: 15px;
+	font-weight: 500;
+	text-align: center;
+	padding: 12px 24px;
+	border-radius: 6px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	width: 100%;
+	max-width: 220px;
+	white-space: nowrap;
+	line-height: 1.2;
+	height: 48px;
+
+	svg {
+		margin-right: 8px;
+		vertical-align: middle;
+	}
+
+	&:hover {
+		background-color: #2d4373;
+	}
 `
 
 
@@ -102,35 +233,50 @@ export default function App({ Component, pageProps }) {
 					toggleSidebar={toggleSidebar}
 				/>
 				{showSidebar && <Sidebar showSidebar={showSidebar}/>}
-				<Component auth={auth} {...pageProps} />
+				<Component
+					themeCallback={() => toggleTheme()}
+					auth={auth} 
+					{...pageProps} 
+				/>
 				<Footer>GamblingCompanyLLC - est. 2023</Footer>
 
 				<Modal show={showSignUpModal} onClose={() => { setShowSignUpModal(false) }} title='Sign Up'>
 					<RegisterForm onSubmit={handleRegister} >
-						<label htmlFor='email'>Email</label>  
-						<input type='email' name='email' onChange={(e) => {setRegisterEmail(e.target.value)}} />
-						<label htmlFor='password'>Password</label>
-						<input type='password' name='password' onChange={(e) => {setRegisterPassword(e.target.value)}} />
-						<button type='submit'>Sign Up</button>
+						<label htmlFor='email'>Enter your Email</label>  
+						<input type='email' placeholder='someone@gmail.com' name='email' onChange={(e) => {setRegisterEmail(e.target.value)}} />
+						<label htmlFor='password'>Enter your Password</label>
+						<input type='password' placeholder='password' name='password' onChange={(e) => {setRegisterPassword(e.target.value)}} />
+						<Button type='submit'>Sign Up</Button>
 					</RegisterForm>
 				</Modal>      
 
 				<Modal show={showLoginModal} onClose={() => { setShowLoginModal(false) }} title='Log In'>
 					<LoginForm onSubmit={handleLogin}>
-						<label htmlFor='email'>Email</label>
-						<input type='email' name='email' onChange={(e) => {setLoginEmail(e.target.value)}} />
-						<label htmlFor='password'>Password</label>
-						<input type='password' name='password' onChange={(e) => {setLoginPassword(e.target.value)}} />
-						<button type='submit'>Log In</button>
+						<label htmlFor='email'>Enter your Email</label>
+						<input type='email' name='email' placeholder='someone@gmail.com' onChange={(e) => {setLoginEmail(e.target.value)}} />
+						<label htmlFor='password'>Enter your Password</label>
+						<input type='password' name='password' placeholder='password' onChange={(e) => {setLoginPassword(e.target.value)}} />
+						<Button type='submit'>Log In</Button>
 					</LoginForm>
-					<button onClick={signInWithGoogle}>Sign In With Google</button>
-					<button onClick={signInWithFacebook}>Sign In With Facebook</button>
+
+					<SocialMediaButtons>
+						<GoogleButton onClick={signInWithGoogle}>
+							<span>
+								<GoogleIcon src="/images/googleIcon.svg" alt="Google Icon" style={{marginRight: '8px'}} />
+								Sign in with Google
+							</span>
+						</GoogleButton>
+						<FacebookButton onClick={signInWithFacebook}>
+							<FacebookIcon/>
+							Continue with Facebook
+						</FacebookButton>
+					</SocialMediaButtons>
 				</Modal>
 
 				<Modal show={showLogoutModal} onClose={() => { setShowLogoutModal(false) }} title='Sign Out'>
 					<LogoutForm onSubmit={handleLogout}>
 						<h4>User Logged in: {user.currentUser ? user.currentUser.email : 'Not Logged in'}</h4>
-						<button>Sign Out</button>
+						<Button>Sign Out</Button>
 					</LogoutForm>
 				</Modal>
 			</ThemeProvider>
