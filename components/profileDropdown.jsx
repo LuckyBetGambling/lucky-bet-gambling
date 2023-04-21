@@ -6,10 +6,11 @@ import { tabNames } from '../pages/user/[userId]'
 const DropdownBtn = styled.div`
     background-color:  ${({theme}) => theme.accent};
     color: ${({theme}) => theme.primary};
-    font-size: 16px;
     border: 2px solid ${({theme}) => theme.accent};
     cursor: pointer;
     box-sizing: border-box;
+    font-weight: 600;
+    letter-spacing: 0.75px;
 
     align-items: center;
     border-radius: 4px;
@@ -69,7 +70,8 @@ const DropdownButton = styled.button`
     border: 0px solid ${({theme}) => theme.accent};
     border-radius: 4px;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 600;
+    letter-spacing: 0.75px;
     height: 36px;
     transition: all 150ms ease-out 0s;
     
