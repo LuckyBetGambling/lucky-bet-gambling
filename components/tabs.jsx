@@ -19,6 +19,8 @@ export const Tab = styled.div`
   background: ${({ theme, selected }) => (selected ? theme.accent : theme.secondary)};
   color:  ${({ theme, selected }) => (selected ? theme.primary : theme.accent)};
   flex: 1; 
+  font-weight: 900;
+  letter-spacing: 1px;
   
   &:first-child {
 	border-top-left-radius: 14px;

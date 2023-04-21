@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { Inter_Tight } from '@next/font/google'
 
 export const lightTheme = {
 	primary: '#FFF',
@@ -12,10 +13,14 @@ export const darkTheme = {
 	accent: '#E6020D'
 }
 
+const font = Inter_Tight({
+	subsets: 'latin'
+})
+
 export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.accent};
-    font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
+    font-family: ${font.style.fontFamily}, sans-serif;
   }
 `

@@ -67,7 +67,7 @@ const RaceBoardTable = styled.table`
 `
 
 const RaceBoardHead = styled.thead`
-  background-color: #f8f8f8;
+  background-color: #ddd;
   text-transform: uppercase;
 `
 
@@ -77,7 +77,11 @@ const RaceBoardHeadCell = styled.th`
   font-weight: bold;
 `
 
-const RaceBoardBody = styled.tbody``
+const RaceBoardBody = styled.tbody`
+	tr:nth-child(odd) {
+		background-color: #f8f8f8;
+	}
+`
 
 const RaceBoardBodyRow = styled.tr``
 
