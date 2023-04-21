@@ -10,7 +10,6 @@ import Modal from '../components/modal'
 import { loginUser, logoutUser, registerUser } from '../services/auth-manager'
 import Sidebar from '../components/sidebar'
 import RouteGuard from '../components/routeGuard'
-import Router from 'next/router'
 import FacebookIcon from '@mui/icons-material/Facebook'
 
 const RegisterForm = styled.form`

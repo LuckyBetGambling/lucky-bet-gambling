@@ -48,6 +48,7 @@ const CardDescription = styled.p`
   margin: 16px 0;
   line-height: 1.4;
   color: ${({theme}) => theme.primary};
+  font-weight: 200;
 `
 
 const CardButton = styled.button`

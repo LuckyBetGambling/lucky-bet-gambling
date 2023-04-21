@@ -40,7 +40,9 @@ const RaceBoardHeadCell = styled.th`
 `
 
 const RaceBoardBody = styled.tbody`
-	
+	tr:nth-child(odd) {
+		background-color: rgba(0,0,0,0.5);
+	}
 `
 
 const RaceBoardBodyRow = styled.tr``

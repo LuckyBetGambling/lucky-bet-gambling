@@ -52,7 +52,7 @@ const RaceBoardTable = styled.table`
 `
 
 const RaceBoardHead = styled.thead`
-  background-color: #f8f8f8;
+  background-color: #ddd;
   text-transform: uppercase;
 `
 
@@ -62,7 +62,11 @@ const RaceBoardHeadCell = styled.th`
   font-weight: bold;
 `
 
-const RaceBoardBody = styled.tbody``
+const RaceBoardBody = styled.tbody`
+	tr:nth-child(odd) {
+		background-color: #f8f8f8;
+	}
+`
 
 const RaceBoardBodyRow = styled.tr``
 
@@ -85,6 +89,7 @@ const Button = styled.button`
     border: none;
     background-color: ${ ({theme}) => theme.secondary};
     color: ${ ({theme}) => theme.accent};
+	font-weight: 900;
 
     &:hover {
         background-color: ${ ({theme}) => theme.accent};
@@ -110,6 +115,7 @@ const WalletSection = () => {
 
 	return (
 		<Container>
+			<Button>Add Funds</Button>
 			<Balance>
 				<Money>
 					<BalanceText>
@@ -171,7 +177,7 @@ const WalletSection = () => {
 					</StatsTables> 
 				</RecentTransactions>
 			</Balance>
-			<Button>Add Funds</Button>
+			<br />
 			<Button>Withdraw Funds</Button>
 		</Container>
 	)
