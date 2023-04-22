@@ -2,28 +2,37 @@ import styled from 'styled-components'
 import { SidebarData } from '../utils/SidebarData'
 import { useState, Fragment } from 'react'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
+import MenuOpenIcon from '@mui/icons-material/MenuOpen'
+import SportsCasinoIcon from './sportsCasinoIcon'
 
 const SidebarContainer = styled.div`
     position: fixed;
-    top: 4.2rem;
+    top: 0;
     left: 0;
     bottom: 40px;
     right: 200px;
     color: ${({theme}) => theme.primary};
     background-color:  ${({theme}) => theme.secondary};
-    max-width: 190px;
+    max-width: 255px;
     min-height: 100%;
-    z-index: 42;
-    transform: ${props => props.showSidebar ? 'translateX(0)' : 'translateX(-240px)'}
-    transition: transform 3s ease-in-out;
-    box-shadow: 0 -6px 15px 10px rgba(0,0,0,0.5);
+    z-index: 69;
+    transform: ${ ({showSidebar}) => showSidebar ? 'translateX(0)' : 'translateX(-205px)'};
+    transition: transform 400ms ease-in-out;
+    padding: 15px 0px;
+    border-right-color: ${({theme}) => theme.accent};;
+    border-right-width: 4px;
+    border-right-style: solid;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 `
-
 
 const SidebarList = styled.ul`
     height: auto;
     width: 100%;
     padding: 0;
+    pointer-events: ${ ({showSidebar}) => showSidebar ? 'all' : 'none'};
+    opacity: ${ ({showSidebar}) => showSidebar ? '1' : '0'};
+    transition: opacity 700ms ease-in-out, height 1s ease;
 `
 
 const SidebarRow = styled.li`
@@ -35,40 +44,61 @@ const SidebarRow = styled.li`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    
+    & > svg:last-child {
+        transition: transform 400ms ease-in-out;
+    }
+
+    &:hover > svg:last-child {
+        color: ${ ({theme}) => theme.primary};
+    }
 
     &:hover {
         background-color: ${({theme}) => theme.accent};
         cursor: pointer;
         transition: background-color 0.3s ease-in-out;
-      }
+    }
 
-      ${({ isExpanded }) =>
-		isExpanded &&
-      `
-      & > svg:last-child {
-        transform: rotate(270deg);
-      }
+    &:hover div {
+        color: ${ ({theme}) => theme.primary};
+    }
+
+      ${({ isExpanded, theme }) =>
+		isExpanded && `
+            & > svg:last-child {
+                transform: rotate(-90deg);
+                transition: transform 400ms ease-in-out;
+                color: ${isExpanded ? theme.accent : theme.primary};
+            }
+            
+            border: 1px solid ${theme.accent};            
     `}  
 `
 
 const SidebarIcon = styled.div`
-    flex: 30%;
+padding-left: 23px;
+padding-right: 10px;
     display: grid;
     place-items: center;
+    color: ${ ({isExpanded, theme}) => isExpanded ? theme.accent : theme.primary};
 `
 
 const SidebarTitle = styled.div`
-    flex: 70%;
+flex: 1;
+    color: ${ ({isExpanded, theme}) => isExpanded ? theme.accent : theme.primary};
 `
 
-// for the dropdown categories
-const NestedList = styled.ul`
-    list-style-type: none;
-    padding: 0;
+const Split = styled.hr`
+    border: 1px solid ${({theme}) => theme.secondary};
 `
 
 const SidebarDropdown = styled.ul`
     padding: 0;
+    background-color: rgba(0,0,0,0.25);in-out;
+    pointer-events: ${ ({isExpanded}) => isExpanded ? 'all' : 'none'};
+    height: ${ ({isExpanded}) => isExpanded ? '100%' : '0'};
+    opacity: ${ ({isExpanded}) => isExpanded ? '1' : '0'};
+    transition: opacity 400ms ease-in-out, height 400ms 0ms;
 `
 
 const SidebarDropdownItem = styled.li`
@@ -89,15 +119,67 @@ const SidebarDropdownItem = styled.li`
     }
 `
 
-const SidebarSeparator = styled.div`
-  height: 2px;
-  width: 100%;
-  background-color: #b1bad3;
-  margin: 8px 0;
-
+const SidebarTopContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    margin-bottom: 10px;
 `
 
-export default function Sidebar({showSidebar}) {
+
+const SidebarButton = styled.button`
+  display: flex;
+  padding: 20px 20px;
+  justify-content: center;
+  border-radius: 50px;
+  margin: 0 5px;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  background-color: ${({theme}) => theme.secondary};
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background-color: ${({theme}) => theme.accent};
+    color: ${({theme}) => theme.primary};
+    
+  }
+
+  &:hover svg {
+    color: ${({theme}) => theme.primary};
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  svg {
+    font-size: 30px;
+    color: ${({showSidebar, theme}) => showSidebar ? theme.primary : theme.accent};
+  }
+`
+
+const MenuOpen = styled(MenuOpenIcon)`
+  transition: transform 400ms ease-in-out;
+  transform: ${({ rotate  }) => (rotate === 'true' ? 'rotate(0deg)' : 'rotate(180deg)')};
+`
+
+const SubMenuArrow = styled(KeyboardArrowLeftIcon)`
+  margin-right: 10px;
+  height: 30px;
+  width: 30px;
+`
+
+export default function Sidebar({showSidebar, toggleSidebar}) {
 
 	const [expandedItems, setExpandedItems] = useState([])
 
@@ -118,22 +200,38 @@ export default function Sidebar({showSidebar}) {
 
 	return (
 		<SidebarContainer showSidebar={showSidebar}>
-			<SidebarList>
+			<SidebarTopContainer>
+				<SportsCasinoIcon
+					href='/casino'
+					title='Casino'
+				/>
+
+				<SportsCasinoIcon
+					href='/sports'
+					title='Sports'
+				/>
+                
+				<SidebarButton onClick={toggleSidebar} showSidebar={showSidebar}>
+					<MenuOpen rotate={showSidebar.toString()} />
+				</SidebarButton>
+			</SidebarTopContainer>
+			<Split />
+			<SidebarList showSidebar={showSidebar}>
 				{SidebarData.map((val, index) => {
 					const isExpanded = expandedItems.includes(index)
 
 					return(
 						<Fragment key={index}>
 							<SidebarRow onClick={() => handleItemClick(index)} isExpanded={isExpanded}>
-								<SidebarIcon>{val.icon}</SidebarIcon>
-								<SidebarTitle>{val.title}</SidebarTitle>
+								<SidebarIcon isExpanded={isExpanded}>{val.icon}</SidebarIcon>
+								<SidebarTitle isExpanded={isExpanded}>{val.title}</SidebarTitle>
 
-								{val.categories && <KeyboardArrowLeftIcon />}
+								{val.categories && <SubMenuArrow />}
 							</SidebarRow>
 
-							{isExpanded && val.categories && (
+							{val.categories && (
 								<Fragment>
-									<SidebarDropdown>
+									<SidebarDropdown isExpanded={isExpanded}>
 										{val.categories.map((category, index) => (
 											<SidebarDropdownItem
 												key={index}
@@ -147,7 +245,6 @@ export default function Sidebar({showSidebar}) {
 											</SidebarDropdownItem>
 										))}
 									</SidebarDropdown>
-									<SidebarSeparator/>
 								</Fragment>
 							)}
 						</Fragment>

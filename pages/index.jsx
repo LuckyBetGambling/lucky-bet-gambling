@@ -13,8 +13,7 @@ const Page = styled.div`
 const Hero = styled.section`
   width: 100%;
   height: 600px;
-  background-color: blue;    
-  background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjE0M2MzNjM5NjFlZDQ2NWM0YTM4ZGE2ZTM4MGMzMGY2YzQwZmUyNCZjdD1n/VGoZVlR9naOZCiRLSy/giphy.gif);
+  background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjE0M2MzNjM5NjFlZDQ2NWM0YTM4ZGE2ZTM4MGMzMGY2YzQwZmUyNCZjdD1n/VGoZVlR9naOZCiRLSy/giphy.gif), linear-gradient(to right top, #005ce7, #0097ff, #00bfe1, #00dc85, #a8eb12);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
