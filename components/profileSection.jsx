@@ -24,8 +24,57 @@ const UserCard = styled.div`
 	flex: 1;
 	border-radius: 8px;
 	margin: 10px;
-	padding: 15px;
+	padding: 0 15px 15px 15px;
 	background-color: ${ ({theme}) => theme.secondary};
+`
+
+const UserInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+
+  span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: inline;
+	margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+	display: inline;
+
+  }
+`
+
+
+const UpdateUserForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+
+  label {
+	font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+
+  input:not([type="file"]) {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  input[type="file"] {
+    box-shadow: none;
+	margin-bottom: 1rem;
+	
+  }
+
 `
 
 const FavoritesCard = styled.div`
@@ -96,14 +145,29 @@ const Square = styled.div`
   display: flex;
 `
 
-const RegisterForm = styled.form`
-  display: flex;
-  flex-direction: column;
-`
-
 const Title = styled.h1`
 	padding-top: 15px;
 	text-align: center;
+`
+
+const Button = styled.button`
+	background-color:  ${({theme}) => theme.accent};
+	color: ${({theme}) => theme.primary};
+	color: white;
+	font-size: 1.2rem;
+	font-weight: bold;
+	border-radius: 8px;
+	padding: 10px 20px;
+	margin-top: 10px;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+        outline: 0;
+        color: ${({theme}) => theme.accent};
+        background-color: ${({theme}) => theme.primary};
+        box-shadow:  ${({theme}) => theme.primary} 0px 2px 3px, ${({theme}) => theme.primary} 0px 0px 0px 3px;
+    }
 `
 
 /**
@@ -130,8 +194,9 @@ const ProfileSection = ({ user, auth }) => {
 		<Container>
 			<Container1>
 				<UserCard>
+					<Title>User Details</Title>
 					{editMode ? 
-						<RegisterForm onSubmit={() => {
+						<UpdateUserForm onSubmit={() => {
 							updateUser(userObj, auth)
 						}} >
 							<label htmlFor='name'>Name</label>
@@ -140,22 +205,18 @@ const ProfileSection = ({ user, auth }) => {
 							<input type='text' name='addy' onChange={(e) => {setAddress(e.target.value)}} />
 							<label htmlFor='photo'>Profile Photo</label>
 							<input type='file' accept="image/*" name='photo' onChange={(e) => {console.log(e)}}/>
-							<button type='submit'>Confirm Edits</button>
+							<Button type='submit'>Confirm Edits</Button>
 
-						</RegisterForm> :
-						<>
-							<div>
-								{user.name ? <h1>{user.name}</h1> : 'N/A'}
-							</div>
-							<div>
-								{user.email ? <h4>email: {user.email}</h4> : null}
-							</div>
-							<div>
-								{user.email ? <div>Address: {user.address}</div> : null}
-							</div>
-						</>
+						</UpdateUserForm> :
+						<UserInfoContainer>
+							<span>Username: {user.name ? <p>{user.name}</p> : null}</span>
+							<span>Email: {user.email ? <p>{user.email}</p> : null}</span>
+							<span>Address: {user.address ? <p>{user.address}</p> : null}</span>
+						</UserInfoContainer>
 					}
-					<button onClick={(e) => {setEditMode(!editMode)}}>Edit</button>
+					<Button onClick={(e) => {setEditMode(!editMode)}}>{editMode ? 'Cancel' : 'Update User'}</Button>
+
+					
 				</UserCard>
 				<FavoritesCard>
 					<Title>Favorite Games</Title>

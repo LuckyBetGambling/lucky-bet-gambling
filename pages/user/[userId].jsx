@@ -9,13 +9,13 @@ import WalletSection from '../../components/walletSection'
 
 const Page = styled.div`
 	margin-bottom: 40px;
-	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	background: linear-gradient(90deg, ${({theme}) => theme.primary} 21px, transparent 1%) center, linear-gradient(${({theme}) => theme.primary} 20px, transparent 1%) center, ${({theme}) => theme.secondary};
 	background-size: 22px 22px;
+	min-height: calc(100% - 40px);
 `
 
 const ProfileHeader = styled.section`

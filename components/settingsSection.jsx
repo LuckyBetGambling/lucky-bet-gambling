@@ -6,6 +6,7 @@ const Container = styled.div`
 	background-color: white;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	padding: 20px;
 	width: 750px;
@@ -15,6 +16,7 @@ const Container = styled.div`
 const OptionsWrapper = styled.div`
 	display: flex;
 	width: 100%;
+	margin-top: 1rem;
 `
 
 
@@ -30,6 +32,8 @@ const OptionsCard = styled.div`
 	padding: 15px;
 	background-color: ${ ({theme}) => theme.secondary};	
 	max-width: 50%;
+	width: 150px;
+	
 `
 
 const Option = styled.div`
@@ -37,6 +41,7 @@ const Option = styled.div`
 	flex-direction: column;
 	align-items: center;
 	margin: 10px;
+	
 `
 
 const Button = styled.button`
@@ -50,6 +55,7 @@ const Button = styled.button`
 	margin-top: 10px;
 	border: none;
 	cursor: pointer;
+	width: 250px;
 
 	&:hover {
         outline: 0;
@@ -66,13 +72,8 @@ const Label = styled.p`
 `
 
 const Title = styled.h1`
-  font-size: 2rem;
-  font-weight: bold;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
+	padding-top: 15px;
+	text-align: center;
 `
 
 const FormCard = styled.div`
@@ -92,6 +93,7 @@ const UpdatePasswordForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3rem;
   width: 100%;
 
   label {
@@ -114,6 +116,7 @@ const VerifyEmailForm = styled.form`
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
+	margin-top: 3rem;
 
 	label {
 		font-size: 1.2rem;
@@ -131,24 +134,32 @@ const VerifyEmailForm = styled.form`
 `
 
 const LogoutForm = styled.form`
-  display: flex;
-  flex-direction: column;
-
-  h4{
-	color: #FFF;
-	font-size: 1.2rem;
-	margin-bottom: 5px;
-  }
-`
-
-const DeleteForm = styled.form`
 	display: flex;
 	flex-direction: column;
+	margin-top: 3rem;
+	align-items: center;
+	width: 100%;
 
 	h4{
 		color: #FFF;
 		font-size: 1.2rem;
 		margin-bottom: 5px;
+		text-align: center;
+	}
+`
+
+const DeleteForm = styled.form`
+	display: flex;
+	flex-direction: column;
+	margin-top: 3rem;
+	align-items: center;
+	width: 100%;
+
+	h4{
+		color: #FFF;
+		font-size: 1.2rem;
+		margin-bottom: 5px;
+		text-align: center;
 	}
 `
 
@@ -175,80 +186,80 @@ const SettingsSection = ({auth, user, themeCallback}) => {
 
 	return(
 		<Container>
-			<Title>User Settings</Title>
+			
 			<OptionsWrapper>
 				<OptionsCard>
-
+					<Title>User Settings</Title>
 					<Option>
-						<Label>Want to change password?</Label>
+						{/* <Label>Want to change password?</Label> */}
 						<Button onClick={() => setActiveOption(activeOption === 0 ? null : 0)}>
 							{activeOption === 0 ? 'Cancel' : 'Edit Password'} </Button>
           			</Option>
 
 					  <Option>
-						<Label>Want to verify email?</Label>
+						{/* <Label>Want to verify email?</Label> */}
 						<Button onClick={() => setActiveOption(activeOption === 1 ? null : 1)}>
 							{activeOption === 1 ? 'Cancel' : 'Verify Email'} </Button>
           			</Option>
 
 					  <Option>
-						<Label>Want to sign out?</Label>
+						{/* <Label>Want to sign out?</Label> */}
 						<Button onClick={() => setActiveOption(activeOption === 2 ? null : 2)}>
 							{activeOption === 2 ? 'Cancel' : 'Sign Out'} </Button>
           			</Option>
 
 					  <Option>
-						<Label>Want to delete user?</Label>
+						{/* <Label>Want to delete user?</Label> */}
 						<Button onClick={() => setActiveOption(activeOption === 3 ? null : 3)}>
 							{activeOption === 3 ? 'Cancel' : 'Delete User'} </Button>
           			</Option>
 
 					<Option>
-						<Label>Want to change theme?</Label>
+						{/* <Label>Want to change theme?</Label> */}
 						<Button onClick={() => themeCallback()}>Change Theme</Button>
 					</Option>					
 				</OptionsCard>
 
-				{activeOption !== null && (
-					<FormCard display={'flex'}>
+				
+				<FormCard display={'flex'}>
+					<Title>Edit Settings</Title>
+					{activeOption === 0 && (
+						<UpdatePasswordForm onSubmit={handlePasswordChange}>
+							<label htmlFor='currentPassword' >Enter Current Password</label>
+							<input type='password' placeholder='Password' name='currentPassword' onChange={(e) => {setCurrentPassword(e.target.value)}} />
+							<label htmlFor='newPassword' placeholder='Password'>Enter New Password</label>
+							<input type='password' placeholder='Password' name='newPassword' onChange={(e) => {setNewPassword(e.target.value)}} />
+							<Button type='submit'>Update Password</Button>
+						</UpdatePasswordForm> 
+					)}
 
-						{activeOption === 0 && (
-							<UpdatePasswordForm onSubmit={handlePasswordChange}>
-								<label htmlFor='currentPassword' >Enter Current Password</label>
-								<input type='password' placeholder='Password' name='currentPassword' onChange={(e) => {setCurrentPassword(e.target.value)}} />
-								<label htmlFor='newPassword' placeholder='Password'>Enter New Password</label>
-								<input type='password' placeholder='Password' name='newPassword' onChange={(e) => {setNewPassword(e.target.value)}} />
-								<Button type='submit'>Update Password</Button>
-							</UpdatePasswordForm> 
-						)}
+					{activeOption === 1 && (
+						<VerifyEmailForm>
+							<label htmlFor='verifyEmail'>Enter Current Email</label>
+							<input type='email' placeholder='someone@gmail.com' name='verifyEmail'/>
+							<Button>Verify Email</Button>
+						</VerifyEmailForm> 
+					)}
 
-						{activeOption === 1 && (
-							<VerifyEmailForm>
-								<label htmlFor='verifyEmail'>Enter Current Email</label>
-								<input type='email' placeholder='someone@gmail.com' name='verifyEmail'/>
-								<Button>Verify Email</Button>
-							</VerifyEmailForm> 
-						)}
+					{activeOption === 2 && (
+						<LogoutForm onSubmit={() => {
+							logoutUser(auth)
+						}}>
+							<h4>Current User: {auth.currentUser ? auth.currentUser.email : 'Not Logged in'}</h4>
+							<Button>Sign Out</Button>
+						</LogoutForm> 
+					)}
 
-						{activeOption === 2 && (
-							<LogoutForm onSubmit={() => {
-								logoutUser(auth)
-							}}>
-								<h4>Current User: {auth.currentUser ? auth.currentUser.email : 'Not Logged in'}</h4>
-								<Button>Sign Out</Button>
-							</LogoutForm> 
-						)}
-
-						{activeOption === 3 && (
-							<DeleteForm onSubmit={() => {
-								deleteUser(userObj, auth)
-							}}> 
-								<h4>Current User: {auth.currentUser ? auth.currentUser.email : 'Not Logged in'}</h4>
-								<Button>Delete User</Button>
-							</DeleteForm> 
-						)}
-					</FormCard>
-				)}
+					{activeOption === 3 && (
+						<DeleteForm onSubmit={() => {
+							deleteUser(userObj, auth)
+						}}> 
+							<h4>Current User: {auth.currentUser ? auth.currentUser.email : 'Not Logged in'}</h4>
+							<Button>Delete User</Button>
+						</DeleteForm> 
+					)}
+				</FormCard>
+				
 			</OptionsWrapper>
 		</Container>
 	)
