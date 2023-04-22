@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { updateUser } from '../services/auth-manager'
 import GameCard from './gameCard'
 import { sampleGames } from '../utils/sampleData'
+import { useAuth } from './userContext'
 
 const Container = styled.div`
 	background-color: white;
@@ -47,7 +48,6 @@ const UserInfoContainer = styled.div`
 
   }
 `
-
 
 const UpdateUserForm = styled.form`
   display: flex;
@@ -108,7 +108,6 @@ const StatsTables = styled.div`
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 	overflow: hidden;
 `
-
 
 const RaceBoardTable = styled.table`
   width: 100%;
@@ -183,6 +182,8 @@ const ProfileSection = ({ user, auth }) => {
 	const [editMode, setEditMode] = useState(false)
 	const [name, setName] = useState('')
 	const [address, setAddress] = useState('')
+	
+	const { authUser } = useAuth()
 
 	const userObj = {
 		...user,
@@ -214,7 +215,7 @@ const ProfileSection = ({ user, auth }) => {
 							<span>Address: {user.address ? <p>{user.address}</p> : null}</span>
 						</UserInfoContainer>
 					}
-					<Button onClick={(e) => {setEditMode(!editMode)}}>{editMode ? 'Cancel' : 'Update User'}</Button>
+					{authUser?.uid == user.uid && <Button onClick={(e) => {setEditMode(!editMode)}}>{editMode ? 'Cancel' : 'Update User'}</Button>}
 
 					
 				</UserCard>

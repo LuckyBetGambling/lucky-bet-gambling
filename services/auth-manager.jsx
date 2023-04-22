@@ -6,7 +6,7 @@ import axios from 'axios'
 export const registerUser = async (auth, registerEmail, registerPassword ) => {
 	try{
 		// Attempt sign up  
-		await createUserWithEmailAndPassword(auth, registerEmail, registerPassword).then(
+		const res = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword).then(
 			async (user) => {
 				// Attempt to add user to db
 				await axios.post('/api/user', {
@@ -19,14 +19,21 @@ export const registerUser = async (auth, registerEmail, registerPassword ) => {
 					// Sign up was successful but we were unable to add the user data to the db
 					(e) => console.log(e.message)
 				)
-				return user
+				return {
+					admin: false,
+					user: user
+				}
 		  }
 		)
+		return res
 	}
 	catch(err){
 		// Sign up was unsuccesful
 		console.log(err.message)
-		return null
+		return {
+			admin: false,
+			user: null
+		}
 	}
 }
 
@@ -42,11 +49,17 @@ export const loginUser = async (auth, loginEmail, loginPassword) => {
 			return false
 		}
 		
-		return data.admin
+		return {
+			admin: data.admin,
+			user: userCred.user
+		}
 	}
 	catch(err){
 		console.log(err.message)
-		return false
+		return {
+			admin: false,
+			user: null
+		}
 	}
     
 }

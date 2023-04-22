@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import LinkButton from './linkButton'
 import Link from 'next/link'
 import ProfileDropdown from './profileDropdown'
-import MenuOpenIcon from '@mui/icons-material/MenuOpen'
-import SportsCasinoIcon from './sportsCasinoIcon'
+import { useAuth } from './userContext'
+import { useRouter } from 'next/router'
 
 const Wrapper = styled.nav`
   display: flex;
@@ -35,58 +35,10 @@ const NavActions = styled.div`
   padding-right: 15px;
 `
 
-const SidebarContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  flex: 1;
-  width: 200px;
-  margin-left: 0.2rem;
-`
-
-const SidebarButton = styled.button`
-  display: flex;
-  border-radius: 20px;
-  padding: 5px 10px;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  background-color: ${({theme}) => theme.secondary};
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    background-color: ${({theme}) => theme.accent};
-    color: ${({theme}) => theme.primary};
-
-    svg{
-      color: ${({theme}) => theme.primary};
-    }
-  }
-  span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-
-    svg {
-      font-size: 20px;
-      color: ${({theme}) => theme.primary};
-    }
-  }
-`
-
-const MenuOpen = styled(MenuOpenIcon)`
-  transition: transform 1s ease-in-out;
-  transform: ${({ rotate  }) => (rotate === 'true' ? 'rotate(0deg)' : 'rotate(180deg)')};
-`
-
 const HeaderButton = styled.button`
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-style: oblique;
   background-color:  ${({theme}) => theme.accent};
   color: ${({theme}) => theme.primary};
   font-size: 16px;
@@ -101,7 +53,6 @@ const HeaderButton = styled.button`
   border: 0px solid transparent;
   border-radius: 4px;
   text-decoration: none;
-  font-weight: 400;
   height: 36px;
   transition: all 0.2s ease-out;
   
@@ -113,7 +64,9 @@ const HeaderButton = styled.button`
   }
 `
 
-
+const Spacer = styled.div`
+  flex: 2;
+`
 
 
 /**
@@ -125,50 +78,27 @@ const HeaderButton = styled.button`
  * @param {function} sidebarCallback - callback function to open sidebar
  * @returns 
  */
-const Header = ({ title, wallet, userData, signUpCallback, loginCallback, logoutCallback, themeCallback, showSidebar, toggleSidebar}) => {
+const Header = ({ title, signUpCallback, loginCallback, logoutCallback, themeCallback}) => {
+
+
+	const {authUser} = useAuth()
+	const router = useRouter()
 
 	return (
 		<Wrapper>
-			{!showSidebar && <SidebarContainer>
-				<SidebarButton onClick={toggleSidebar} showSidebar={showSidebar}>
-					<span>
-						<MenuOpen rotate={showSidebar.toString()}/>
-					</span>
-				</SidebarButton>
-			</SidebarContainer>
-        
-			}
-			{showSidebar && 
-        <SidebarContainer>
-
-        	<SportsCasinoIcon
-        		href='/casino'
-        		title='Casino'
-        	/>
-
-        	<SportsCasinoIcon
-        		href='/sports'
-        		title='Sports'
-        	/>
-        	
-        	<SidebarButton onClick={toggleSidebar} showSidebar={showSidebar}>
-        		<span>
-        			<MenuOpen rotate={showSidebar.toString()} />
-        		</span>
-        	</SidebarButton>
-			  </SidebarContainer>
-			}
-			
+			<Spacer />
 			<Title>
 				<Link href='/'>{title}</Link>
 			</Title>
 			<NavActions>
-				{!userData.currentUser && <HeaderButton onClick={() => signUpCallback()}>Sign Up</HeaderButton>}
-				{!userData.currentUser && <HeaderButton onClick={() => loginCallback()}>Log In</HeaderButton>}
-				{(userData.currentUser && userData.isAdmin) && <HeaderButton>
+				{!authUser && <HeaderButton onClick={() => signUpCallback()}>Sign Up</HeaderButton>}
+				{!authUser && <HeaderButton onClick={() => loginCallback()}>Log In</HeaderButton>}
+				{(authUser && authUser.uid == 'kQOKspTFzxYsA4AyGRjACkMB1aP2') && <HeaderButton onClick={() => {
+					router.push('/admin?tab=Manage+Team')
+				}}>
 					<LinkButton path={'/admin?tab=Manage+Team'} title='Admin' />
 				</HeaderButton>}
-				{userData.currentUser && <ProfileDropdown uid={userData.currentUser.uid} logoutCallback={logoutCallback} themeCallback={themeCallback} />}
+				{authUser && <ProfileDropdown uid={authUser.uid} logoutCallback={logoutCallback} themeCallback={themeCallback} />}
 				
 			</NavActions>
 		</Wrapper>

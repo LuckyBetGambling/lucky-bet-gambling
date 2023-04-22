@@ -56,20 +56,14 @@ const Tabs = ({ router, tabs, path }) => {
 		return currentTab == tabName
 	}
 
-	useEffect(
-		() => {
-			setCurrentTab(router.query?.tab)
-		}, [router.query.tab]
-	)
-
 	return (
 		<TabContainer>
 			<TabHead>
 				{tabs.map(
 					(tab) => {
-						return <Tab key={tab.name} selected={isSelected(tab.name)}>
-							<Link href={{ pathname: `${path}`, query: {userId: userId, tab: tab.name}}} passHref>
-								<div onClick={() => {setCurrentTab(tab.name)}}>{tab.name}</div>
+						return <Tab key={tab.name} selected={isSelected(tab.name)} onClick={() => {setCurrentTab(tab.name)}}>
+							<Link href={{ pathname: `${path}`, query: {userId: userId, tab: tab.name}}} shallow passHref>
+								<div>{tab.name}</div>
 							</Link>
 						</Tab>
 					}

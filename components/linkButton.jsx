@@ -10,7 +10,7 @@ import Link from 'next/link'
 const LinkButton = ({ title, path }) => {
 
 	return (
-		<Link href={path} passHref>
+		<Link href={path}>
 			{title}
 		</Link>
 	)

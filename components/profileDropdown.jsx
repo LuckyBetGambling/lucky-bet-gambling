@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import LinkButton from './linkButton'
 import { tabNames } from '../pages/user/[userId]'
+import { useRouter } from 'next/router'
 
 const DropdownBtn = styled.div`
     background-color:  ${({theme}) => theme.accent};
@@ -85,6 +86,8 @@ const DropdownButton = styled.button`
 
 export default function ProfileDropdown({uid, themeCallback, logoutCallback}){
     
+	const router = useRouter()
+    
 	return (
 		
 		<DropdownBtn>
@@ -92,7 +95,9 @@ export default function ProfileDropdown({uid, themeCallback, logoutCallback}){
 			<DropdownContent>
 				{tabNames.map(
 					(tab) => {
-						return <DropdownButton key={tab}>
+						return <DropdownButton key={tab} onClick={() => {
+							router.push(`/user/${uid}?tab=${tab}`)
+						}}>
 							<LinkButton path={`/user/${uid}?tab=${tab}`} title={tab} />
 						</DropdownButton>
 					}
