@@ -15,15 +15,15 @@ export default function RouteGuard({ children }) {
 	useEffect(
 		() => {
 			if( !loading && !authUser && url.includes(privatePaths)) {
+				console.log(loading, authUser, privatePaths)
 				setAuthorized(false)
 				router.push('/')
 			}
-			else if ( !loading && authUser?.uid != 'kQOKspTFzxYsA4AyGRjACkMB1aP2' && (
-				url.includes(privatePaths) || url.includes(adminPath)
-			)) {
+			else if ( !loading && authUser?.uid != 'WsVhDmCACLgef68pkaSi2z1iZ2M2' && url.includes(adminPath)) {
 				setAuthorized(false)
 				router.push('/')
 			}
+			
 		}, [loading, authUser, url]
 	)
 

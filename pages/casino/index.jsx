@@ -19,13 +19,16 @@ const Page = styled.div`
 const Title = styled.h1`
     font-weight: 900;
 	text-align: center;
-    padding-top: 20px;
+	margin: 2rem;
+    letter-spacing: 2px;
     font-size: 30px;
     text-transform: uppercase;
 	text-shadow: -1px 1px 0 #FFBF00, 1px 1px 0 #FFBF00, 1px -1px 0 #FFBF00, -1px -1px 0 #FFBF00;
 `
 
-const Showcase = styled(Carouse1)``
+const Showcase = styled(Carouse1)`
+	margin-bottom: 2rem;
+`
 
 const showcaseGames = [
 	sampleGames[0],

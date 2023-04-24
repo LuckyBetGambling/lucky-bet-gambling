@@ -6,7 +6,6 @@ import ArrowLeft from '@mui/icons-material/ArrowLeft'
 import ArrowRight from '@mui/icons-material/ArrowRight'
 
 const Left = styled.div`
-	opacity: 0.2;
 	height: 50px;
 	width: 50px;
 	border-radius: 50px;
@@ -18,13 +17,11 @@ const Left = styled.div`
 	transition: opacity .3s ease-in-out;
 
 	&:hover {
-		opacity: 1;
 		cursor: pointer;
 	}
 `
 
 const Right = styled.div`
-	opacity: 0.2;
 	height: 50px;
 	width: 50px;
 	border-radius: 50px;
@@ -36,7 +33,6 @@ const Right = styled.div`
 	transition: opacity .3s ease-in-out;
 
 	&:hover {
-		opacity: 1;
 		cursor: pointer;
 	}
 `
@@ -46,7 +42,9 @@ const ShowcaseItem = styled.div`
 	width: 100%;
 	display: flex;
 	align-items: center;
+	margin-bottom: 20px;
 	padding: 20px;
+	
 `
 
 const GamePicture = styled.div`
