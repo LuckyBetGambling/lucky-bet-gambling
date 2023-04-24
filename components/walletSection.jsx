@@ -2,32 +2,52 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 
-const Container = styled.div`
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 20px;
-	padding: 20px 30px;
-	width: 750px;
-	background-color: white;
-	border-bottom-left-radius: 14px;
-	border-bottom-right-radius: 14px;
-	align-items: center;	
-	min-height: 60vh;
-`
+// const Container = styled.div`
+// 	display: grid;
+// 	grid-template-columns: 1fr 1fr;
+// 	gap: 20px;
+// 	padding: 20px 30px;
+// 	width: 750px;
+// 	background-color: white;
+// 	border-bottom-left-radius: 14px;
+// 	border-bottom-right-radius: 14px;
+// 	align-items: center;	
+// 	min-height: 60vh;
+// `
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+  width: 750px;
+  background-color: white;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  align-items: center;
+  min-height: 60vh;
+  flex: 1;
+
+  & > * {
+    flex-grow: 1;
+    margin: 10px 0;
+  }
+`
 
 const Balance = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 1rem 0;
+  flex: 1;
+  width: 100%
 `
-// 
+
 const BalanceContainer = styled.div`
   background-color:#E6E6E6;
   padding: 20px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  width: 100%;
 `
 
 
@@ -36,7 +56,7 @@ const Money = styled.div`
   font-size: 5rem;
   font-weight: 700;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 `
 
@@ -70,6 +90,8 @@ const RecentTransactions = styled.div`
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
+  flex: 1;
+  width: 100%
 `
 
 const Title = styled.div`
@@ -133,6 +155,7 @@ const WalletSection = () => {
 	return (
 		
 		<Container>
+			
 			<Balance>
 				<BalanceText>Balance </BalanceText>
 				<BalanceContainer>
@@ -194,6 +217,7 @@ const WalletSection = () => {
 					</RaceBoardTable>
 				</StatsTables> 
 			</RecentTransactions>
+			
 
 		</Container>
 	)

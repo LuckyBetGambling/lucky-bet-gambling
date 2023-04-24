@@ -98,7 +98,7 @@ const SidebarDropdown = styled.ul`
     pointer-events: ${ ({isExpanded}) => isExpanded ? 'all' : 'none'};
     height: ${ ({isExpanded}) => isExpanded ? '100%' : '0'};
     opacity: ${ ({isExpanded}) => isExpanded ? '1' : '0'};
-    transition: opacity 400ms ease-in-out, height 400ms 0ms;
+    transition: opacity 650ms ease-in-out, height 650ms 0ms;
 `
 
 const SidebarDropdownItem = styled.li`

@@ -15,8 +15,9 @@ const Container = styled.div`
 
 const OptionsWrapper = styled.div`
 	display: flex;
-	width: 100%;
 	margin-top: 1rem;
+	min-height: 600px;
+	width: 100%;
 `
 
 
@@ -24,16 +25,37 @@ const OptionsCard = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-evenly;
 	margin-top: 20px;
-	flex: 1;
+	flex: 2;
 	border-radius: 8px;
 	margin: 10px;
 	padding: 15px;
 	background-color: ${ ({theme}) => theme.secondary};	
 	max-width: 50%;
 	width: 150px;
-	
+	max-height: 100%;
+
+	& > *:not(:first-child) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+
+`
+
+const FormCard = styled.div`
+	display: ${({ display }) => display ? 'flex' : 'none'};
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+	flex: 2;
+	border-radius: 8px;
+	margin: 10px;
+	padding: 15px;
+	background-color: ${({ theme }) => theme.secondary};
+	max-width: 50%;
+	max-height: 100%;
 `
 
 const Option = styled.div`
@@ -51,8 +73,8 @@ const Button = styled.button`
 	font-size: 1.2rem;
 	font-weight: bold;
 	border-radius: 8px;
-	padding: 10px 20px;
-	margin-top: 10px;
+	padding: 14px 20px;
+	margin-top: 1.2rem;
 	border: none;
 	cursor: pointer;
 	width: 250px;
@@ -74,19 +96,6 @@ const Label = styled.p`
 const Title = styled.h1`
 	padding-top: 15px;
 	text-align: center;
-`
-
-const FormCard = styled.div`
-	display: ${({ display }) => display ? 'flex' : 'none'};
-	flex-direction: column;
-	align-items: center;
-	margin-top: 20px;
-	flex: 1;
-	border-radius: 8px;
-	margin: 10px;
-	padding: 15px;
-	background-color: ${({ theme }) => theme.secondary};
-	max-width: 50%;
 `
 
 const UpdatePasswordForm = styled.form`
@@ -191,31 +200,26 @@ const SettingsSection = ({auth, user, themeCallback}) => {
 				<OptionsCard>
 					<Title>User Settings</Title>
 					<Option>
-						{/* <Label>Want to change password?</Label> */}
 						<Button onClick={() => setActiveOption(activeOption === 0 ? null : 0)}>
 							{activeOption === 0 ? 'Cancel' : 'Edit Password'} </Button>
           			</Option>
 
 					  <Option>
-						{/* <Label>Want to verify email?</Label> */}
 						<Button onClick={() => setActiveOption(activeOption === 1 ? null : 1)}>
 							{activeOption === 1 ? 'Cancel' : 'Verify Email'} </Button>
           			</Option>
 
 					  <Option>
-						{/* <Label>Want to sign out?</Label> */}
 						<Button onClick={() => setActiveOption(activeOption === 2 ? null : 2)}>
 							{activeOption === 2 ? 'Cancel' : 'Sign Out'} </Button>
           			</Option>
 
 					  <Option>
-						{/* <Label>Want to delete user?</Label> */}
 						<Button onClick={() => setActiveOption(activeOption === 3 ? null : 3)}>
 							{activeOption === 3 ? 'Cancel' : 'Delete User'} </Button>
           			</Option>
 
 					<Option>
-						{/* <Label>Want to change theme?</Label> */}
 						<Button onClick={() => themeCallback()}>Change Theme</Button>
 					</Option>					
 				</OptionsCard>

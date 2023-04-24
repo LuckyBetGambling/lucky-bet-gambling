@@ -84,6 +84,8 @@ const Header = ({ title, signUpCallback, loginCallback, logoutCallback, themeCal
 	const {authUser} = useAuth()
 	const router = useRouter()
 
+	console.log(authUser)
+
 	return (
 		<Wrapper>
 			<Spacer />

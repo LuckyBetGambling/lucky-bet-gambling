@@ -278,7 +278,7 @@ export default function App({ Component, pageProps }) {
 
 					<Modal show={showLogoutModal} onClose={() => { setShowLogoutModal(false) }} title='Sign Out'>
 						<LogoutForm onSubmit={handleLogout}>
-							<h4>User Logged in: {user.currentUser ? user.currentUser.email : 'Not Logged in'}</h4>
+							<h4>Current User: {auth.currentUser ? auth.currentUser.email : 'Not Logged in'}</h4>
 							<Button>Sign Out</Button>
 						</LogoutForm>
 					</Modal>

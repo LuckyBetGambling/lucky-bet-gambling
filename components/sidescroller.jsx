@@ -25,7 +25,7 @@ const SideScrollingContainer = styled.div`
 `
 
 const Wrapper = styled.div`
-	margin: 10px;
+	margin: 20px;
     padding: 20px;
     background-color: ${({theme}) => theme.secondary};
 	border-radius: 15px;
@@ -61,11 +61,11 @@ const Slides = styled.div`
 const LeftScroll = styled.button`
 	opacity: 0;
 	position: absolute;
-	top:40%;
+	top:37%;
 	left:1%;
-	height: 50px;
+	height: 60px;
 	z-index: 11;
-    width: 50px;
+    width: 60px;
     border-radius: 50px;
     background-color: white;
     display: flex;
@@ -83,11 +83,11 @@ const LeftScroll = styled.button`
 const RightScroll = styled.button`
 	opacity: 0;
 	position: absolute;
-	top: 40%;
+	top: 37%;
 	right: 1%;
-	height: 50px;
+	height: 60px;
 	z-index: 11;
-	width: 50px;
+	width: 60px;
 	border-radius: 50px;
 	background-color: white;
 	display: flex;
