@@ -95,7 +95,7 @@ const Header = ({ title, signUpCallback, loginCallback, logoutCallback, themeCal
 			<NavActions>
 				{!authUser && <HeaderButton onClick={() => signUpCallback()}>Sign Up</HeaderButton>}
 				{!authUser && <HeaderButton onClick={() => loginCallback()}>Log In</HeaderButton>}
-				{(authUser && authUser.uid == 'kQOKspTFzxYsA4AyGRjACkMB1aP2') && <HeaderButton onClick={() => {
+				{(authUser && authUser.uid == 'WsVhDmCACLgef68pkaSi2z1iZ2M2') && <HeaderButton onClick={() => {
 					router.push('/admin?tab=Manage+Team')
 				}}>
 					<LinkButton path={'/admin?tab=Manage+Team'} title='Admin' />
